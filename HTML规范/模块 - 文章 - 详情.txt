@@ -1,0 +1,39 @@
+<div class="upload"><!--- 标志识别符 --->
+
+  <h1 class="title">{ 文章标题 }</h1>
+  <div class="date">
+
+    <span class="date">{ 文章发布时间 }</span>
+
+    <span class="rss">【{ 文章收录来源 }】</span>
+
+    <a href="#" href="{ 阅读设置的代码 }">{ 阅读设置 }</a>
+
+    <a class="btn_back" href="{ 返回的代码 }">{ 返回 }</a>
+
+    <a class="btn_favorite" href="{ 加入收藏的代码 }">{ 加入收藏 }</a>
+
+    <a class="btn_good" href="{ 顶的代码 }">｛ 顶一下 ｝</a>
+
+    <a class="btn_bad" href="{ 踩的代码 }">｛ 踩一脚 ｝</a>
+
+    <a class="btn_{ 转帖到的网站核心域名 }" href="{ 转帖到的目标链接 }" title="{ 转帖到论坛 } || { 转帖到博客 } || { 转帖到空间 }"></a>
+
+  </div>
+  <div class="text">
+
+    <p>内容段落</p>
+
+    <h1>{ 一级内容标题 }</h1>
+
+    <h2>{ 二级内容标题 }</h2>
+
+    <h3>{ 一级内容标题 }</h3>
+
+    <h4>{ 二级内容标题 }</h4>
+
+    <h5>{ 二级内容标题 }</h5>
+
+  </div>
+  
+</div>

@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTopicPager">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keywords" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="topicindustry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="etime" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pagesize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicPagerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicPagerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPager">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mainuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="websource" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="attentionType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pagesize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPagerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserPagerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopicUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="industry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopicUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TopicUpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHotTopic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="topicType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHotTopicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHotTopicResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InitCategory">
+        <s:complexType />
+      </s:element>
+      <s:element name="InitCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InitCategoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CategoryUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cateName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="catekeyword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="minscore" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CategoryUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CategoryUpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cateid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelCategoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InitKeywordsList">
+        <s:complexType />
+      </s:element>
+      <s:element name="InitKeywordsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InitKeywordsListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelKeywords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="kwid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelKeywordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelKeywordsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KeywordsUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="kwstype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kwcateName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kwRelevance" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kwsid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KeywordsUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="KeywordsUpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGroupList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="attentiontype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mainUid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserGroupListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupToAttention">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="grids" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupToAttentionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupToAttentionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupAttentionUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updategroupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updategrouptxt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupAttentionUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupAttentionUpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGroupAttention">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addgroupname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="addgroupAttentionType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="addgroupmainid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGroupAttentionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddGroupAttentionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAttentionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="atgId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAttentionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelAttentionGroupResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatisticTopic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="topicid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatisticTopicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StatisticTopicResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTopicPagerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopicPager" />
+  </wsdl:message>
+  <wsdl:message name="GetTopicPagerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopicPagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPagerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserPager" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPagerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopicUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:TopicUpdate" />
+  </wsdl:message>
+  <wsdl:message name="TopicUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:TopicUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHotTopicSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHotTopic" />
+  </wsdl:message>
+  <wsdl:message name="GetHotTopicSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHotTopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="InitCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:InitCategory" />
+  </wsdl:message>
+  <wsdl:message name="InitCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:InitCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CategoryUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:CategoryUpdate" />
+  </wsdl:message>
+  <wsdl:message name="CategoryUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:CategoryUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:DelCategory" />
+  </wsdl:message>
+  <wsdl:message name="DelCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:DelCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="InitKeywordsListSoapIn">
+    <wsdl:part name="parameters" element="tns:InitKeywordsList" />
+  </wsdl:message>
+  <wsdl:message name="InitKeywordsListSoapOut">
+    <wsdl:part name="parameters" element="tns:InitKeywordsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelKeywordsSoapIn">
+    <wsdl:part name="parameters" element="tns:DelKeywords" />
+  </wsdl:message>
+  <wsdl:message name="DelKeywordsSoapOut">
+    <wsdl:part name="parameters" element="tns:DelKeywordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="KeywordsUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:KeywordsUpdate" />
+  </wsdl:message>
+  <wsdl:message name="KeywordsUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:KeywordsUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserGroupList" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserGroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupToAttentionSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupToAttention" />
+  </wsdl:message>
+  <wsdl:message name="GroupToAttentionSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupToAttentionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupAttentionUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupAttentionUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GroupAttentionUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupAttentionUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGroupAttentionSoapIn">
+    <wsdl:part name="parameters" element="tns:AddGroupAttention" />
+  </wsdl:message>
+  <wsdl:message name="AddGroupAttentionSoapOut">
+    <wsdl:part name="parameters" element="tns:AddGroupAttentionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelAttentionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:DelAttentionGroup" />
+  </wsdl:message>
+  <wsdl:message name="DelAttentionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:DelAttentionGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="StatisticTopicSoapIn">
+    <wsdl:part name="parameters" element="tns:StatisticTopic" />
+  </wsdl:message>
+  <wsdl:message name="StatisticTopicSoapOut">
+    <wsdl:part name="parameters" element="tns:StatisticTopicResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WeiboDataServiceSoap">
+    <wsdl:operation name="GetTopicPager">
+      <wsdl:input message="tns:GetTopicPagerSoapIn" />
+      <wsdl:output message="tns:GetTopicPagerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPager">
+      <wsdl:input message="tns:GetUserPagerSoapIn" />
+      <wsdl:output message="tns:GetUserPagerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TopicUpdate">
+      <wsdl:input message="tns:TopicUpdateSoapIn" />
+      <wsdl:output message="tns:TopicUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotTopic">
+      <wsdl:input message="tns:GetHotTopicSoapIn" />
+      <wsdl:output message="tns:GetHotTopicSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InitCategory">
+      <wsdl:input message="tns:InitCategorySoapIn" />
+      <wsdl:output message="tns:InitCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CategoryUpdate">
+      <wsdl:input message="tns:CategoryUpdateSoapIn" />
+      <wsdl:output message="tns:CategoryUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelCategory">
+      <wsdl:input message="tns:DelCategorySoapIn" />
+      <wsdl:output message="tns:DelCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InitKeywordsList">
+      <wsdl:input message="tns:InitKeywordsListSoapIn" />
+      <wsdl:output message="tns:InitKeywordsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelKeywords">
+      <wsdl:input message="tns:DelKeywordsSoapIn" />
+      <wsdl:output message="tns:DelKeywordsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="KeywordsUpdate">
+      <wsdl:input message="tns:KeywordsUpdateSoapIn" />
+      <wsdl:output message="tns:KeywordsUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGroupList">
+      <wsdl:input message="tns:GetUserGroupListSoapIn" />
+      <wsdl:output message="tns:GetUserGroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupToAttention">
+      <wsdl:input message="tns:GroupToAttentionSoapIn" />
+      <wsdl:output message="tns:GroupToAttentionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupAttentionUpdate">
+      <wsdl:input message="tns:GroupAttentionUpdateSoapIn" />
+      <wsdl:output message="tns:GroupAttentionUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGroupAttention">
+      <wsdl:input message="tns:AddGroupAttentionSoapIn" />
+      <wsdl:output message="tns:AddGroupAttentionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelAttentionGroup">
+      <wsdl:input message="tns:DelAttentionGroupSoapIn" />
+      <wsdl:output message="tns:DelAttentionGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StatisticTopic">
+      <wsdl:input message="tns:StatisticTopicSoapIn" />
+      <wsdl:output message="tns:StatisticTopicSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WeiboDataServiceSoap" type="tns:WeiboDataServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTopicPager">
+      <soap:operation soapAction="http://tempuri.org/GetTopicPager" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPager">
+      <soap:operation soapAction="http://tempuri.org/GetUserPager" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopicUpdate">
+      <soap:operation soapAction="http://tempuri.org/TopicUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotTopic">
+      <soap:operation soapAction="http://tempuri.org/GetHotTopic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitCategory">
+      <soap:operation soapAction="http://tempuri.org/InitCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CategoryUpdate">
+      <soap:operation soapAction="http://tempuri.org/CategoryUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelCategory">
+      <soap:operation soapAction="http://tempuri.org/DelCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitKeywordsList">
+      <soap:operation soapAction="http://tempuri.org/InitKeywordsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelKeywords">
+      <soap:operation soapAction="http://tempuri.org/DelKeywords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KeywordsUpdate">
+      <soap:operation soapAction="http://tempuri.org/KeywordsUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGroupList">
+      <soap:operation soapAction="http://tempuri.org/GetUserGroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupToAttention">
+      <soap:operation soapAction="http://tempuri.org/GroupToAttention" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupAttentionUpdate">
+      <soap:operation soapAction="http://tempuri.org/GroupAttentionUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGroupAttention">
+      <soap:operation soapAction="http://tempuri.org/AddGroupAttention" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelAttentionGroup">
+      <soap:operation soapAction="http://tempuri.org/DelAttentionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatisticTopic">
+      <soap:operation soapAction="http://tempuri.org/StatisticTopic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WeiboDataServiceSoap12" type="tns:WeiboDataServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTopicPager">
+      <soap12:operation soapAction="http://tempuri.org/GetTopicPager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPager">
+      <soap12:operation soapAction="http://tempuri.org/GetUserPager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopicUpdate">
+      <soap12:operation soapAction="http://tempuri.org/TopicUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotTopic">
+      <soap12:operation soapAction="http://tempuri.org/GetHotTopic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitCategory">
+      <soap12:operation soapAction="http://tempuri.org/InitCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CategoryUpdate">
+      <soap12:operation soapAction="http://tempuri.org/CategoryUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelCategory">
+      <soap12:operation soapAction="http://tempuri.org/DelCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitKeywordsList">
+      <soap12:operation soapAction="http://tempuri.org/InitKeywordsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelKeywords">
+      <soap12:operation soapAction="http://tempuri.org/DelKeywords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KeywordsUpdate">
+      <soap12:operation soapAction="http://tempuri.org/KeywordsUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGroupList">
+      <soap12:operation soapAction="http://tempuri.org/GetUserGroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupToAttention">
+      <soap12:operation soapAction="http://tempuri.org/GroupToAttention" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupAttentionUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GroupAttentionUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGroupAttention">
+      <soap12:operation soapAction="http://tempuri.org/AddGroupAttention" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelAttentionGroup">
+      <soap12:operation soapAction="http://tempuri.org/DelAttentionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatisticTopic">
+      <soap12:operation soapAction="http://tempuri.org/StatisticTopic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WeiboDataService">
+    <wsdl:port name="WeiboDataServiceSoap" binding="tns:WeiboDataServiceSoap">
+      <soap:address location="http://180.186.74.142/IdolWebSvc/WeiboDataService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WeiboDataServiceSoap12" binding="tns:WeiboDataServiceSoap12">
+      <soap12:address location="http://180.186.74.142/IdolWebSvc/WeiboDataService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

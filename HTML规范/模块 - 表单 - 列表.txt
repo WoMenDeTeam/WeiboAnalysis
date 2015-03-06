@@ -1,0 +1,36 @@
+<form>
+
+  <ul class="form_list"><!--- 标志识别符：表单填写 --->
+
+    <span class="tig">{ 表单项提示：用于提交后服务器端综合验证 }</span>
+
+    <!--- 表单项开始 --->
+    <li>
+
+      <span class="name">{ 表单项名称 }</span>
+
+      <span class="input">{ 表单项文本域 }</span>
+
+      <span class="textarea">{ 表单项文本区域 }</span>
+
+      <span class="radio">{ 表单项单选按钮 } || { 表单项复选框 }</span>
+
+      <span class="note">{ 表单项提示：用于提交前客户端单项验证 }</span>
+
+    </li>
+    <!--- 表单项结束 --->
+
+  </ul>  
+  <div class="form_btn"><!--- 标志识别符：提交按钮 --->
+
+    <input class="btn" type="botton" value="{ 按钮文本 }" /><!--- 文字按钮 --->
+
+    <input class="btn_reg" type="botton" value="{ 无 }" /><!--- 图片按钮：注册按钮 --->
+
+    <input class="btn_login" type="botton" value="{ 无 }" /><!--- 图片按钮：登陆按钮 --->
+
+    <input class="btn_search" type="botton" value="{ 无 }" /><!--- 图片按钮：搜索按钮 --->
+  
+  </div>
+
+</form>

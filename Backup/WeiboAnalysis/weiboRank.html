@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <!--<script src="Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/jquery-1.8.1.min.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/common.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/template.js" type="text/javascript"></script>-->
+    <script src="Scripts/web/weiboRank.js" type="text/javascript"></script>
+    <!--<link href="styles/weibo.css" rel="stylesheet" type="text/css" />-->
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div id="history_div" class="history_tac" style="display: none">
+                    <div class="widget_border">
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_outer">
+                        <div class="widget_header">
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            搜索历史
+                                        </td>
+                                        <td align="right">
+                                            <a class="btn_close" id="colse_history_div" href="javascript:void(null)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget_resize_frame">
+                            <div class="widget_body">
+                                <div id="historyList">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_border">
+                    </div>
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <!--左边导航-->
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        监测时间
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="new_wbdatesh">
+                                <div class="wbdatesh_top" id="wbdatesh_div">
+                                    <ul>
+                                        <li class="on" class="" id="btn_custom"><a>自定义</a></li>
+                                    </ul>
+                                </div>
+                                <!--自定义-->
+                                <div class="wb_currentnr" id="custom_time_div">
+                                    <ul class="form_list">
+                                        <li><span class="name">起始日</span> <span class="input">
+                                            <input style="width: 80%;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'dd/MM/yyyy',maxDate:'#F{$dp.$D(\'custom_end_time\')}'})"
+                                                id="custom_start_time" /></span> <span class="note"></span></li>
+                                        <li><span class="name">截止日</span> <span class="input">
+                                            <input style="width: 80%;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'dd/MM/yyyy',minDate:'#F{$dp.$D(\'custom_start_time\')}'})"
+                                                id="custom_end_time"></span> <span class="note"></span></li>
+                                    </ul>
+                                    <div class="form_btn">
+                                        <input type="button" class="search_button" value="确定" id="custom_search_btn" name="searchButton"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height: 10px;">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        用户分组
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <dl class="no_down" id="allUser">
+                                <dd class="on">
+                                    <a>全部用户</a></dd>
+                            </dl>
+                            <dl class="no_up" id="leftList_dl">
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        用户列表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--高级搜索-->
+                            <div class="wb_gjsearch">
+                                <a class="btn_history heigh_pad12" id="btn_history" href="javascript:void(null);">搜索历史</a>
+                                <a id="advance_search_a" class="btn_power no" href="javascript:void(null);">高级</a>
+                                <input id="keyword_txt" name="" type="text" class="wb_text" value="" />
+                                <a class="btn_search" href="javascript:void(null);" id="weibo_screening_btn">搜 索</a><br />
+                            </div>
+                            <!--排序条件-->
+                            <div class="wb_wc_wwc" id="actionBtns">
+                                <span class="left">
+                                    <input id="clickall_ckb" name="" type="checkbox" value="" />
+                                    <!--
+                                    <span>只看重点关注</span> <a style="display: none;" id="allweibo" class="btn" href="javascript:void(null);"
+                                        onclick="Top.personDetailsByAll();">所有微博</a>
+                                    -->
+                                    <a class="btn" href="javascript:void(null);" id="setGroup">分组</a> </span>
+                                <!--
+                    	         <span class="right">
+                    	            <a class="btn_renew" href="javascript:void(null);"></a>
+                    	            <code>第<b>1</b>-<b>20</b>条</code>
+                                </span>
+                                -->
+                                <ul>
+                                    <li id="real_time_btn" class="on"><a>活跃度 ↓</a></li>
+                                    <!--
+                                    <li id="hot_point_btn"><a>转发 ↓</a></li>
+                                    <li id="negative_btn"><a>评论 ↓</a></li>
+                                -->
+                                </ul>
+                            </div>
+                            <div class="wb_httit wb_httit4" id="rankList">
+                                <ul>
+                                    <li><span class="num hot">01</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num hot">02</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num hot">03</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num hot">04</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num hot">05</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">06</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">07</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">08</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">09</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">10</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                </ul>
+                                <div class="clear">
+                                </div>
+                                <ul>
+                                    <li><span class="num">11</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">12</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">13</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">14</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">15</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">16</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">17</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">18</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="num">19</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">取消关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                    <li><span class="text">
+                                        <%=Nick %></span><span class="btn"><a href="javascript:void(0)">取消关注</a></span>
+                                    </li>
+                                </ul>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="wb_httit wb_httit5 wb_httit4 " id="rankListRight">
+                                <ul>
+                                </ul>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        用户分组</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在生成数据</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <!--- 表单项开始 --->
+                        <li id="grouplist"><span class="name">选择分组</span> <span class="input">
+                            <select id="selKType" style="width: 320px;">
+                            </select>
+                        </span></li>
+                        <!--<li><span class="name">话题名称</span> <span class="input">
+                            <input id="txtTopicName" style="width: 300px;" type="text" sid="" stype="" /></span>
+                            <span class="note" id="txtKWNameCheck" style="display: none;">
+                                <img src="img/wb_tishi.gif" /></span> </li>-->
+                        <!--<li><span class="name">话题关键词</span> <span class="textarea">
+                                <textarea style="height: 143px; width: 324px;" id="txtKeywords"></textarea></span>
+                            </li>
+                            <li><span class="name">所属行业</span> <span class="input">
+                                <select id="txtIndustry" style="width: 332px;">
+                                </select></span> </li>-->
+                        <!--- 表单项结束 --->
+                    </ul>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="btnAddT" value="提交" /><!--<input type="button" class="btn"
+                            id="btnReset" value="重置" />-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

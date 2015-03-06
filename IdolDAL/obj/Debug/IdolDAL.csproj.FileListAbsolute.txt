@@ -1,0 +1,10 @@
+D:\项目\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.dll
+D:\项目\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.pdb
+D:\项目\WeiboAnalysis\IdolDAL\obj\Debug\ResolveAssemblyReference.cache
+D:\项目\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.dll
+D:\项目\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.pdb
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.dll
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.pdb
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.dll
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.pdb
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.csprojResolveAssemblyReference.cache

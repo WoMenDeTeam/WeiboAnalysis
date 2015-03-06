@@ -1,0 +1,23 @@
+<ul class="news_list"><!--- 标志识别符 --->
+
+  <!--- 循环开始 --->
+  <li>
+    <a href="{ 文章链接 }" title="{ 文章摘要 }">
+
+      <span class="num">{ 文章排列序号 }</span>
+
+      <span class="date">{ 文章发布时间 }</span>
+
+      <span class="text">{ 文章标题 }</span>
+
+      <span class="rss">【{ 文章收录来源 }】</span>
+
+      <span class="trends">{ 文章升降趋势 }</span>
+
+      <span class="precent">{ 文章所在比例 }</span>
+    
+    </a>
+  </li>
+  <!--- 循环结束 --->
+
+</ul>

@@ -1,0 +1,47 @@
+<ul class="menu"><!--- 标志识别符：一级菜单 --->
+
+  <li class="tab_on"><!-- 当前菜单 --->
+
+    <a href="{ 菜单链接 }"><b>{ 菜单名称 }</b></a>
+
+  </li>
+
+  <li class="tab_off"><!-- 其他菜单 --->
+
+    <a href="{ 菜单链接 }"><b>{ 菜单名称 }</b></a>
+
+  </li>
+
+</ul>
+
+<ul class="submenu"><!--- 标志识别符：二级菜单 --->
+
+  <li class="tab_on"><!-- 当前菜单 --->
+
+    <a href="{ 菜单链接 }"><b>{ 菜单名称 }</b></a>
+
+  </li>
+
+  <li class="tab_off"><!-- 其他菜单 --->
+
+    <a href="{ 菜单链接 }"><b>{ 菜单名称 }</b></a>
+
+  </li>
+
+</ul>
+
+<ul class="subsubmenu"><!--- 标志识别符：三级菜单 --->
+
+  <li class="tab_on"><!-- 当前菜单 --->
+
+    <a href="{ 菜单链接 }"><b>{ 菜单名称 }</b></a>
+
+  </li>
+
+  <li class="tab_off"><!-- 其他菜单 --->
+
+    <a href="{ 菜单链接 }"><b>{ 菜单名称 }</b></a>
+
+  </li>
+
+</ul>

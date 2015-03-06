@@ -1,0 +1,14 @@
+E:\工作\国科智信\WeiboAnalysis\DBDAL\bin\Release\DBDAL.dll
+E:\工作\国科智信\WeiboAnalysis\DBDAL\bin\Release\DBDAL.pdb
+E:\工作\国科智信\WeiboAnalysis\DBDAL\bin\Release\Util.dll
+E:\工作\国科智信\WeiboAnalysis\DBDAL\bin\Release\Util.pdb
+E:\工作\国科智信\WeiboAnalysis\DBDAL\obj\Release\DBDAL.csprojResolveAssemblyReference.cache
+E:\工作\国科智信\WeiboAnalysis\DBDAL\obj\Release\DBDAL.dll
+E:\工作\国科智信\WeiboAnalysis\DBDAL\obj\Release\DBDAL.pdb
+D:\gooko\WeiboAnalysis\DBDAL\bin\Release\DBDAL.dll
+D:\gooko\WeiboAnalysis\DBDAL\bin\Release\DBDAL.pdb
+D:\gooko\WeiboAnalysis\DBDAL\bin\Release\Util.dll
+D:\gooko\WeiboAnalysis\DBDAL\bin\Release\Util.pdb
+D:\gooko\WeiboAnalysis\DBDAL\obj\Release\DBDAL.csprojResolveAssemblyReference.cache
+D:\gooko\WeiboAnalysis\DBDAL\obj\Release\DBDAL.dll
+D:\gooko\WeiboAnalysis\DBDAL\obj\Release\DBDAL.pdb

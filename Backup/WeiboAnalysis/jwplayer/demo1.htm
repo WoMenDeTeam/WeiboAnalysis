@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jwplayer.js" type="text/javascript"></script>
+    <script src="http://jwpsrv.com/library/qmXfIHssEeKFgSIACp8kUw.js" type="text/javascript"> </script>
+    <script type="text/javascript">
+        jwplayer.key = "CwxP8rWmIY5Zsh1Se +60 CjBdXEmtiAUMQlakPA的==";
+    </script>
+</head>
+<body>
+    <div id='player_6906'>
+    </div>
+    <label>
+        URL</label><input type="text" id="input_url" value="http://123.103.15.153:8388/video/t1.flv" />
+    <input type="button" id="btn_load" value="加载" />
+    <input type="button" id="btn_load2" value="加载2" />
+    <script type='text/javascript'>
+
+        function myPlayer(fileUrl, imageUrl) {
+            jwplayer('player_6906').setup({
+                file: fileUrl,
+                width: "640",
+                height: "360",
+                primary: "flash",
+                image: imageUrl,
+                logo: { file: '/img/btn_case.png',
+                    link: 'http://www.baidu.com',
+                    position: "top-left"
+                }
+            });
+        }
+
+        myPlayer("http://content.bitsontherun.com/videos/3XnJSIm4-kNspJqnJ.mp4", "http://content.bitsontherun.com/thumbs/3XnJSIm4-640.jpg");
+
+        $("#btn_load").click(function () {
+            var fileUrl = $("#input_url").val();
+            jwplayer('player_6906').setup({
+                file: fileUrl,
+                width: "640",
+                height: "360",
+                primary: "flash",
+                image: "http://content.bitsontherun.com/thumbs/3XnJSIm4-640.jpg11",
+                autostart: "true"
+            });
+        });
+
+        $("#btn_load2").click(function () {
+            $("body").append("<div id='player2'></div>");
+            var fileUrl = $("#input_url").val();
+            jwplayer('player2').setup({
+                file: fileUrl,
+                width: "640",
+                height: "360",
+                primary: "flash",
+                autostart: "flash"
+            });
+        });
+        
+
+
+
+    </script>
+</body>
+</html>

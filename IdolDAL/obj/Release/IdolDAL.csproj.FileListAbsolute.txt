@@ -1,0 +1,9 @@
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\bin\Release\IdolDAL.dll
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\bin\Release\IdolDAL.pdb
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Release\IdolDAL.dll
+E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Release\IdolDAL.pdb
+D:\gooko\WeiboAnalysis\IdolDAL\bin\Release\IdolDAL.dll
+D:\gooko\WeiboAnalysis\IdolDAL\bin\Release\IdolDAL.pdb
+D:\gooko\WeiboAnalysis\IdolDAL\obj\Release\IdolDAL.csprojResolveAssemblyReference.cache
+D:\gooko\WeiboAnalysis\IdolDAL\obj\Release\IdolDAL.dll
+D:\gooko\WeiboAnalysis\IdolDAL\obj\Release\IdolDAL.pdb

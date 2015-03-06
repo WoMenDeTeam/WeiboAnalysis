@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <link href="styles/jqcloud.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/cloud/jquery.3DTagCloud.js" type="text/javascript"></script>
+    <script src="Scripts/web/YearMonthWeek.js" type="text/javascript"></script>
+    <script src="Scripts/web/HotWord.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div id="history_div" class="history_tac" style="display: none">
+                    <div class="widget_border">
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_outer">
+                        <div class="widget_header">
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            搜索历史
+                                        </td>
+                                        <td align="right">
+                                            <a class="btn_close" id="colse_history_div" href="javascript:void(null)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget_resize_frame">
+                            <div class="widget_body">
+                                <div id="historyList">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_border">
+                    </div>
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <!--左边导航-->
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        监测时间
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="new_wbdatesh">
+                                <div class="wbdatesh_top" id="wbdatesh_div">
+                                    <ul>
+                                        <li class="on" class="" id="btn_custom"><a>自定义</a></li>
+                                    </ul>
+                                </div>
+                                <!--自定义-->
+                                <div class="wb_currentnr" id="custom_time_div">
+                                    <ul class="form_list">
+                                        <li><span class="input" style="width: 240px;">
+                                            <select id="years_sel" style="width: 44%">
+                                            </select>
+                                            <select id="month_sel" style="width: 34%">
+                                            </select></span> </li>
+                                        <li><span class="input" style="width: 240px;">
+                                            <select id="week_sel" style="width: 80%">
+                                            </select></span> </li>
+                                        <li style="display: none;"><span class="input">
+                                            <input style="width: 80%; display: none;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowWeek:true,onpicked:HotWord.myDateFun})"
+                                                id="custom_start_time" value="2013-07-29" /></span> </li>
+                                        <li style="display: none;"><span class="input">
+                                            <input style="width: 80%; display: none;" id="endTime" /></span> </li>
+                                        <li style="display: none;"><span class="name"></span><span class="input">
+                                            <input style="width: 25%;" id="years_text">年,第
+                                            <input style="width: 18%;" id="week_txt">周</span> <span class="note"></span>
+                                        </li>
+                                        <li style="display: none;"><span><code>隶属于<b class="color_2" id="years_b">2013</b>年第<b
+                                            class="color_2" id="week_b">13</b>周</code></span> </li>
+                                    </ul>
+                                    <div class="form_btn">
+                                        <input type="button" class="search_button" value="确定" id="submit_serach" name="searchButton"/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        热词一览
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div style="width: 100%; background-color: #eaeae0; overflow: hidden;">
+                                <div class="wordcloud" id="container3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height: 10px;">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        热词排行
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="wb_httit wb_httit4" id="rankList">
+                                <ul>
+                                    <li><span class="num hot">01</span><span class="text">用户名</span></span> <code>微博：<b
+                                        class="color_2">8000</b></code> </li>
+                                    <li><span class="num">02</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                </ul>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="wb_httit wb_httit4" id="rankRight">
+                                <ul>
+                                    <li><span class="num hot">01</span><span class="text">用户名</span></span> <code>微博：<b
+                                        class="color_2">8000</b></code> </li>
+                                    <li><span class="num">02</span><span class="text">用户名</span><span class="btn"><a
+                                        href="javascript:void(0)">添加关注</a></span> <code>微博：<b class="color_2">8000</b></code>
+                                    </li>
+                                </ul>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        用户分组</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在生成数据</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <!--- 表单项开始 --->
+                        <li id="grouplist"><span class="name">选择分组</span> <span class="input">
+                            <select id="selKType" style="width: 320px;">
+                            </select>
+                        </span></li>
+                        <!--<li><span class="name">话题名称</span> <span class="input">
+                            <input id="txtTopicName" style="width: 300px;" type="text" sid="" stype="" /></span>
+                            <span class="note" id="txtKWNameCheck" style="display: none;">
+                                <img src="img/wb_tishi.gif" /></span> </li>-->
+                        <!--<li><span class="name">话题关键词</span> <span class="textarea">
+                                <textarea style="height: 143px; width: 324px;" id="txtKeywords"></textarea></span>
+                            </li>
+                            <li><span class="name">所属行业</span> <span class="input">
+                                <select id="txtIndustry" style="width: 332px;">
+                                </select></span> </li>-->
+                        <!--- 表单项结束 --->
+                    </ul>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="btnAddT" value="提交" /><!--<input type="button" class="btn"
+                            id="btnReset" value="重置" />-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

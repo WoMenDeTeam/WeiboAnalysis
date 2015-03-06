@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/SqlPager.js" type="text/javascript"></script>
+    <script src="Scripts/swfobject.js" type="text/javascript"></script>
+    <script src="Scripts/web/warningInfo.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">预警分类
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display: block;" class="widget_resize_frame">
+                        <div class="widget_body">
+                            <dl>
+                                <!--<dt>【预警分类】</dt>-->
+                                <dd>
+                                    <a href="javascript:void(0)" name="warnTab" pid="0">事故预警</a></dd>
+                                <dd>
+                                    <a href="javascript:void(0)" name="warnTab" pid="2">机构预警</a></dd>
+                                <dd>
+                                    <a href="javascript:void(0)" name="warnTab" pid="3">人物预警</a></dd>
+                                <dd>
+                                    <a href="javascript:void(0)" name="warnTab" pid="1">热度预警</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <div>
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            <span id="warnType">&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="wb_wc_wwc" id="actionBtns">
+                                <span class="left">
+                                    <input id="click_all_ckbox" name="" type="checkbox" value="" />
+                                    <code>已选：<b class="color_2" id="checknumber">0</b></code> <a class="btn" id="show_topic_div"
+                                        href="javascript:void(null);">创建话题</a> </span><span class="right">
+                                            <!--<a class="btn_renew"  href="javascript:void(null);"></a>-->
+                                            <code>第<b id="currpage_b">0/0</b>页,共<b class="color_2" id="count_b">0</b>条</code>
+                                        </span>
+                                <ul>
+                                    <!--
+                                    <li id="real_time_btn" class="on"><a>敏感 ↓</a></li>
+                                    <li id="hot_point_btn"><a>热度 ↓</a></li>
+                                    -->
+                                </ul>
+                            </div>
+                            <div id="list_body_div">
+                                <div class="load_out">
+                                    <!--  <div class="load_in">
+                                        <img src="img/load_error.gif" /></div>-->
+                                </div>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_border">
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div id="otherwarning">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="log">
+    </div>
+    <!------------------------- 底 部 结 束 ------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        创建话题</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在创建，请稍后</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">话题名称</span> <span class="input">
+                            <textarea id="topic_content_txt" cols="34" rows="6">给微博话题取个名字吧...</textarea>
+                        </span></li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="create_topic_analysis" name="" type="button" class="btn" value="我定好了" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="warningPopDiv">
+        <div class="layer_outer" id="warningPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    已被收藏！</div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="material_library_div_s">
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    <a href="javascript:void(0);" id="showsucai_a">简报夹</a></h1>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--简报-->
+    <div class="floatdiv" id="material_library_div">
+        <!-- 简报夹浮层，初始化隐藏，每次从页面上点击“加入简报夹”时滑出，点击“关闭”后滑入。 -->
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    简报夹</h1>
+                <a class="btn_close" id="close_material_btn" title="关闭窗口" href="javascript:void(null)">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <div class="wb_wc_wwc">
+                        <span class="left">
+                            <input type="checkbox" id="checkbox_all"><a class="btn" href="javascript:void(null);"
+                                id="del_material_btn">删除素材</a></span><!-- 对素材批量删除操作 -->
+                    </div>
+                    <form action="/" method="post" id="print_div">
+                    <div class="wb_boxnr_l" id="material_library_list_div">
+                    </div>
+                    </form>
+                    <div class="form_btn">
+                        <input class="btn" id="create_jianbao_btn" value="生成简报" type="button"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

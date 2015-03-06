@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/web/weiboStatistics.js" type="text/javascript"> </script>
+</head>
+<body>
+    <div id="div_show" onmouseover="continueShouw()" onmouseout="disShow()" style="background: white;
+        z-index: 200; border: #89b4d6 2px solid; width: 250px; display: none; position: absolute;">
+    </div>
+    <div class="main main_statistics">
+        <div class="wraper">
+            <!--左边导航-->
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="btn_fanhui">
+                <a id="blackPage" href="javascript:void(0)">
+                    <img src="img/btn_fanhui.gif" width="239" height="23" /></a></div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="topicName">
+                                    </td>
+                                    <td align="right">
+                                        <a id="chakanpinglun_a" href="javascript:void(0);">查看评论</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 61%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        传播路径分析
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="chuanbolujing">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 38%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        转发层级分析
+                                    </td>
+                                    <td>
+                                       <span class="btn"><a class="btn_save" id="zhuanfacengji_a" href="javascript:void(0);"></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="zhuanfacengji">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 38%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        粉丝人数分析
+                                    </td>
+                                    <td>
+                                        <span class="btn"><a class="btn_save" id="fensirenshu_a" href="javascript:void(0);"></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="fensirenshu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 61%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        传播趋势分析
+                                    </td>
+                                    <td>
+                                        <span class="btn"><a class="btn_save" id="chuanboqushi_a" href="javascript:void(0);"></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="chuanboqushi">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 38%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        用户类型分析
+                                    </td>
+                                    <td>
+                                        <span class="btn"><a class="btn_save" id="yonghuleixing_a" href="javascript:void(0);"></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="yonghuleixing">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 100%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        重点用户分析
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <ul class="statistics_list" id="statistics_list">
+                                <li><b class="num">排名</b> <b class="name">昵 称</b> <b class="type">用户类型</b> <b class="fan">
+                                    粉丝</b> <b class="forwarding">转发量</b> <b class="two">二次转发</b> <b class="date">发布时间</b>
+                                </li>
+                                <!--循环<前3名>模板-->
+                                <!--<li><span class="num hot">01</span> <span class="name">
+                                        <%=NickName %></span> <span class="type">
+                                            <%=UserType %></span> <span class="fan">
+                                                <%=FansCount %></span> <span class="forwarding">
+                                                    <%=Forward %></span> <span class="two">
+                                                        <%=TwoForward %></span> <span class="date">
+                                                            <%=ReleaseTime %></span> </li>-->
+                                <!--循环<前3名>模板-->
+                                <!--循环<后7名>模板-->
+                                <!--<li><span class="num">04</span> <span class="name">Username</span> <span class="type">
+                                    加V用户</span> <span class="fan">1005</span> <span class="forwarding">20</span> <span
+                                        class="two">3</span> <span class="date">2013/04/15 19:56:18</span> </li>-->
+                                <!--循环<后7名>模板-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 61%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        传播地区分析
+                                    </td>
+                                    <td>
+                                        <span class="btn"><a class="btn_save" id="diqusvg_a" href="javascript:void(0);"></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="chuanbodiyu" style="height: 400px;">
+                            </div>
+                        </div>
+                        <div class="tooltip-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height: 10px;">
+                </div>
+            </div>
+            <div class="column" style="width: 38%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        态度倾向分析
+                                    </td>
+                                    <td>
+                                        <span class="btn"><a class="btn_save" id="taiduqingxiang_a" href="javascript:void(0);"></a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="taiduqingxiang">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height: 10px;">
+                </div>
+            </div>
+            <!--注释start -->
+            <div class="column" style="width: 24%; margin-right: 1%; display: none;">
+                <div class="btn_fanhui">
+                    <a id="bl ackPage" href="javascript:void(0)">
+                        <img src="img/btn_fanhui.gif" width="239" height="23" /></a></div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        话题名称</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="wb_sctit">
+                                <h1 id="top icName">
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height:10px;">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        话题分析
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="left_menu_div">
+                                <dl>
+                                    <dd id="time_trend_a" class="on">
+                                        <a href="javascript:void(0)">传播趋势分析</a></dd>
+                                    <dd id="propagation_analysis_a">
+                                        <a href="javascript:void(0)">传播路径分析</a></dd>
+                                    <dd id="areas_analysis_a">
+                                        <a href="javascript:void(0)">传播地域分析</a></dd>
+                                    <dd id="user_identity_analysis">
+                                        <a href="javascript:void(0)">用户加V分析</a></dd>
+                                    <dd id="effect_analysis_a">
+                                        <a href="javascript:void(0)">转发层级分析</a></dd>
+                                    <dd id="follow_count_a">
+                                        <a href="javascript:void(0)">粉丝人数分析</a></dd>
+                                    <dd id="weibonature_a">
+                                        <a href="javascript:void(0)">态度倾向分析</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%; display: none;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        分析图表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--统计分析begin -->
+                            <input id="btn_redraw" type="button" value="隐藏峰值" style="display: none" />
+                            <div class="wb_rwjc" id="container">
+                            </div>
+                            <div class="tooltip-content">
+                            </div>
+                            <!--统计分析end -->
+                            <div class="change_btn" id="UserInfo" style="display: none">
+                                <!--<span id="pageInfo">1/1</span>-->
+                                <span class="prev" id="prev"></span>
+                                <div class="v_content" id="user_content">
+                                    <div class="user_list" id="user_list">
+                                    </div>
+                                </div>
+                                <span class="next" id="next"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--注释end -->
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------
+    底 部 结 束 ------------------------->
+    <div id="userd_div">
+    </div>
+    <div id="userdivs">
+    </div>
+    <div id="log">
+    </div>
+    <div class="floatdiv" id="material_library_div_s">
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    <a href="javascript:void(0);" id="showsucai_a">简报夹</a></h1>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--简报-->
+    <div class="floatdiv" id="material_library_div">
+        <!-- 简报夹浮层，初始化隐藏，每次从页面上点击“加入简报夹”时滑出，点击“关闭”后滑入。 -->
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    简报夹</h1>
+                <a class="btn_close" id="close_material_btn" title="关闭窗口" href="javascript:void(null)">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <div class="wb_wc_wwc">
+                        <span class="left">
+                            <input type="checkbox" id="checkbox_all"><a class="btn" href="javascript:void(null);"
+                                id="del_material_btn">删除素材</a></span><!-- 对素材批量删除操作 -->
+                    </div>
+                    <form action="/" method="post" id="print_div">
+                    <div class="wb_boxnr_l" id="material_library_list_div">
+                    </div>
+                    </form>
+                    <div class="form_btn">
+                        <input class="btn" id="create_jianbao_btn" value="生成简报" type="button"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,621 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <script src="Scripts/SqlPager.js" type="text/javascript"></script>
+    <script src="Scripts/web/CaseLibrary.js" type="text/javascript"></script>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+    <div id="log">
+    </div>
+    
+    <div class="main">
+        <div class="wraper" id="wraper_div">
+            <!--案例对比-->
+            <div class="column" id="duibiinfo_div" style="display: none; width: 100%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        案例对比
+                                    </td>
+                                    <td align="right">
+                                        <a class="btn_delete" href="javascript:void(0)" id="close_duibi_div"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--对比切换开始-->
+                            <div class="wb_wc_wwc">
+                                <span class="left"></span>
+                                <ul id="duibi_div">
+                                    <li id="ziliaoduibi" class="on" plan="duibi_base_info_div"><a>资料对比</a></li>
+                                    <li id="qushiduibi" plan="duibi_qushi_div"><a>趋势对比</a></li>
+                                </ul>
+                                <span class="right"></span>
+                            </div>
+                            <!--对比切换结束-->
+                            <!--对比表格开始-->
+                            <div id="duibi_base_info_div">
+                            </div>
+                            <!--对比表格结束-->
+                            <!--对比图表开始-->
+                            <div id="duibi_qushi_div" style="display: none;">
+                                <div id="compre_chart_div">
+                                </div>
+                                <div id="comper_chart_info_div">
+                                </div>
+                            </div>
+                            <!--对比图表结束-->
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <!--左边列表栏-->
+            <div class="column" id="left_div" style="width: 24%; margin-right: 1%;">
+                <div id="history_div" class="history_tac" style="display: none">
+                    <div class="widget_border">
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_outer">
+                        <div class="widget_header">
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            搜索历史
+                                        </td>
+                                        <td align="right">
+                                            <a class="btn_close" id="colse_history_div" href="javascript:void(null)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget_resize_frame">
+                            <div class="widget_body">
+                            <div id="historyList">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_border">
+                    </div>
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="hotweibolist_title">
+                                        活跃用户
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="left_user_hot_plan">                          
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <!--右边-->
+            <div class="column" id="right_div" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <!--标题-->
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        案例列表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--高级搜索-->
+                            <div class="wb_gjsearch">
+                                <a class="btn_history heigh_pad12" id="btn_history" href="javascript:void(null);">搜索历史</a>
+                                <a id="search_bar_btn" class="btn_power" href="javascript:void(null);">高级</a>
+                                <input id="keyword_txt" name="" type="text" class="wb_text" value="" />
+                                <a class="btn_search" href="javascript:void(null);" id="weibo_screening_btn">搜 索</a><br />
+                                <!--高级搜索条件start-->
+                                <div id="search_plan" class="wb_gaoji" style="display: none">
+                                    <ul class="wb_shaixuan">
+                                        <li class="wb_gjtiti left">筛选条件</li>
+                                        <li class="right"><a href="javascript:void(0)" id="close_advanced_search_a">
+                                            <img src="img/btn_close.gif" width="16" height="16" /></a></li>
+                                    </ul>
+                                    <div class="clear">
+                                    </div>
+                                    <!--<h1 id="base_info_bar">基本资料</h1>-->
+                                    <ul class="form_list" id="base_info_plan">
+                                        <li><span class="name">发生时间</span> <span class="input">
+                                            <input type="text" style="width: 90px;" id="search_start_time_txt" size="10" class="Wdate"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /><code>-</code><input type="text"
+                                                    style="width: 90px;" id="search_end_time_txt" size="10" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></span></li>
+                                        <li><span class="name">发生地域</span> <span class="input">
+                                            <select id="search_province_sel" child="search_city_sel" style="width: 90px;">
+                                                <option value="">北京市</option>
+                                            </select>
+                                            <select id="search_city_sel" style="width: 90px;">
+                                                <option>北京市</option>
+                                            </select>
+                                            <input type="text" style="width: 160px;" size="20" id="search_area_keyword_txt" /></span>
+                                        </li>
+                                        <li><span class="name">事件分类</span> <span class="input">
+                                            <select id="search_event_group_sel" style="width: 120px;" child="serach_event_type_sel">
+                                                <option>煤矿事故</option>
+                                            </select>
+                                            <select id="serach_event_type_sel" style="width: 120px;">
+                                                <option>事故类型</option>
+                                            </select></span> </li>
+                                        <li><span class="name">隶属单位</span> <span class="input">
+                                            <input type="text" size="56" style="width: 360px;" id="search_lsdw_txt" value="" /></span>
+                                        </li>
+                                        <li><span class="name">事件单位</span> <span class="input">
+                                            <input type="text" size="56" style="width: 360px;" id="search_sjdw_txt" value="" /></span>
+                                        </li>
+                                        <li><span class="name">伤亡人数</span> <span class="input">
+                                            <input id="search_deadnumber_txt" style="width: 30px;" size="6" type="text" />-<input
+                                                id="deadMax" size="6" style="width: 30px;" type="text" /><code>死</code>
+                                            <input id="search_injurynumber_txt" style="width: 30px;" size="6" type="text" />-<input
+                                                id="injuryMax" size="6" style="width: 30px;" type="text" /><code>伤</code>
+                                            <input id="search_lostnumber_txt" size="6" style="width: 36px;" type="text" />-<input
+                                                id="loatMax" style="width: 36px;" size="6" type="text" /><code>失踪</code> </span>
+                                        </li>
+                                        <li><span class="name">财产损失</span> <span class="input">
+                                            <input type="text" size="15" style="width: 90px;" value="" id="search_lostmin_monery_txt" /><code>-</code><input
+                                                type="text" size="15" style="width: 90px;" value="" id="search_loastmax_monert_txt" /></span>
+                                        </li>
+                                        <li><span class="name">事件描述</span> <span class="input">
+                                            <input type="text" size="56" style="width: 360px;" value="" id="search_description_txt" /></span>
+                                        </li>
+                                    </ul>
+                                    <div class="clear">
+                                    </div>
+                                    <!--<h1 id="yuqing_info_bar">舆情信息</h1>-->
+                                    <ul class="form_list" id="yuqing_info_plan">
+                                        <li><span class="name">首发媒体</span> <span class="input">
+                                            <select id="search_firstmeiti_sel" style="width: 120px;">
+                                                <!--<option value="1">网络媒体</option>
+                                                <option value="2">平面媒体</option>-->
+                                            </select></span></li>
+                                        <li><span class="name">首发微博</span> <span class="input">
+                                            <select id="search_firstweibo_sel" style="width: 120px;">
+                                                <option value="">首发微博</option>
+                                                <option value="1">新浪微博</option>
+                                                <option value="2">腾讯微博</option>
+                                                <option value="3">凤凰微博</option>
+                                                <option value="4">网易微博</option>
+                                                <option value="5">搜狐微博</option>
+                                            </select></span><span class="name">重点用户</span> <span class="input">
+                                                <input type="text" style="width: 120px;" value="" id="search_user_txt" /></span>
+                                        </li>
+                                    </ul>
+                                    <div class="clear">
+                                    </div>
+                                    <div>
+                                        <input style="display: none" type="button" class="btn" id="search_btn" value="开始搜索" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--高级搜索条件end-->
+                            <div id="condition_div" class="heighsearch" style="display: none;">
+                                <h3>
+                                    您已选择：</h3>
+                                <!--
+                                <span><img src="img/btn_searchclose.gif" width="15" height="18" class="right" />+V用户</span>
+                                <span><img src="img/btn_searchclose.gif" width="15" height="18" class="right" />新浪</span>
+                                <span><img src="img/btn_searchclose.gif" width="15" height="18" class="right" />湖北</span>-->
+                            </div>
+                            <!--排序条件-->
+                            <div class="wb_wc_wwc" id="actionBtns">
+                                <span class="left" style="width: 210px;"><a class="btn" id="add_new_case_btn" href="javascript:void(null);">
+                                    添加新案例</a> </span><span class="right">
+                                        <!--<a class="btn_renew"  href="javascript:void(null);"></a>-->
+                                        <code>第<b id="currpage_b">0/0</b>页,共<b class="color_2" id="count_b">0</b>条</code>
+                                    </span>
+                                <ul>
+                                    <li id="create_time_btn" orderby="CreateDate" class="on"><a>创建时间 ↓</a></li>
+                                    <li id="start_time_btn" orderby="OccurrenceTime" ><a>发生时间 ↓</a></li>
+                                    <li id="die_people_btn" orderby="DeadCount"><a>死亡人数 ↓</a></li>
+                                </ul>
+                                <!--<span class="right"><a class="btn_renew" href="javascript:void(null);"></a><code>第<b
+                                    class="color_2">1</b>-<b class="color_4">20</b>条</code> </span>-->
+                            </div>
+                            <!--内容呈现面板-->
+                            <div class="wb_httit">
+                            <ul id="list_body_div">
+                                <div class="load_out">
+                                    <div class="load_in">
+                                        <img src="img/load_big.gif" /></div>
+                                </div>
+                            </ul>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!--页脚-->
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="show_msg_div">
+        <div class="layer_outer" id="warningPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg" id="show_msg_text">
+                    已被收藏！</div>
+            </div>
+        </div>
+    </div>
+    <!--修改名称-->
+    <div class="floatdiv" id="update_eventName_layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="update_eventName_layer_inner">
+                <div class="layer_move" id="update_move_bar" title="点击此处可自由拖动">
+                    <h1 id="H1">
+                        修改案例名称</h1>
+                </div>
+                <a class="btn_close" id="update_close_btn" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">案例名称</span> <span class="input">
+                            <input type="text" id="upload_eventname_txt" value="" />
+                        </span></li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="update_submit" type="button" class="btn" value="修改" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--添加新案例-->
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        添加案例</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在生成数据</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <!--- 表单项<第0步>开始 --->
+                <div class="layer_C" id="add_new_event_div">
+                    <ul class="form_list">
+                        <li><span class="name">事件名称</span> <span class="input">
+                            <input id="event_name_txt" size="36" type="text" /></span> <span class="note" id="txtKWNameCheck"
+                                style="display: none;">
+                                <img src="img/wb_tishi.gif" /></span> </li>
+                        <li><span class="name">关键词 </span><span class="input">
+                            <textarea id="event_keywords_txt" cols="36" rows="6"></textarea></span> <span class="note"
+                                style="display: none;">
+                                <img src="img/wb_tishi.gif" /></span> </li>
+                        <li><span class="name">
+                            <input type="checkbox" /></span> <span class="note1">完成创建后直接开始分析微博</span> </li>
+                        <div class="tig">
+                            <span id="promptContent"></span>
+                        </div>
+                    </ul>
+                    <div class="form_btn">
+                        <input class="btn" value="填写资料" type="button" id="tianxieziliao" />
+                        <input class="btn" id="event_add_btn" type="button" value="直接完成" />
+                    </div>
+                </div>
+                <!--- 表单项<第0步>结束 --->
+                <!--- 表单项<第1步>开始 --->
+                <div class="layer_C" id="add_new_event_info1_div" style="display: none;">
+                    <ul class="form_list">
+                        <li><span class="name">事件分类</span> <span class="input form_332" id="event_group_div">
+                            <input type="checkbox" name="event_group_ckb" /><code>火灾事故</code><input type="checkbox"
+                                name="event_group_ckb" /><code>危险品事故</code></span> </li>
+                        <li><span class="name">事故类型</span> <span class="input form_332" id="event_type_div">
+                            <!--<input type="checkbox" name="event_group_ckb" /><code>火灾事故</code><input type="checkbox"
+                                name="event_group_ckb" /><code>危险品事故</code>-->
+                        </span></li>
+                    </ul>
+                    <ul id="add_event_info_div" class="form_list">
+                        <li><span class="name">发生时间</span> <span class="input">
+                            <input id="OccurrenceTime" style="width: 160px;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+                                class="Wdate" type="text" /></span> </li>
+                        <li><span class="name">重要节日</span> <span class="input">
+                            <input type="text" style="width: 86px;" value="" id="EventHolidayName" /><code></code>
+                            <input type="text" value="" id="HolidayBeginTime" style="width: 90px;" class="Wdate"
+                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /><code>-</code><input type="text"
+                                    value="" id="HolidayEndTime" style="width: 90px;" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></span>
+                        </li>
+                        <li><span class="name">政治因素</span> <span class="input">
+                            <input type="text" style="width: 86px;" value="" id="PoliticsFactorName" /><code></code>
+                            <input type="text" value="" id="FactorBeginTime" style="width: 90px;" class="Wdate"
+                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /><code>-</code><input type="text"
+                                    value="" id="FactorEndTime" style="width: 90px;" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></span>
+                            <span class="note"></span></li>
+                        <li><span class="name">发生地域</span> <span class="input form_332">
+                            <select id="event_info_province_sel" style="width: 90px;" child="event_info_city_sel">
+                                <option>北京市</option>
+                            </select>
+                            <select id="event_info_city_sel" style="width: 90px;">
+                                <option>北京市</option>
+                            </select><code> </code>
+                            <input type="text" style="width: 96px;" value="" id="OccurrenceArea" />
+                            <input type="text" style="width: 96px;" size="6" value="" id="OccurrenceTown" />
+                            <input type="text" style="width: 96px;" value="" id="OccurrenceVillage" />
+                            <input type="text" style="width: 320px;" value="" id="OccurrenceKeyword" /></span>
+                        </li>
+                        <li><span class="name">事件单位</span> <span class="input">
+                            <input type="text" style="width: 320px;" id="EventUnit" value="" /></span> </li>
+                        <li><span class="name">隶属单位</span> <span class="input">
+                            <input type="text" style="width: 320px;" value="" id="SubjectionUnit" /></span>
+                        </li>
+                        <li><span class="name">伤亡人数</span> <span class="input">
+                            <input type="text" style="width: 30px;" value="0" id="DeadCount" /><code>死</code><input
+                                type="text" style="width: 30px;" value="0" id="InjuryCount" /><code>伤</code><input
+                                    type="text" style="width: 30px;" value="0" id="LostCount" /><code>失踪</code></span>
+                        </li>
+                        <li><span class="name">财产损失</span> <span class="input">
+                            <input type="text" style="width: 120px;" value="0" id="LostBelongings" /></span>
+                        </li>
+                        <li><span class="name">事件描述</span> <span class="input">
+                            <textarea cols="36" rows="6" id="EventDescription"></textarea></span> </li>
+                    </ul>
+                    <div class="form_btn">
+                        <input class="btn" value="上一步" type="button" id="firstStepsUp" />
+                        <input class="btn" id="firstSteps" type="button" value="下一步" />
+                    </div>
+                </div>
+                <!--- 表单项<第1步>结束 --->
+                <!--- 表单项<第2步>开始 --->
+                <div class="layer_C" id="add_new_event_info2_div" style="display: none;">
+                    <div class="wb_wc_wwc" id="add_new_event_tab">
+                        <span class="right"><a class="btn_add" id="add_vew_action_btn" href="javascript:void(null)">
+                        </a></span>
+                        <ul class="layer_tab">
+                            <li class="on" tag="#info_tabs0"><a href="javascript:void(0);">行动1</a></li>
+                            <li tag="#info_tabs1"><a href="javascript:void(0);">行动2</a></li>
+                            <li tag="#info_tabs2"><a href="javascript:void(0);">行动3</a></li>
+                            <li tag="#info_tabs3"><a href="javascript:void(0);">行动4</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div id="add_new_event_plan">
+                        <ul class="form_list" id="info_tabs0">
+                            <li><span class="name">行动日期</span> <span class="input">
+                                <input name="ActionDate" style="width: 160px;" type="text" value="" class="Wdate"
+                                    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></span> </li>
+                            <li><span class="name">行动人员</span> <span class="input">
+                                <input name="ActionPersonal" style="width: 320px;" type="text" value="" /></span>
+                            </li>
+                            <li><span class="name">讲话内容</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionTalkContent"></textarea></span> </li>
+                            <li><span class="name">影响分析</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionAnalysis"></textarea></span> </li>
+                        </ul>
+                        <ul class="form_list" id="info_tabs1" style="display: none">
+                            <li><span class="name">行动日期</span> <span class="input">
+                                <input name="ActionDate" style="width: 160px;" type="text" value="" class="Wdate"
+                                    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></span> </li>
+                            <li><span class="name">行动人员</span> <span class="input">
+                                <input name="ActionPersonal" style="width: 320px;" type="text" value="" /></span>
+                            </li>
+                            <li><span class="name">讲话内容</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionTalkContent"></textarea></span> </li>
+                            <li><span class="name">影响分析</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionAnalysis"></textarea></span> </li>
+                        </ul>
+                        <ul class="form_list" id="info_tabs2" style="display: none">
+                            <li><span class="name">行动日期</span> <span class="input">
+                                <input name="ActionDate" style="width: 160px;" type="text" value="" class="Wdate"
+                                    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></span> </li>
+                            <li><span class="name">行动人员</span> <span class="input">
+                                <input name="ActionPersonal" style="width: 320px;" type="text" value="" /></span>
+                            </li>
+                            <li><span class="name">讲话内容</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionTalkContent"></textarea></span> </li>
+                            <li><span class="name">影响分析</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionAnalysis"></textarea></span> </li>
+                        </ul>
+                        <ul class="form_list" id="info_tabs3" style="display: none">
+                            <li><span class="name">行动日期</span> <span class="input">
+                                <input name="ActionDate" style="width: 160px;" type="text" value="" class="Wdate"
+                                    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></span> </li>
+                            <li><span class="name">行动人员</span> <span class="input">
+                                <input name="ActionPersonal" style="width: 320px;" type="text" value="" /></span>
+                            </li>
+                            <li><span class="name">讲话内容</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionTalkContent"></textarea></span> </li>
+                            <li><span class="name">影响分析</span> <span class="input">
+                                <textarea cols="36" rows="6" name="ActionAnalysis"></textarea></span> </li>
+                        </ul>
+                    </div>
+                    <div class="form_btn">
+                        <input class="btn" value="上一步" type="button" id="secondStepUp" />
+                        <input class="btn" id="secondStep" type="button" value="下一步" />
+                    </div>
+                </div>
+                <!--- 表单项<第2步>结束 --->
+                <!--- 表单项<第3步>开始 --->
+                <div class="layer_C" id="add_new_event_info3_div" style="display: none;">
+                    <ul class="form_list">
+                        <li><span class="name">首发媒体</span> <span class="input">
+                            <select id="FirstMedia" style="width: 120px;">
+                                <option value="1">网络媒体</option>
+                                <option value="2">平面媒体</option>
+                            </select></span> </li>
+                        <li><span class="name">首发微博</span> <span class="input">
+                            <select id="FirstWeibo" style="width: 120px;">
+                                <option value="1">新浪微博</option>
+                                <option value="2">腾讯微博</option>
+                                <option value="3">凤凰微博</option>
+                                <option value="4">网易微博</option>
+                                <option value="5">搜狐微博</option>
+                            </select></span> </li>
+                        <li><span class="name">首发用户</span> <span class="input">
+                            <input id="FirstWeiboUser" style="width: 160px;" type="text" /></span> </li>
+                        <li><span class="name">首发时间</span> <span class="input">
+                            <input class="Wdate" id="FirstWeiboDate" style="width: 160px;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+                                type="text" value="" /></span> </li>
+                        <li><span class="name">首发链接</span> <span class="input">
+                            <input id="FirstWeiboLink" style="width: 480px;" type="text" /></span> </li>
+                        <li><span class="name">首发内容</span> <span class="input">
+                            <textarea id="FirstWeiboContent" cols="36" rows="6" value=""></textarea></span>
+                        </li>
+                    </ul>
+                    <div class="form_btn">
+                        <input class="btn" value="上一步" type="button" id="thirdStepUp" />
+                        <input class="btn" id="thirdStep" type="button" value="完成创建" />
+                    </div>
+                </div>
+                <!--- 表单项<第3步>结束 --->
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+    <!--选择对比-->
+    <div class="compare" id="duibi_info_div" style="display: none;">
+        <h1>
+            案例对比</h1>
+        <ul>
+        </ul>
+        <div class="clear">
+        </div>
+        <div class="form_btn">
+            <input id="start_duibi_btn" type="button" value="开始对比" /></div>
+    </div>
+    <!--模版-->
+    <script type="text/C#" id="dui_bi_temps"> 
+        <table cellpadding="0" cellspacing="0" class="widget_table">
+          <thead>
+            <tr>
+              <th width="10%">　</th>
+              <th width="22%"><%=eventName.c0 %></th>
+              <th width="22%"><%=eventName.c1 %></th>
+              <th width="22%"><%=eventName.c2 %></th>
+              <th width="22%"><%=eventName.c3 %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var i in list) { %>
+            <tr>
+              <th><%=list[i].name %></th>
+              <td><%=list[i].c0 %></td>
+              <td><%=list[i].c1 %></td>
+              <td><%=list[i].c2 %></td>
+              <td><%=list[i].c3 %></td>
+            </tr>
+            <%} %>
+          </tbody>
+        </table>
+    </script>
+    <script type="text/html" id="comper_chart_info_temps">
+        <table cellpadding="0" cellspacing="0" class="widget_table">
+          <thead>
+            <tr>
+                <th>事件名称</td>
+                <th>重要节日</td>
+                <th>节日时段</td>
+                <th>政治因素</td>
+                <th>因素时段</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var i in list) {
+            if(list[i].name!=null){%>
+            <tr>
+                <td><%=list[i].name %></td>
+                <td><%=list[i].EventHolidayName %></td>
+                <td><%=list[i].HolidayBeginTime %>—<%=list[i].HolidayEndTime %></td>
+                <td><%=list[i].PoliticsFactorName %></td>
+                <td><%=list[i].FactorBeginTime %>—<%=list[i].FactorEndTime %></td>
+            </tr>
+            <%} }%>
+          <tbody>
+        </table>
+    </script>
+    <div id="eventInfo">
+    </div>
+</body>
+</html>

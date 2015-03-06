@@ -1,0 +1,52 @@
+<div class="header">
+  <div class="wraper">
+
+    <div class="logo"><!--- 标志识别符：Logo --->
+
+      <a href="{ 网站首页 }" title="{ 网站全称 }——{ 网站标语 }"></a>
+
+    </div>
+
+    <div class="nav"><!--- 标志识别符：导航 --->
+      <ul>
+
+	<li class="tab_on"><!-- 当前频道 --->
+
+	  <a href="{ 频道链接 }"><b>{ 频道名称 }</b></a>
+
+	</li>
+
+	<li class="tab_off"><!-- 其他频道 --->
+
+	  <a href="{ 频道链接 }"><b>{ 频道名称 }</b></a>
+
+	</li>
+
+      </ul>
+    </div>
+
+    <div class="header_nav"><!--- 标志识别符：顶部链接 --->
+
+      <a href="{ 链接地址 }" title="{ 链接名称 }"></a>|
+
+    </div>
+
+    <div class="search"><!--- 标志识别符：搜索 --->
+
+      <span class="search_L"></span>
+      <ul class="form_list">
+        <li>
+
+          <span class="name">{ 搜索名称 }</span>
+
+          <span class="input">{ 搜索文本域 }</span>
+
+          <span class="radio">{ 搜索单选按钮 } || { 搜索复选框 }</span>
+
+        </li>
+      </ul>
+      <span class="search_R"></span>
+    </div>
+
+  </div>
+</div>

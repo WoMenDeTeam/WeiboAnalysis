@@ -1,0 +1,16 @@
+<div class="footer">
+  <div class="wraper">
+
+    <div class="footer_nav"><!--- 标志识别符：底部链接 --->
+
+      <a href="{ 链接地址 }" title="{ 链接名称 }"></a>|
+
+    </div>
+
+    <div class="copyright"><!--- 标志识别符：版权信息 --->
+
+      <p>{ 版权信息 }</p>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <!-- <link href="styles/StyleSheet.css" type="text/css" rel="stylesheet" />-->
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+<style type="text/css">
+table.nnn{sheneyan:expression(this.cellSpacing="0");}
+</style>
+<![endif]-->
+    <script src="Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/common.js" type="text/javascript"></script>
+    <script src="Scripts/statement.js" type="text/javascript"></script>
+    <script type="text/javascript" src="Scripts/jquery.flash.js"></script>
+    <script type="text/javascript" src="Scripts/FusionCharts.js"></script>
+    <script src="Scripts/divMove.js" type="text/javascript"></script>
+    <script src="Scripts/Pager.js" type="text/javascript"></script>
+    <script src="Scripts/SqlSearch.js" type="text/javascript"></script>
+    <script src="Scripts/swfobject.js" type="text/javascript"></script>
+    <!--  <script src="Scripts/weiboEvent.js" type="text/javascript"></script>-->
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <div>
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            监测时间
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="display: block;" class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="new_wbdatesh">
+                                <div class="wbdatesh_top">
+                                    <ul>
+                                        <li class="wb_currentbutton">今日</li>
+                                        <li class="wb_button">近几日</li>
+                                        <li class="wb_button">自定义</li>
+                                    </ul>
+                                </div>
+                                <div class="wb_currentnr ">
+                                    <ul>
+                                        <li class="gw_left_super_item">开始时间：<input style="width: 64%;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'dd/MM/yyyy'})"
+                                            id="data_source_starttime">
+                                            <br>
+                                            结束时间：<input style="width: 64%;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'dd/MM/yyyy'})"
+                                                id="data_source_endtime">
+                                        </li>
+                                        <li class="gw_left_super_item">
+                                            <input type="button" class="search_button" value="" id="" name="searchButton"></li>
+                                        <li class="wb_super_item">
+                                            <input name="" type="checkbox" value="" />
+                                            设为默认</li>
+                                    </ul>
+                                </div>
+                                <div class="wb_currentnr none_dis ">
+                                    <span>近1日</span> <a href="#">近3日</a> <a href="#">近5日</a> <a href="#">近7日</a> <a href="#">
+                                        近10日</a> <a href="#">近1周</a> <a href="#">近3周</a> <a href="#">近5周</a> <a href="#">近1月</a>
+                                    <a href="#">近3月</a> <a href="#">近半年</a>
+                                    <div class="clear">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        地区列表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="wb_gjsearch">
+                                <input name="" type="button" value="历史记录" class="wb_gjbutton" /><input name="" type="button"
+                                    value="高级" class="wb_gjbutton" /><input name="" type="text" class="wb_text" value="钓鱼岛" /><input
+                                        name="" type="button" value="微博筛选" class="but_sxwb" />
+                            </div>
+                            <div class="wb_mapbox">
+                                <div class="wb_map left">
+                                    <div class="wb_mapsj left">
+                                        <img src="img/wb_map.jpg"></div>
+                                    <div class="left">
+                                        <select>
+                                            <option>数据说明 </option>
+                                        </select>
+                                    </div>
+                                    <div class="wb_sjbut right">
+                                        <input name="" type="button" value="放大" class="wb_but3w" /><input name="" type="button"
+                                            value="导出" class="wb_but3w" /><input name="" type="button" value="打印" class="wb_but3w" />
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                </div>
+                                <div class="wb_mapfb left">
+                                    <table width="95%" border="1" cellpadding="0" class="wb_tablebg" bordercolor="#a4c7dd">
+                                        <tr>
+                                            <td bgcolor="#c7e4f6" class="wb_tbtit">
+                                                地域
+                                            </td>
+                                            <td bgcolor="#c7e4f6" class="wb_tbtit">
+                                                数量
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                全部
+                                            </td>
+                                            <td>
+                                                28
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                上海
+                                            </td>
+                                            <td>
+                                                15
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                南京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                北京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                上海
+                                            </td>
+                                            <td>
+                                                15
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                南京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                北京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                上海
+                                            </td>
+                                            <td>
+                                                15
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                南京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                北京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                上海
+                                            </td>
+                                            <td>
+                                                15
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                南京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                北京
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="clear">
+                                </div>
+                                <div class="wb_dqjcnr_list">
+                                    <ul>
+                                        <li><span class="right">2012-9-12</span><a href="#"><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                        <li><span class="right">2012-9-12</span><a href="#">提问者对回答的评价提问者对回答的评价提问者对回答的评价</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_outer">
+                </div>
+                <div class="widget_line">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

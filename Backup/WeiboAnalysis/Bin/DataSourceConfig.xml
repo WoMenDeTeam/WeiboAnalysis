@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <source name="anjian">
+    <dbkey name="WeiboDBStr"/>
+    <idolip name="202.165.182.91"/>
+    <idoldb name="WeiboAnjian" />
+<idolvideodb name="NewVideo"></idolvideodb>
+  </source>
+  <source name="minzheng">
+    <dbkey name="WeiboDBStr"/>
+    <idolip name="123.103.15.153"/>
+    <idoldb name="weiboanjian" />
+<idolvideodb name="NewVideo"></idolvideodb>
+  </source>
+  <source name="milk">
+    <dbkey name="WeiboMilkDBStr"/>
+    <idolip name="180.186.76.240"/>
+    <idoldb name="weibomilk2" />
+<idolvideodb name="NewVideo"></idolvideodb>
+  </source>
+  <source name="bank">
+    <dbkey name="WeiboBank"/>
+    <idolip name="180.186.76.240"/>
+    <idoldb name="NewsBank+WeiboBank" />
+<idolvideodb name="NewVideo"></idolvideodb>
+  </source>
+</config>

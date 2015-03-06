@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <vt:foreach from="$#.list" item="entity" index="i"> 
+    <vt:if var="#.entity.authorName" value="" compare="=">
+    <img src="{$:entity.thumbnailPic}" />
+    <vt:else />
+    <div class="wb_boxnr">
+        <div class="wb_boximg">
+            <span class="head">
+                <img onerror="this.src='img/userdefault.jpg'" src="{$:entity.profileImageUrl}" /></span>
+        </div>
+        <div class="wb_boxusernr">
+            <div class="wb_usertit">
+                <a class="aname" href="javascript:void(null);" target="_blank"><b>{$:entity.authorName}：</b></a>
+                {$:entity.dreContent}
+                <vt:if var="#.entity.thumbnailPic" value="" compare="=">
+                <vt:else />
+                <img src="{$:entity.thumbnailPic}" />
+                </vt:if>
+                <div class="new_top10">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{微博链接}" target="_blank"><b>{$:entity.timesTamp}</b></a> 来源：{$:entity.siteName}
+                                </td>
+                                <td>
+                                    <span><a href="{转发链接}" target="_blank">转发</a>（<b class="color_2">{$:entity.forwardNum}</b>）</span>|<span><a
+                                        href="{评论链接}" target="_blank">评论</a>（<b class="color_2">{$:entity.replyNum}</b>）</span>
+                                        </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    </vt:if>
+        <vt:foreachelse />
+    没有数据
+    </vt:foreach>
+</body>
+</html>

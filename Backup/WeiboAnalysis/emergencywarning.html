@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>预警信息</title>
+    <link href="styles/wb_new.css" rel="stylesheet" type="text/css" />
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.8.1.js" type="text/javascript"></script>
+    <script src="Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="Scripts/common.js" type="text/javascript"></script>
+    <script src="Scripts/SqlPager.js" type="text/javascript"></script>
+    <script src="Scripts/web/emergencywarning.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            EmergencyWaring.ListTemplate = EmergencyWaring.loadDataTemp;
+            EmergencyWaring.Init();
+        });
+    </script>
+</head>
+<body>
+    <div class="wbnew_top" style="background:url(../img/wb_topbg_2.jpg) no-repeat -80px top;">
+        <div class="new_wbbutton">
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="javascript:void(0);" id="a_quid">注销用户</a></div>
+            </div>
+        </div>
+    </div>
+    <bgsound id="soundPlay" loop="0" src=""></bgsound>
+    <div class="main">
+        <div class="wraper">
+            <!--左边导航-->
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        报警分类
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display: block;" class="widget_resize_frame">
+                        <div class="widget_body">
+                            <dl>
+                                <!--<dt>【预警分类】</dt>-->
+                                <dd id="by_gxb" class="on">
+                                    <a href="javascript:void(0)">国办信息</a></dd>
+                                <dd id="xitongxinxi">
+                                    <a href="javascript:void(0)">总局信息</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height: 10px;">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div style="display: block;" class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!-- 图标注释 开始 -->
+                            <div class="tig">
+                                <p>
+                                    根据死伤人数及财产损失，将安全事故划分为4种级别：</p>
+                                <ul>
+                                    <li><a class="btn_degree_1" href="javascript:void(null);">特别重大事故</a></li>
+                                    <li><a class="btn_degree_2" href="javascript:void(null);">重大事故</a></li>
+                                    <li><a class="btn_degree_3" href="javascript:void(null);">较大事故</a></li>
+                                    <li><a class="btn_degree_4" href="javascript:void(null);">一般事故</a></li>
+                                </ul>
+                            </div>
+                            <!-- 图标注释 结束 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <div>
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            安全生产事故网络信息报警列表
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--搜索-->
+                            <div class="wb_gjsearch">
+                                <a class="btn_power no " href="javascript:void(null);">时间：</a>
+                                <input id="accidentalarm_start_time" name="" type="text" class="wb_text" value=""
+                                    style="width: 90px;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
+                                <code>.</code>
+                                <input id="accidentalarm_end_time" name="" type="text" class="wb_text" value="" style="width: 90px;"
+                                    onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
+                                <a class="btn_power no " href="javascript:void(null);">关键词：</a>
+                                <input id="accidentalarm_keyword_txt" name="" type="text" class="wb_text" value=""
+                                    style="width: 280px;" />
+                                <a class="btn_search" href="javascript:void(null);" id="accidentalarm_search_btn">搜
+                                    索</a>
+                            </div>
+                            <!--<div class="tig">
+                                <a href="javascript:void(null);">按照安全事故的死伤人数及财产损失程度，将安全事故划分为4种级别，分别用不同颜色来标识：</a>
+                                <a class="btn_degree_1" href="javascript:void(null);">特别重大事故</a> <a class="btn_degree_2"
+                                    href="javascript:void(null);">重大事故</a> <a class="btn_degree_3" href="javascript:void(null);">
+                                        较大事故</a> <a class="btn_degree_4" href="javascript:void(null);">一般事故</a>
+                                <div class="clear">
+                                </div>
+                            </div>-->
+                            <!--排序条件-->
+                            <div class="wb_wc_wwc" id="actionBtns">
+                                <span class="left">
+                                    <input id="click_all_ckbox" name="" type="checkbox" value="" />
+                                    <code>已选：<b class="color_2" id="checknumber">0</b></code> <a class="btn" id="show_topic_div"
+                                        href="javascript:void(null);">取消报警</a> </span>
+                                <!--<ul>
+                                    <li id="by_gxb"><a>国办信息</a></li>
+                                    <li id="xitongxinxi"><a>系统信息</a></li>
+                                </ul>-->
+                                <ul>
+                                    <li id="bytime" class="on"><a>时间 ↓</a></li>
+                                    <li id="byurgent"><a>级别 ↓</a></li>
+                                </ul>
+                                <span class="right">
+                                    <!--<a class="btn_renew"  href="javascript:void(null);"></a>-->
+                                    <code>第<b id="currpage_b">0/0</b>页,共<b class="color_2" id="count_b">0</b>条</code>
+                                </span>
+                            </div>
+                            <div class="wb_httit">
+                                <ul id="list_body_div">
+                                    <div class="load_out">
+                                        <div class="load_in">
+                                            <img src="img/load_big.gif" /></div>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div id="pageBar" class="page">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--报警弹窗-->
+    <div class="floatdiv" id="Container">
+        <div class="layer_outer">
+            <div class="layer_inner" id="Message" style="z-index: 5;">
+                <h1>
+                    未读预警(<b class="color_2" id="newcount">0</b>)条</h1>
+                <a class="btn_form_down" href="javascript:void(null)" id="down" title="隐藏窗口"></a>
+                <a class="btn_form_up" href="javascript:void(null)" id="up" title="展开窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <ul class="news_mini" id="Content">
+                    </ul>
+                </div>
+            </div>
+            <!--<div id="Content" class="Content">
+            </div>-->
+        </div>
+    </div>
+</body>
+</html>

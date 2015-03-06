@@ -1,0 +1,19 @@
+<div class="news_hot"><!--- 模块识别符 --->
+
+    <h1>
+      <a href="{ 文章链接 }" title="{ 文章摘要 }">
+
+        <span class="date">{ 文章发布时间 }</span>
+
+        <span class="text">{ 文章标题 }</span>
+
+        <span class="rss">【{ 文章收录来源 }】</span>
+
+        <span class="trends">{ 文章升降趋势 }</span>
+
+      </a>
+    </h1>
+
+    <p>{ 文章摘要 }</p>
+
+</div>

@@ -1,0 +1,909 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{969DE8CC-707E-43BC-9049-D575E53E0820}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeiboAnalysis</RootNamespace>
+    <AssemblyName>WeiboAnalysis</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>util.dll\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>util.dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg">
+      <HintPath>util.dll\Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="VTemplate.Engine">
+      <HintPath>util.dll\VTemplate.Engine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="accidentAlarm.html" />
+    <Content Include="AccidentReportRecycle.html" />
+    <Content Include="AlarmKeywords.html" />
+    <Content Include="Bin\DataSourceConfig.xml" />
+    <Content Include="DownloadReport.aspx" />
+    <Content Include="emergencywarning.html" />
+    <Content Include="ExportToExcel.aspx" />
+    <Content Include="HotIndutry.html" />
+    <Content Include="HotWord.html" />
+    <Content Include="HTMLPage1.htm" />
+    <Content Include="caseAccidentManage.html" />
+    <Content Include="CaseLibrary.html" />
+    <Content Include="caseLibraryInfo.html" />
+    <Content Include="Default.aspx" />
+    <Content Include="flash\demos.swf" />
+    <Content Include="Highstock-1.3.1\adapters\mootools-adapter.js" />
+    <Content Include="Highstock-1.3.1\adapters\mootools-adapter.src.js" />
+    <Content Include="Highstock-1.3.1\adapters\prototype-adapter.js" />
+    <Content Include="Highstock-1.3.1\adapters\prototype-adapter.src.js" />
+    <Content Include="Highstock-1.3.1\highcharts-more.js" />
+    <Content Include="Highstock-1.3.1\highcharts.js" />
+    <Content Include="Highstock-1.3.1\highcharts.src.js" />
+    <Content Include="Highstock-1.3.1\modules\canvas-tools.js" />
+    <Content Include="Highstock-1.3.1\modules\canvas-tools.src.js" />
+    <Content Include="Highstock-1.3.1\modules\data.js" />
+    <Content Include="Highstock-1.3.1\modules\data.src.js" />
+    <Content Include="Highstock-1.3.1\modules\exporting.js" />
+    <Content Include="Highstock-1.3.1\modules\exporting.src.js" />
+    <Content Include="Highstock-1.3.1\modules\funnel.js" />
+    <Content Include="Highstock-1.3.1\modules\funnel.src.js" />
+    <Content Include="Highstock-1.3.1\themes\dark-blue.js" />
+    <Content Include="Highstock-1.3.1\themes\dark-green.js" />
+    <Content Include="Highstock-1.3.1\themes\gray.js" />
+    <Content Include="Highstock-1.3.1\themes\grid.js" />
+    <Content Include="Highstock-1.3.1\themes\skies.js" />
+    <Content Include="HTMLPage2.htm" />
+    <Content Include="img\btn_add.png" />
+    <Content Include="img\btn_alert.png" />
+    <Content Include="img\btn_arrow_down.gif" />
+    <Content Include="img\btn_arrow_down_act.gif" />
+    <Content Include="img\btn_arrow_null_act.gif" />
+    <Content Include="img\btn_arrow_up.gif" />
+    <Content Include="img\btn_arrow_up_act.gif" />
+    <Content Include="img\btn_atti_fu.png" />
+    <Content Include="img\btn_atti_zheng.png" />
+    <Content Include="img\btn_atti_zhong.png" />
+    <Content Include="img\btn_case.png" />
+    <Content Include="img\btn_degree.png" />
+    <Content Include="img\btn_delete.png" />
+    <Content Include="img\btn_distribute.png" />
+    <Content Include="img\btn_download.png" />
+    <Content Include="img\btn_edit.png" />
+    <Content Include="img\btn_fanhui.gif" />
+    <Content Include="img\btn_fanhui2.gif" />
+    <Content Include="img\btn_favorite.png" />
+    <Content Include="img\btn_file.png" />
+    <Content Include="img\btn_form_down.gif" />
+    <Content Include="img\btn_form_up.gif" />
+    <Content Include="img\btn_help.gif" />
+    <Content Include="img\btn_lamp.png" />
+    <Content Include="img\btn_mail.png" />
+    <Content Include="img\btn_mailread.png" />
+    <Content Include="img\btn_messenger.png" />
+    <Content Include="img\btn_msg.gif" />
+    <Content Include="img\btn_nofavorite.png" />
+    <Content Include="img\btn_norecycle.png" />
+    <Content Include="img\btn_recycle.png" />
+    <Content Include="img\btn_renew.png" />
+    <Content Include="img\btn_save.png" />
+    <Content Include="img\btn_searchclose.gif" />
+    <Content Include="img\btn_speed_green.gif" />
+    <Content Include="img\btn_speed_red.gif" />
+    <Content Include="img\btn_speed_yellow.gif" />
+    <Content Include="img\btn_vidio.gif" />
+    <Content Include="img\floatdiv_bg.gif" />
+    <Content Include="img\msg_B_bg.gif" />
+    <Content Include="img\msg_T_bg.gif" />
+    <Content Include="img\vidio_pic01.jpg" />
+    <Content Include="img\wb_topbg_2.jpg" />
+    <Content Include="index.html" />
+    <Content Include="json\53\newrayjson.txt" />
+    <Content Include="js\adapters\mootools-adapter.js" />
+    <Content Include="js\adapters\mootools-adapter.src.js" />
+    <Content Include="js\adapters\prototype-adapter.js" />
+    <Content Include="js\adapters\prototype-adapter.src.js" />
+    <Content Include="js\highcharts-more.js" />
+    <Content Include="js\highcharts.js" />
+    <Content Include="js\highcharts.src.js" />
+    <Content Include="js\highstock.js" />
+    <Content Include="js\highstock.src.js" />
+    <Content Include="js\modules\canvas-tools.js" />
+    <Content Include="js\modules\canvas-tools.src.js" />
+    <Content Include="js\modules\data.js" />
+    <Content Include="js\modules\data.src.js" />
+    <Content Include="js\modules\exporting.js" />
+    <Content Include="js\modules\exporting.src.js" />
+    <Content Include="js\modules\funnel.js" />
+    <Content Include="js\modules\funnel.src.js" />
+    <Content Include="js\themes\dark-blue.js" />
+    <Content Include="js\themes\dark-green.js" />
+    <Content Include="js\themes\gray.js" />
+    <Content Include="js\themes\grid.js" />
+    <Content Include="js\themes\skies.js" />
+    <Content Include="jwplayer\demo1.htm" />
+    <Content Include="jwplayer\jwplayer.flash.swf" />
+    <Content Include="jwplayer\jwplayer.html5.js" />
+    <Content Include="jwplayer\jwplayer.js" />
+    <Content Include="jwplayer\README.html" />
+    <Content Include="keywordSearch.html" />
+    <Content Include="log.html" />
+    <Content Include="reItem.html" />
+    <Content Include="Scripts\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\ajaxfileupload.js" />
+    <Content Include="Scripts\chart\exporting.src.js" />
+    <Content Include="Scripts\cloud\jquery.3DTagCloud.js" />
+    <Content Include="Scripts\cloud\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\cloud\jquery.tagsphere.min.js" />
+    <Content Include="Scripts\exporting.js" />
+    <Content Include="Scripts\highcharts-more.js" />
+    <Content Include="Scripts\highcharts.src.js" />
+    <Content Include="Scripts\jquery.min1.71.js" />
+    <Content Include="Scripts\jquery.ztree.core-3.0.min.js" />
+    <Content Include="Scripts\jwplayer.js" />
+    <Content Include="Scripts\listTable.js" />
+    <Content Include="Scripts\sound\erji.mp3" />
+    <Content Include="Scripts\sound\erji.wav" />
+    <Content Include="Scripts\sound\yiji.wav" />
+    <Content Include="Scripts\sound\yiji.mp3" />
+    <Content Include="Scripts\sound\sanji.wav" />
+    <Content Include="Scripts\web\AccidentAlarm.js" />
+    <Content Include="Scripts\web\accidentReport.js" />
+    <Content Include="Scripts\web\AccidentReportRecycle.js" />
+    <Content Include="Scripts\web\AlarmKeywords.js" />
+    <Content Include="Scripts\web\emergencywarning.js" />
+    <Content Include="Scripts\web\HotIndustry.js" />
+    <Content Include="Scripts\web\HotWeiboUser.js" />
+    <Content Include="Scripts\web\HotWord.js" />
+    <Content Include="Scripts\web\HotWord_bak.js" />
+    <Content Include="Scripts\web\jqcloud-1.js" />
+    <Content Include="Scripts\web\log.js" />
+    <Content Include="Scripts\map\eventproxy.js" />
+    <Content Include="Scripts\map\jquery.tooltip.js" />
+    <Content Include="Scripts\map\landscape.js" />
+    <Content Include="Scripts\map\province.js" />
+    <Content Include="Scripts\map\provinceMap.js" />
+    <Content Include="Scripts\map\raphael-min.js" />
+    <Content Include="Scripts\map\view.js" />
+    <Content Include="Scripts\modules\canvas-tools.js" />
+    <Content Include="Scripts\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\modules\exporting.js" />
+    <Content Include="Scripts\modules\exporting.src.js" />
+    <Content Include="Scripts\template.js" />
+    <Content Include="Scripts\themes\dark-blue.js" />
+    <Content Include="Scripts\themes\dark-green.js" />
+    <Content Include="Scripts\themes\gray.js" />
+    <Content Include="Scripts\themes\grid.js" />
+    <Content Include="Scripts\themes\skies.js" />
+    <Content Include="Scripts\web\caseAccidentManage.js" />
+    <Content Include="Scripts\web\CaseLibrary.js" />
+    <Content Include="Scripts\web\CaseLibraryInfo.js" />
+    <Content Include="Scripts\web\MaterialLibrary.js" />
+    <Content Include="Scripts\web\monitorInfoTest.js" />
+    <Content Include="Scripts\web\PingLun.js" />
+    <Content Include="Scripts\web\ReItem.js" />
+    <Content Include="Scripts\web\YearMonthWeek.js" />
+    <Content Include="Scripts\web\ZhuanFa.js" />
+    <Content Include="Scripts\web\Task.js" />
+    <Content Include="Scripts\web\ThesaurusList.js" />
+    <Content Include="Scripts\web\TimeTrends.js" />
+    <Content Include="Scripts\web\UserAccounts.js" />
+    <Content Include="Scripts\web\userManage.js" />
+    <Content Include="Scripts\web\videoAnalysis.js" />
+    <Content Include="Scripts\web\weiboAnalysis.js" />
+    <Content Include="Scripts\sound\hotsound.mp3" />
+    <Content Include="Scripts\sound\msg.wav" />
+    <Content Include="Scripts\sound\wordsound.mp3" />
+    <Content Include="sound\erji.wav" />
+    <Content Include="sound\hotsound.mp3" />
+    <Content Include="sound\msg.wav" />
+    <Content Include="sound\sanji.wav" />
+    <Content Include="sound\wordsound.mp3" />
+    <Content Include="sound\yiji.wav" />
+    <Content Include="sp.html" />
+    <Content Include="styles\jqcloud.css" />
+    <Content Include="styles\Message.css" />
+    <Content Include="styles\weibo.css" />
+    <Content Include="Task.html" />
+    <Content Include="task2.htm" />
+    <Content Include="template\repotrtemps.html" />
+    <Content Include="Test.html" />
+    <Content Include="useraccounts.html" />
+    <Content Include="styles\zTree3.0.css" />
+    <Content Include="userManage.html" />
+    <Content Include="util.dll\Newtonsoft.Json.dll" />
+    <Content Include="util.dll\Newtonsoft.Json.pdb" />
+    <Content Include="videoAnalysis.html" />
+    <Content Include="yiqitemporary\css\eventscenter.css" />
+    <Content Include="yiqitemporary\css\login.css" />
+    <Content Include="yiqitemporary\css\style.css" />
+    <Content Include="yiqitemporary\css\zTreeStyle.css" />
+    <Content Include="yiqitemporary\img\bg.gif" />
+    <Content Include="yiqitemporary\img\btn_add.gif" />
+    <Content Include="yiqitemporary\img\btn_alert.gif" />
+    <Content Include="yiqitemporary\img\btn_close.gif" />
+    <Content Include="yiqitemporary\img\btn_delete.gif" />
+    <Content Include="yiqitemporary\img\btn_download.gif" />
+    <Content Include="yiqitemporary\img\btn_favorite.gif" />
+    <Content Include="yiqitemporary\img\btn_login.gif" />
+    <Content Include="yiqitemporary\img\btn_more.gif" />
+    <Content Include="yiqitemporary\img\btn_page.gif" />
+    <Content Include="yiqitemporary\img\btn_page_go.gif" />
+    <Content Include="yiqitemporary\img\btn_photo.gif" />
+    <Content Include="yiqitemporary\img\btn_print.gif" />
+    <Content Include="yiqitemporary\img\btn_search.gif" />
+    <Content Include="yiqitemporary\img\btn_select.gif" />
+    <Content Include="yiqitemporary\img\btn_select2.gif" />
+    <Content Include="yiqitemporary\img\btn_send.gif" />
+    <Content Include="yiqitemporary\img\btn_set.gif" />
+    <Content Include="yiqitemporary\img\btn_tig.gif" />
+    <Content Include="yiqitemporary\img\btn_vidio.gif" />
+    <Content Include="yiqitemporary\img\btn_weather.gif" />
+    <Content Include="yiqitemporary\img\btn_weather_blue.gif" />
+    <Content Include="yiqitemporary\img\btn_weather_green.gif" />
+    <Content Include="yiqitemporary\img\btn_weather_red.gif" />
+    <Content Include="yiqitemporary\img\content_1_bg.gif" />
+    <Content Include="yiqitemporary\img\footer_bg.gif" />
+    <Content Include="yiqitemporary\img\header_bg.jpg" />
+    <Content Include="yiqitemporary\img\header_bg2.jpg" />
+    <Content Include="yiqitemporary\img\header_leader_bg.gif" />
+    <Content Include="yiqitemporary\img\index_bg.gif" />
+    <Content Include="yiqitemporary\img\index_theme.jpg" />
+    <Content Include="yiqitemporary\img\index_tubiao.jpg" />
+    <Content Include="yiqitemporary\img\input_bg.gif" />
+    <Content Include="yiqitemporary\img\left-bg.gif" />
+    <Content Include="yiqitemporary\img\left_bg.gif" />
+    <Content Include="yiqitemporary\img\link_bg.gif" />
+    <Content Include="yiqitemporary\img\link_C_bg.gif" />
+    <Content Include="yiqitemporary\img\link_T_bg.gif" />
+    <Content Include="yiqitemporary\img\list_bg.gif" />
+    <Content Include="yiqitemporary\img\loading_icon.gif" />
+    <Content Include="yiqitemporary\img\login_bg.gif" />
+    <Content Include="yiqitemporary\img\login_C_bg.gif" />
+    <Content Include="yiqitemporary\img\login_C_img.gif" />
+    <Content Include="yiqitemporary\img\login_C_L_bg.gif" />
+    <Content Include="yiqitemporary\img\login_C_R_bg.gif" />
+    <Content Include="yiqitemporary\img\login_input_bg.gif" />
+    <Content Include="yiqitemporary\img\login_logo.gif" />
+    <Content Include="yiqitemporary\img\login_title.gif" />
+    <Content Include="yiqitemporary\img\login_T_bg.gif" />
+    <Content Include="yiqitemporary\img\login_T_img.gif" />
+    <Content Include="yiqitemporary\img\map.gif" />
+    <Content Include="yiqitemporary\img\menu.gif" />
+    <Content Include="yiqitemporary\img\menu_bg.gif" />
+    <Content Include="yiqitemporary\img\nav_1.gif" />
+    <Content Include="yiqitemporary\img\nav_11.gif" />
+    <Content Include="yiqitemporary\img\nav_12.gif" />
+    <Content Include="yiqitemporary\img\nav_2.gif" />
+    <Content Include="yiqitemporary\img\nav_3.gif" />
+    <Content Include="yiqitemporary\img\nav_4.gif" />
+    <Content Include="yiqitemporary\img\nav_5.gif" />
+    <Content Include="yiqitemporary\img\nav_6.gif" />
+    <Content Include="yiqitemporary\img\nav_7.gif" />
+    <Content Include="yiqitemporary\img\nav_bg.gif" />
+    <Content Include="yiqitemporary\img\news_hot_bg.gif" />
+    <Content Include="yiqitemporary\img\news_li.gif" />
+    <Content Include="yiqitemporary\img\news_line.gif" />
+    <Content Include="yiqitemporary\img\news_link.gif" />
+    <Content Include="yiqitemporary\img\news_link_2.gif" />
+    <Content Include="yiqitemporary\img\number_bg.gif" />
+    <Content Include="yiqitemporary\img\number_orange.gif" />
+    <Content Include="yiqitemporary\img\number_red.gif" />
+    <Content Include="yiqitemporary\img\pic_link_bg.gif" />
+    <Content Include="yiqitemporary\img\rule_bg.gif" />
+    <Content Include="yiqitemporary\img\search_bg.gif" />
+    <Content Include="yiqitemporary\img\set_bg.gif" />
+    <Content Include="yiqitemporary\img\subcontent_1_bg.gif" />
+    <Content Include="yiqitemporary\img\subcontent_2_bg.gif" />
+    <Content Include="yiqitemporary\img\subcontent_3_bg.gif" />
+    <Content Include="yiqitemporary\img\subcontent_7_bg.gif" />
+    <Content Include="yiqitemporary\img\subcontent_8_bg.gif" />
+    <Content Include="yiqitemporary\img\subcontent_tab.gif" />
+    <Content Include="yiqitemporary\img\submenu_bg.gif" />
+    <Content Include="yiqitemporary\img\swsg_icon.gif" />
+    <Content Include="yiqitemporary\img\swsg_left_bg.gif" />
+    <Content Include="yiqitemporary\img\swsg_right_bg.gif" />
+    <Content Include="yiqitemporary\img\tb_03.gif" />
+    <Content Include="yiqitemporary\img\tb_06.gif" />
+    <Content Include="yiqitemporary\img\tb_08.gif" />
+    <Content Include="yiqitemporary\img\temperature_bg.gif" />
+    <Content Include="yiqitemporary\img\theme_default.gif" />
+    <Content Include="yiqitemporary\img\title_bg.gif" />
+    <Content Include="yiqitemporary\img\title_on.gif" />
+    <Content Include="yiqitemporary\img\title_tab.gif" />
+    <Content Include="yiqitemporary\img\trans_next.gif" />
+    <Content Include="yiqitemporary\img\trans_prev.gif" />
+    <Content Include="yiqitemporary\img\user_bg.gif" />
+    <Content Include="yiqitemporary\img\user_bg2.gif" />
+    <Content Include="yiqitemporary\img\祥云.gif" />
+    <Content Include="yiqitemporary\js\AccidentInfoManage.js" />
+    <Content Include="yiqitemporary\js\AccidentReportList.js" />
+    <Content Include="yiqitemporary\js\ajaxfileupload.js" />
+    <Content Include="yiqitemporary\js\article.js" />
+    <Content Include="yiqitemporary\js\articledis.js" />
+    <Content Include="yiqitemporary\js\Backbone.EventsCenter.js" />
+    <Content Include="yiqitemporary\js\Bar.js" />
+    <Content Include="yiqitemporary\js\category.js" />
+    <Content Include="yiqitemporary\js\common.js" />
+    <Content Include="yiqitemporary\js\common1.js" />
+    <Content Include="yiqitemporary\js\common_fb.js" />
+    <Content Include="yiqitemporary\js\control.js" />
+    <Content Include="yiqitemporary\js\district.js" />
+    <Content Include="yiqitemporary\js\divMove.js" />
+    <Content Include="yiqitemporary\js\excanvas.min.js" />
+    <Content Include="yiqitemporary\js\FusionCharts.js" />
+    <Content Include="yiqitemporary\js\hcmarquee.js" />
+    <Content Include="yiqitemporary\js\highcharts.js" />
+    <Content Include="yiqitemporary\js\hot.js" />
+    <Content Include="yiqitemporary\js\hotlist.js" />
+    <Content Include="yiqitemporary\js\infolist.js" />
+    <Content Include="yiqitemporary\js\inputcue.js" />
+    <Content Include="yiqitemporary\js\IOManage.js" />
+    <Content Include="yiqitemporary\js\joblist.js" />
+    <Content Include="yiqitemporary\js\jquery-1.8.1.js" />
+    <Content Include="yiqitemporary\js\jquery-1.8.1.min.js" />
+    <Content Include="yiqitemporary\js\jquery.flash.js" />
+    <Content Include="yiqitemporary\js\jquery.flot.js" />
+    <Content Include="yiqitemporary\js\jquery.flot.selection.js" />
+    <Content Include="yiqitemporary\js\jquery.jPrintArea.js" />
+    <Content Include="yiqitemporary\js\jquery.js" />
+    <Content Include="yiqitemporary\js\jquery.query.js" />
+    <Content Include="yiqitemporary\js\jquery.tagcloud.js" />
+    <Content Include="yiqitemporary\js\jquery.ztree-2.6.js" />
+    <Content Include="yiqitemporary\js\leader.js" />
+    <Content Include="yiqitemporary\js\LeaderList.js" />
+    <Content Include="yiqitemporary\js\list.js" />
+    <Content Include="yiqitemporary\js\Login.js" />
+    <Content Include="yiqitemporary\js\My97DatePicker\calendar.js" />
+    <Content Include="yiqitemporary\js\My97DatePicker\config.js" />
+    <Content Include="yiqitemporary\js\My97DatePicker\lang\en.js" />
+    <Content Include="yiqitemporary\js\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="yiqitemporary\js\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="yiqitemporary\js\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\default\img.gif" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="yiqitemporary\js\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="yiqitemporary\js\My97DatePicker\WdatePicker.js" />
+    <Content Include="yiqitemporary\js\newindex.js" />
+    <Content Include="yiqitemporary\js\newindex1.js" />
+    <Content Include="yiqitemporary\js\Pager.js" />
+    <Content Include="yiqitemporary\js\Pie.js" />
+    <Content Include="yiqitemporary\js\RepostList.js" />
+    <Content Include="yiqitemporary\js\scroll.js" />
+    <Content Include="yiqitemporary\js\Search.js" />
+    <Content Include="yiqitemporary\js\special.js" />
+    <Content Include="yiqitemporary\js\SpecialList.js" />
+    <Content Include="yiqitemporary\js\statement.js" />
+    <Content Include="yiqitemporary\js\swfobject.js" />
+    <Content Include="yiqitemporary\js\trans.js" />
+    <Content Include="yiqitemporary\js\trend.js" />
+    <Content Include="yiqitemporary\js\weibo.js" />
+    <Content Include="yiqitemporary\js\yjts.js" />
+    <Content Include="yiqitemporary\js\ylfl.js" />
+    <Content Include="yiqitemporary\js\yqvideo.js" />
+    <Content Include="yiqitemporary\Reportlist.aspx" />
+    <Content Include="yiqitemporary\reportlist.html" />
+    <Content Include="z_log.txt" />
+    <Content Include="widget.html" />
+    <Content Include="img\buttons.gif" />
+    <Content Include="img\column-bg-left.png" />
+    <Content Include="img\column-bg-right.png" />
+    <Content Include="img\head-bg.png" />
+    <Content Include="img\inettuts.png" />
+    <Content Include="img\widget-content-bg.png" />
+    <Content Include="main.html" />
+    <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\Bar.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\divMove.js" />
+    <Content Include="Scripts\Ensure.js" />
+    <Content Include="Scripts\eventproxy.js" />
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\form.js" />
+    <Content Include="Scripts\FusionCharts.js" />
+    <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\highstock.js" />
+    <Content Include="Scripts\inputcue.js" />
+    <Content Include="Scripts\jquery-1.10.1-ui.js" />
+    <Content Include="Scripts\jquery-1.2.6.pack.js" />
+    <Content Include="Scripts\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.7.1.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-personalized-1.6rc2.min.js" />
+    <Content Include="Scripts\jquery.flash.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.selection.js" />
+    <Content Include="Scripts\jquery.micro_template.js" />
+    <Content Include="Scripts\jquery.query.js" />
+    <Content Include="Scripts\jquery.scrollable.js" />
+    <Content Include="Scripts\jquery.tooltip.js" />
+    <Content Include="Scripts\landscape.js" />
+    <Content Include="Scripts\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\My97DatePicker\config.js" />
+    <Content Include="Scripts\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="Scripts\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\MyFramework.js" />
+    <Content Include="Scripts\Pager.js" />
+    <Content Include="Scripts\Pie.js" />
+    <Content Include="Scripts\province.js" />
+    <Content Include="Scripts\provinceMap.js" />
+    <Content Include="Scripts\raphael-min.js" />
+    <Content Include="Scripts\SqlPager.js" />
+    <Content Include="Scripts\SqlSearch.js" />
+    <Content Include="Scripts\statement.js" />
+    <Content Include="Scripts\statistic.js" />
+    <Content Include="Scripts\swfobject.js" />
+    <Content Include="Scripts\tabscroll.js" />
+    <Content Include="Scripts\trans.js" />
+    <Content Include="Scripts\underscore-1.1.6.js" />
+    <Content Include="Scripts\view.js" />
+    <Content Include="Scripts\web\inettuts.js" />
+    <Content Include="Scripts\weiboEvent.js" />
+    <Content Include="styles\inettuts.css" />
+    <Content Include="styles\inettuts.js.css" />
+    <Content Include="top.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="accidentReport.html" />
+    <Content Include="accidentReport_m.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadReport.aspx.cs">
+      <DependentUpon>DownloadReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DownloadReport.aspx.designer.cs">
+      <DependentUpon>DownloadReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExportToExcel.aspx.cs">
+      <DependentUpon>ExportToExcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExportToExcel.aspx.designer.cs">
+      <DependentUpon>ExportToExcel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\AccidentAlarmHandler.ashx.cs">
+      <DependentUpon>AccidentAlarmHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\AccidentReportHandler.ashx.cs">
+      <DependentUpon>AccidentReportHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\AlarmKeywordsHandler.ashx.cs">
+      <DependentUpon>AlarmKeywordsHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\AlarmKeywordsTypeHandler.ashx.cs">
+      <DependentUpon>AlarmKeywordsTypeHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\CaseAccidentHandler.ashx.cs">
+      <DependentUpon>CaseAccidentHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\CaseActionHandler.ashx.cs">
+      <DependentUpon>CaseActionHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\CaseFileUploadHandler.ashx.cs">
+      <DependentUpon>CaseFileUploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\CaseLibraryHandler.ashx.cs">
+      <DependentUpon>CaseLibraryHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\chartImg.ashx.cs">
+      <DependentUpon>chartImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\CusPortalHandler.ashx.cs">
+      <DependentUpon>CusPortalHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\DeleteIdol.ashx.cs">
+      <DependentUpon>DeleteIdol.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\EarlyWarnHotHandler.ashx.cs">
+      <DependentUpon>EarlyWarnHotHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\EarlyWarnWordHandler.ashx.cs">
+      <DependentUpon>EarlyWarnWordHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\EditIdolTag.ashx.cs">
+      <DependentUpon>EditIdolTag.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\FavoriteHandler.ashx.cs">
+      <DependentUpon>FavoriteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\FollowerHandler.ashx.cs">
+      <DependentUpon>FollowerHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\JsonServer.ashx.cs">
+      <DependentUpon>JsonServer.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Keywords2Handler.ashx.cs">
+      <DependentUpon>Keywords2Handler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\KeyWordsHandler.ashx.cs">
+      <DependentUpon>KeyWordsHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\MonitorInfo.ashx.cs">
+      <DependentUpon>MonitorInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\OperatingLogHandler.ashx.cs">
+      <DependentUpon>OperatingLogHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ProvinceCityHander.ashx.cs">
+      <DependentUpon>ProvinceCityHander.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ReItemHandler.ashx.cs">
+      <DependentUpon>ReItemHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ReportHandler.ashx.cs">
+      <DependentUpon>ReportHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\RetweetItemHandler.ashx.cs">
+      <DependentUpon>RetweetItemHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\SysGroupHandler.ashx.cs">
+      <DependentUpon>SysGroupHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\TaskHandler.ashx.cs">
+      <DependentUpon>TaskHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\TopicOfWeibo.ashx.cs">
+      <DependentUpon>TopicOfWeibo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\WeiboStatistics.ashx.cs">
+      <DependentUpon>WeiboStatistics.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\IDOLBLL\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WeiboDataSource\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="yiqitemporary\Handler\ReportList.ashx.cs">
+      <DependentUpon>ReportList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="yiqitemporary\Reportlist.aspx.cs">
+      <DependentUpon>Reportlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="yiqitemporary\Reportlist.aspx.designer.cs">
+      <DependentUpon>Reportlist.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataSourceConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="favorite.html" />
+    <Content Include="Handler\Search.ashx" />
+    <Content Include="Handler\SqlSearch.ashx" />
+    <Content Include="Handler\WeiboEventHandler.ashx" />
+    <Content Include="Handler\WeiboTopicHandler.ashx" />
+    <Content Include="img\bg.gif" />
+    <Content Include="img\btn_close.gif" />
+    <Content Include="img\btn_date.gif" />
+    <Content Include="img\btn_dates.gif" />
+    <Content Include="img\btn_gundong.gif" />
+    <Content Include="img\btn_login.gif" />
+    <Content Include="img\btn_login_help.gif" />
+    <Content Include="img\btn_type.gif" />
+    <Content Include="img\content_title.gif" />
+    <Content Include="img\content_T_bg.gif" />
+    <Content Include="img\error.gif" />
+    <Content Include="img\f.png" />
+    <Content Include="img\fcdiv_fca.gif" />
+    <Content Include="img\fcdiv_fcb.gif" />
+    <Content Include="img\jsz.gif" />
+    <Content Include="img\load_big.gif" />
+    <Content Include="img\load_error.gif" />
+    <Content Include="img\load_icon.gif" />
+    <Content Include="img\login_bg.gif" />
+    <Content Include="img\login_body_bg.gif" />
+    <Content Include="img\login_C_bg.gif" />
+    <Content Include="img\login_C_img.gif" />
+    <Content Include="img\login_C_L_bg.gif" />
+    <Content Include="img\login_C_R_bg.gif" />
+    <Content Include="img\login_footer_bg.gif" />
+    <Content Include="img\login_input_bg.gif" />
+    <Content Include="img\login_logo.gif" />
+    <Content Include="img\login_title.gif" />
+    <Content Include="img\login_T_bg.gif" />
+    <Content Include="img\login_T_img.gif" />
+    <Content Include="img\news_tab_bg.gif" />
+    <Content Include="img\number_bg.gif" />
+    <Content Include="img\ok.gif" />
+    <Content Include="img\opened.gif" />
+    <Content Include="img\page.gif" />
+    <Content Include="img\tabbg.gif" />
+    <Content Include="img\userdefault.jpg" />
+    <Content Include="img\wb_tishi.gif" />
+    <Content Include="img\xinbut.png" />
+    <Content Include="img\xinbut2.png" />
+    <Content Include="img\xinbutjt.gif" />
+    <Content Include="img\xin_fca.gif" />
+    <Content Include="img\xin_fcb.gif" />
+    <Content Include="img\ygz.png" />
+    <Content Include="img\z.png" />
+    <Content Include="img\zj.png" />
+    <Content Include="keywords.html" />
+    <Content Include="monitorAgency.html" />
+    <Content Include="monitorBigShot.html" />
+    <Content Include="Scripts\web\monitorAgency.js" />
+    <Content Include="Scripts\web\monitorBigShot.js" />
+    <Content Include="Scripts\web\topicOfWeibo.js" />
+    <Content Include="Scripts\d3.v2.js" />
+    <Content Include="Scripts\d3.v2.min.js" />
+    <Content Include="Scripts\highslide-with-gallery.js" />
+    <Content Include="Scripts\highslide.js" />
+    <Content Include="Scripts\jquery-1.8.1.js" />
+    <Content Include="Scripts\jquery-1.8.1.min.js" />
+    <Content Include="Scripts\jQuery.Hz2Py-min.js" />
+    <Content Include="Scripts\web\favorite.js" />
+    <Content Include="Scripts\web\keywords.js" />
+    <Content Include="Scripts\web\login.js" />
+    <Content Include="Scripts\web\monitorInfo.js" />
+    <Content Include="Scripts\web\personalDetails.js" />
+    <Content Include="Scripts\web\top.js" />
+    <Content Include="Scripts\web\topicList.js" />
+    <Content Include="Scripts\web\warningInfo.js" />
+    <Content Include="Scripts\web\weiboRank.js" />
+    <Content Include="Scripts\web\weiboStatistics.js" />
+    <Content Include="styles\login.css" />
+    <Content Include="styles\wb_new.css" />
+    <Content Include="topicList.html" />
+    <Content Include="img\0.jpg" />
+    <Content Include="img\jiagz.gif" />
+    <Content Include="img\tac_jt.gif" />
+    <Content Include="img\v.gif" />
+    <Content Include="img\wb_bodybg.gif" />
+    <Content Include="img\wb_hover.gif" />
+    <Content Include="img\wb_line.gif" />
+    <Content Include="img\wb_topbg.jpg" />
+    <Content Include="img\weibo_topic_lan.gif" />
+    <Content Include="img\yqzt_30.jpg" />
+    <Content Include="img\yqzt_34.jpg" />
+    <Content Include="monitorInfo.html" />
+    <Content Include="monitorArea.html" />
+    <Content Include="Scripts\chart\exporting.js" />
+    <Content Include="Scripts\chart\highcharts.js" />
+    <Content Include="Scripts\chart\highstock.js" />
+    <Content Include="Handler\MonitorInfo.ashx" />
+    <Content Include="Handler\EarlyWarnHotHandler.ashx" />
+    <Content Include="Handler\EarlyWarnWordHandler.ashx" />
+    <Content Include="Handler\KeyWordsHandler.ashx" />
+    <Content Include="Handler\WeiboStatistics.ashx" />
+    <Content Include="Handler\FollowerHandler.ashx" />
+    <Content Include="Handler\FavoriteHandler.ashx" />
+    <Content Include="Handler\User.ashx" />
+    <Content Include="Handler\TopicOfWeibo.ashx" />
+    <Content Include="Handler\CusPortalHandler.ashx" />
+    <Content Include="Handler\Keywords2Handler.ashx" />
+    <Content Include="Handler\JsonServer.ashx" />
+    <Content Include="Handler\CaseLibraryHandler.ashx" />
+    <Content Include="Handler\ProvinceCityHander.ashx" />
+    <Content Include="Handler\CaseAccidentHandler.ashx" />
+    <Content Include="Handler\CaseActionHandler.ashx" />
+    <Content Include="Handler\CaseFileUploadHandler.ashx" />
+    <Content Include="Handler\SysGroupHandler.ashx" />
+    <Content Include="Handler\OperatingLogHandler.ashx" />
+    <Content Include="Handler\ReportHandler.ashx" />
+    <Content Include="Handler\chartImg.ashx" />
+    <Content Include="Handler\TaskHandler.ashx" />
+    <Content Include="Handler\DeleteIdol.ashx" />
+    <Content Include="Handler\EditIdolTag.ashx" />
+    <Content Include="Handler\ReItemHandler.ashx" />
+    <Content Include="Handler\RetweetItemHandler.ashx" />
+    <Content Include="Handler\AccidentAlarmHandler.ashx" />
+    <Content Include="Handler\AlarmKeywordsTypeHandler.ashx" />
+    <Content Include="Handler\AlarmKeywordsHandler.ashx" />
+    <Content Include="Handler\AccidentReportHandler.ashx" />
+    <None Include="json\20120921\countResult.json" />
+    <None Include="json\20120921\followResult.json" />
+    <None Include="json\20120921\provinceResult.json" />
+    <None Include="json\20120921\rayjson.json" />
+    <None Include="json\20120921\trendResult.json" />
+    <None Include="json\53\countResult.json" />
+    <None Include="json\53\flare.json" />
+    <None Include="json\53\followResult.json" />
+    <None Include="json\53\provinceResult.json" />
+    <None Include="json\53\rayjson.json" />
+    <None Include="json\53\trendResult.json" />
+    <None Include="json\hotindustry\201331.json" />
+    <None Include="json\hotindustry\201330.json" />
+    <None Include="json\hotword\201330.json" />
+    <None Include="json\hotword\201331.json" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\IDOLBLL\Service1.wsdl" />
+    <None Include="Web References\WeiboDataSource\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WeiboDataSource\WeiboDataService.disco" />
+    <None Include="Service References\IDOLBLL\Service1.disco" />
+    <None Include="Service References\IDOLBLL\configuration91.svcinfo" />
+    <None Include="Service References\IDOLBLL\configuration.svcinfo" />
+    <None Include="Service References\IDOLBLL\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="topicOfWeibo.html" />
+    <Content Include="weiboStatistics.html" />
+    <Content Include="monitorPerson.html" />
+    <Content Include="personalDetails.html" />
+    <Content Include="warningInfo.html" />
+    <Content Include="weiboRank.html" />
+    <Content Include="login.html" />
+    <None Include="Web References\WeiboDataSource\WeiboDataService.wsdl" />
+    <None Include="yiqitemporary\img\map.gif.bak" />
+    <None Include="yiqitemporary\js\newindex.js.bak" />
+    <Content Include="yiqitemporary\Handler\ReportList.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{96A5175A-7718-4C49-A521-AC9869C7FF47}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBDAL\DBDAL.csproj">
+      <Project>{D36A66D2-6900-4F6C-BF9D-814AC5D5DA59}</Project>
+      <Name>DBDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IdolDAL\IdolDAL.csproj">
+      <Project>{2C098D4D-A005-4CDA-9DDE-50A434E7278B}</Project>
+      <Name>IdolDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{7DE995A0-46D3-4DB2-81DB-3DFD0EFD5924}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://180.186.74.142/IdolWebSvc/WeiboDataService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WeiboDataSource\</RelPath>
+      <UpdateFromURL>http://180.186.74.142/IdolWebSvc/WeiboDataService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WeiboAnalysis_WeiboDataSource_WeiboDataService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\IDOLBLL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8992</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

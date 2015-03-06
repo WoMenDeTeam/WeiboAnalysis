@@ -1,0 +1,38 @@
+<ul class="pic_list"><!--- 标志识别符 --->
+
+  <!--- 循环开始 --->
+  <li>
+
+    <span class="img">
+      <b>
+	<a href="{ 图片链接 }" title="{ 图片摘要 }">
+
+	  <img src="{ 图片链接 }" />
+
+	</a>
+      </b>
+    </span>
+
+    <h1>
+      <a href="{ 图片链接 }" title="{ 图片摘要 }">
+
+        <span class="num">{ 图片排列序号 }</span>
+
+        <span class="date">{ 图片发布时间 }</span>
+
+        <span class="text">{ 图片标题 }</span>
+
+        <span class="rss">【{ 图片收录来源 }】</span>
+
+        <span class="trends">{ 图片升降趋势 }</span>
+
+        <span class="precent">{ 图片所在比例 }</span>
+      </a>
+    </h1>
+
+    <p>{ 文章摘要 }</p>
+
+  </li>
+  <!--- 循环结束 --->
+
+</ul>

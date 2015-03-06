@@ -1,0 +1,57 @@
+<div class="main"><!--- 标志识别符 --->
+  <div class="wraper">
+
+    <div class="content left"><!--- 标志识别符：主体区域（居左） --->
+
+      { 栏目区域 }
+
+    </div>
+
+    <div class="content right"><!--- 标志识别符：主体区域（居右） --->
+
+      { 栏目区域 }
+
+    </div>
+
+    <div class="subcontent left"><!--- 标志识别符：侧边栏内容（居左） --->
+
+      { 栏目区域 }
+
+    </div>
+
+    <div class="subcontent right"><!--- 标志识别符：侧边栏内容（居右） --->
+
+      { 栏目区域 }
+
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+      <!--- 栏目区域开始 --->
+      <div class="content_T">
+
+  	<h1><b>{ 栏目名称 }</b></h1>
+
+  	<a class="btn_more" href="{ 栏目列表页 } || { 栏目所在频道 }" title="{ 查看更多 }"></a>
+
+  	<a class="btn_big" href="{ 最大化窗口的代码 }" title="{ 最大化窗口 }"></a>
+
+  	<a class="btn_small" href="{ 最小化窗口的代码 }" title="{ 最小化窗口 }"></a>
+
+  	<a class="btn_up" href="{ 展开窗口的代码 }" title="{ 展开窗口 }"></a>
+
+  	<a class="btn_down" href="{ 收起化窗口的代码 }" title="{ 收起窗口 }"></a>
+
+  	<div class="clear"></div>
+      </div>
+      <div class="content_C">
+
+        { 模块区域 }
+
+      </div>
+      <div class="content_B"></div>
+      <!--- 栏目区域结束 --->
+
+

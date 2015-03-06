@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\Administrator\Desktop\webs" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/JsonServer.dll" publishTime="01/28/2013 14:47:29" />
+    <file relUrl="bin/JsonServer.pdb" publishTime="01/28/2013 14:47:29" />
+    <file relUrl="jsonfile.aspx" publishTime="01/28/2013 14:21:02" />
+    <file relUrl="Web.config" publishTime="01/28/2013 14:47:47" />
+  </publishProfile>
+</publishData>

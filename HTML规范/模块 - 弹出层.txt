@@ -1,0 +1,36 @@
+<div class="layer"><!--- 标志识别符 --->
+
+  <span class=layer_border></span>
+  <span class=layer_line></span>
+  <div class=layer_outer>
+    <div class=layer_inner>
+      <a class="btn_close" href="{ 关闭层的代码 }" title="{ 关闭窗口 }"></a>
+      <div class=clear></div>
+      <div class=layer_T>
+	<h1><b>{ 栏目标题 }</b></h1>
+
+  	<a class="btn_more" href="{ 栏目列表页 } || { 栏目所在频道 }" title="{ 查看更多 }"></a>
+
+  	<a class="btn_big" href="{ 最大化窗口的代码 }" title="{ 最大化窗口 }"></a>
+
+  	<a class="btn_small" href="{ 最小化窗口的代码 }" title="{ 最小化窗口 }"></a>
+
+  	<a class="btn_up" href="{ 展开窗口的代码 }" title="{ 展开窗口 }"></a>
+
+  	<a class="btn_down" href="{ 收起化窗口的代码 }" title="{ 收起窗口 }"></a>
+
+  	<div class="clear"></div>
+
+      </div>
+      <div class=layer_C>
+
+	{ 模块区域 }
+
+      </div>
+      <div class=layer_B></div>
+    </div>
+  </div>
+  <span class=layer_line></span>
+  <span class=layer_border></span>
+
+</div>

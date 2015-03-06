@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IdolACINet.CategoryQueryCommand">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAHAAAAAAAAAAAAAAAAAAAABAAgAgAAAACAA=</HashCode>
+      <FileName>CategoryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.CategoryCreateCommand">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAQAQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>CategoryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.CategoryBuildCommand" Collapsed="true">
+    <Position X="20.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>CategoryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.CategorySetTNWCommand" Collapsed="true">
+    <Position X="24.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAACAA=</HashCode>
+      <FileName>CategoryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.CategoryGetTNWCommand" Collapsed="true">
+    <Position X="29.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>CategoryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.CategorySuggestFromDocumentCommand" Collapsed="true">
+    <Position X="33.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQAAAgBAAAAAAQAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CategorySuggestCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.ClusterSnapshot">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClusterSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.ClusterSGDataGen" Collapsed="true">
+    <Position X="15.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAQAAAAAA=</HashCode>
+      <FileName>ClusterSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Command" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAQBSAAACCUQAAgAYhEAAAIAIgAAIAAEACoAAQ=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Connection" BaseTypeListCollapsed="true">
+    <Position X="45" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAAQAAAAEAAAAQAgAAAAQAACQAQCIgAAAgCgAAQAoA=</HashCode>
+      <FileName>Connection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IdolACINet.Drereplace">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIBAACAAAAAAAEAAAAAAAAAAAAAEAAIAAA=</HashCode>
+      <FileName>Drereplace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Encryption" Collapsed="true">
+    <Position X="44.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAABQAAAAUAAAAAAgBA=</HashCode>
+      <FileName>Encryption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Network">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAAAAAAAAAAAAAgAAAgAAAAAAAA=</HashCode>
+      <FileName>Http.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Http">
+    <Position X="1.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAQAAEAAAIAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Http.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.IdolACIHelper" Collapsed="true">
+    <Position X="46" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAAQAIAgAAAAAAAiAAAAAAAAAAAAACQBAAAAA=</HashCode>
+      <FileName>IdolACIHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.DREADD" Collapsed="true">
+    <Position X="36" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAACAIAAA=</HashCode>
+      <FileName>IndexCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.DREADDDATA">
+    <Position X="9" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAACAAAAAAAEAAAAAAAAAAAAAEAAIAAA=</HashCode>
+      <FileName>IndexCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.DREDELETEDOC" Collapsed="true">
+    <Position X="18" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>IndexCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.DRECHANGEMETA" Collapsed="true">
+    <Position X="22.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAEAAAAAAEAAAAAAAAAAAAQAAAAAIAAA=</HashCode>
+      <FileName>IndexCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.DREEXPORTIDX" Collapsed="true">
+    <Position X="27" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAgAAAAACAAAAAAAAAAAAAAAAAACAAAQRIAAA=</HashCode>
+      <FileName>IndexCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.DRECREATEDBASE" Collapsed="true">
+    <Position X="31.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>IndexCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.QueryCommand" Collapsed="true">
+    <Position X="38.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAWAAAAAACAAAAAAAAAAAASAAAEAAABAIiABKAQEAAw=</HashCode>
+      <FileName>QueryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.QueryParams" Collapsed="true">
+    <Position X="40.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Ag2BBCKggHIAQAiAEIAQQASgQAABAMBBIiAhaUQEKQQ=</HashCode>
+      <FileName>QueryParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.QueryParamValue" Collapsed="true">
+    <Position X="42.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAIgAEAAAgCA=</HashCode>
+      <FileName>QueryParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Response" Collapsed="true">
+    <Position X="44.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAEAAAAAAQAAAAAAFgAAAAAAAAAIAA=</HashCode>
+      <FileName>Response.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.ResponseException" Collapsed="true">
+    <Position X="46" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResponseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.CommunicationException" Collapsed="true">
+    <Position X="40.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResponseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.SecurityException" Collapsed="true">
+    <Position X="40.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResponseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Summarize">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Summarize.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdolACINet.Utility" Collapsed="true">
+    <Position X="42.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAIAAAAAAAAAAAAAAAAAAwABAAAAAQAAA=</HashCode>
+      <FileName>Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IdolACINet.IConnection">
+    <Position X="40.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="IdolACINet.EncryptionType">
+    <Position X="41.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAA=</HashCode>
+      <FileName>Connection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>
