@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTopicIDs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="qpe" type="tns:QueryParamEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="QueryParamEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="action" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Start" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplayStyle" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalResults" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Characters" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Highlight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Print" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrintFields" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Predict" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Combine" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataBase" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinScore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaxDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sort" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateMatchID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MatchReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentCount" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisOther" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatePeriod" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTopicIDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicIDsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIdolCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="qpe" type="tns:QueryParamEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIdolCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIdolCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJsonData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="que" type="tns:QueryParamEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJsonDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetJsonDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTopicIDsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopicIDs" />
+  </wsdl:message>
+  <wsdl:message name="GetTopicIDsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopicIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIdolCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIdolCount" />
+  </wsdl:message>
+  <wsdl:message name="GetIdolCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIdolCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJsonDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJsonData" />
+  </wsdl:message>
+  <wsdl:message name="GetJsonDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJsonDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="GetTopicIDs">
+      <wsdl:input message="tns:GetTopicIDsSoapIn" />
+      <wsdl:output message="tns:GetTopicIDsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIdolCount">
+      <wsdl:input message="tns:GetIdolCountSoapIn" />
+      <wsdl:output message="tns:GetIdolCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJsonData">
+      <wsdl:input message="tns:GetJsonDataSoapIn" />
+      <wsdl:output message="tns:GetJsonDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTopicIDs">
+      <soap:operation soapAction="http://tempuri.org/GetTopicIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdolCount">
+      <soap:operation soapAction="http://tempuri.org/GetIdolCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJsonData">
+      <soap:operation soapAction="http://tempuri.org/GetJsonData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTopicIDs">
+      <soap12:operation soapAction="http://tempuri.org/GetTopicIDs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdolCount">
+      <soap12:operation soapAction="http://tempuri.org/GetIdolCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJsonData">
+      <soap12:operation soapAction="http://tempuri.org/GetJsonData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://180.186.74.142/IdolWebSvc/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://180.186.74.142/IdolWebSvc/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

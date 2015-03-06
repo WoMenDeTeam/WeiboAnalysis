@@ -1,0 +1,6 @@
+#预警：			warningInfo.html
+#信息监测：		monitorInfo.html
+#地区检测：		monitorArea.html
+#重点关注人：	monitorPerson.html
+#人物详情：		personalDetails.html
+#微博分析：		weiboStatistics.html

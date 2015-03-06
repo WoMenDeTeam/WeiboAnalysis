@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <source name="anjian">
+    <dbkey name="WeiboDBStr"/>
+    <idolip name="180.186.76.240"/>
+    <idoldb name="weiboanjian" />
+  </source>
+  <source name="minzheng">
+    <dbkey name="WeiboDBStr"/>
+    <idolip name="180.186.76.240"/>
+    <idoldb name="weiboanjian" />
+  </source>
+</config>

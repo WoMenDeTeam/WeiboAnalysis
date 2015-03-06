@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+   <!-- <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.8.1.js" type="text/javascript"></script>
+    <script src="Scripts/common.js" type="text/javascript"></script>
+    <script src="Scripts/SqlPager.js" type="text/javascript"></script>
+    <script src="Scripts/web/HotWeiboUser.js" type="text/javascript"></script>-->
+    <script src="Scripts/web/ReItem.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <!--左边导航-->
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <a id="blackPage" href="javascript:void(0)"><img src="img/btn_fanhui2.gif" width="239" height="23" /></a>
+                <div style="height:10px;">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="hotweibolist_title">
+                                        活跃用户
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="left_user_hot_plan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <div>
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            微博列表
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--高级搜索-->
+                            <div class="wb_gjsearch" style="display: none;">
+                                <a class="btn_history heigh_pad12" id="btn_history" href="javascript:void(null);">搜索历史</a>
+                                <a id="advance_search_a" class="btn_power" href="javascript:void(null);">高级</a>
+                                <input id="keyword_txt" name="" type="text" class="wb_text" value="" />
+                                <a class="btn_search" href="javascript:void(null);" id="weibo_screening_btn">搜 索</a><br />
+                                <!--高级搜索条件start-->
+                                <div id="advanced_search_div" class="wb_gaoji" style="display: none">
+                                    <ul class="wb_shaixuan">
+                                        <li class="wb_gjtiti left">筛选条件</li>
+                                        <li class="right"><a href="#" id="close_advanced_search_a">
+                                            <img src="img/btn_close.gif" width="16" height="16" /></a></li>
+                                    </ul>
+                                    <div class="clear">
+                                    </div>
+                                    <div class="wb_shaixuantj" id="shaixuan_checkbox_div">
+                                        <ul class="form_list">
+                                            <li><span class="input">
+                                                <select id="websource_sct" style="width: 120px;">
+                                                    <option value="0">微博来源</option>
+                                                    <option value="1">新浪</option>
+                                                    <option value="2">腾讯</option>
+                                                    <option value="3">凤凰</option>
+                                                    <option value="4">网易</option>
+                                                    <option value="5">搜狐</option>
+                                                </select>
+                                                <select id="province_sct" style="width: 120px;">
+                                                    <option value="0" selected="selected">所属地域</option>
+                                                    <option value="北京">北京</option>
+                                                    <option value="天津">天津</option>
+                                                    <option value="上海">上海</option>
+                                                    <option value="重庆">重庆</option>
+                                                    <option value="安徽">安徽</option>
+                                                    <option value="福建">福建</option>
+                                                    <option value="广东">广东</option>
+                                                    <option value="甘肃">甘肃</option>
+                                                    <option value="广西">广西</option>
+                                                    <option value="宁夏">宁夏</option>
+                                                    <option value="青海">青海</option>
+                                                    <option value="四川">四川</option>
+                                                    <option value="贵州">贵州</option>
+                                                    <option value="海南">海南</option>
+                                                    <option value="湖北">湖北</option>
+                                                    <option value="河北">河北</option>
+                                                    <option value="河南">河南</option>
+                                                    <option value="黑龙江">黑龙江</option>
+                                                    <option value="湖南">湖南</option>
+                                                    <option value="吉林">吉林</option>
+                                                    <option value="江苏">江苏</option>
+                                                    <option value="江西">江西</option>
+                                                    <option value="辽宁">辽宁</option>
+                                                    <option value="内蒙古">内蒙古</option>
+                                                    <option value="山东">山东</option>
+                                                    <option value="山西">山西</option>
+                                                    <option value="陕西">陕西</option>
+                                                    <option value="新疆">新疆</option>
+                                                    <option value="西藏">西藏</option>
+                                                    <option value="云南">云南</option>
+                                                    <option value="浙江">浙江</option>
+                                                    <option value="澳门">澳门</option>
+                                                    <option value="台湾">台湾</option>
+                                                    <option value="香港">香港</option>
+                                                </select>
+                                                <input id="ckIsvip" name="isvip" type="checkbox" value="1" /><code>仅+V用户</code>
+                                                <input id="ckIsBase" name="isBase" type="checkbox" value="weibo" /><code>基础库</code></span>
+                                            </li>
+                                        </ul>
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--高级搜索条件end-->
+                            <div id="condition_div" class="heighsearch" style="display: none;">
+                                <h3>
+                                    您已选择：</h3>
+                                <!--
+                                <span><img src="img/btn_searchclose.gif" width="15" height="18" class="right" />+V用户</span>
+                                <span><img src="img/btn_searchclose.gif" width="15" height="18" class="right" />新浪</span>
+                                <span><img src="img/btn_searchclose.gif" width="15" height="18" class="right" />湖北</span>-->
+                            </div>
+                            <!--排序条件-->
+                            <div class="wb_wc_wwc" id="actionBtns">
+                                <!--<span class="left">
+                                    <input id="click_all_ckbox" name="" type="checkbox" value="" />
+                                    <code>已选：<b class="color_2" id="checknumber">0</b></code> <a class="btn" id="show_topic_div"
+                                        href="javascript:void(null);">创建话题</a> </span>-->
+                                <span class="right">
+                                    <!--<a class="btn_renew"  href="javascript:void(null);"></a>-->
+                                    <code>第<b id="currpage_b">0/0</b>页,共<b class="color_2" id="count_b">0</b>条</code>
+                                </span>
+                                <ul>
+                                    <li id="orderbytime_li" class="on"><a>评论时间↓</a></li>
+                                    <!--<li id="hot_point_btn" class="on"><a>转发</a></li>-->
+                                    <!--<li id="negative_btn"><a>评论</a></li>-->
+                                </ul>
+                            </div>
+                            <div id="list_body_div">
+                                <div class="load_out">
+                                    <div class="load_in">
+                                        <img src="img/load_big.gif" /></div>
+                                </div>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="log">
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        创建话题</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在创建，请稍后</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">话题名称</span> <span class="input">
+                            <textarea id="topic_content_txt" cols="34" rows="6"></textarea>
+                        </span><span class="note" id="txtKWNameCheck" style="display: none;">
+                            <img src="img/wb_tishi.gif" /></span> </li>
+                        <div class="tig">
+                            <span id="promptContent"></span>
+                        </div>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="create_topic_analysis" name="" type="button" class="btn" value="我定好了" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="warningPopDiv">
+        <div class="layer_outer" id="warningPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    已被收藏！</div>
+            </div>
+        </div>
+    </div>
+    <!--解释弹出层-->
+    <div class="floatdiv" id="material_library_div_s">
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    <a href="javascript:void(0);" id="showsucai_a">简报夹</a></h1>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--简报-->
+    <div class="floatdiv" id="material_library_div">
+        <!-- 简报夹浮层，初始化隐藏，每次从页面上点击“加入简报夹”时滑出，点击“关闭”后滑入。 -->
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    简报夹</h1>
+                <a class="btn_close" id="close_material_btn" title="关闭窗口" href="javascript:void(null)">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <div class="wb_wc_wwc">
+                        <span class="left">
+                            <input type="checkbox" id="checkbox_all" /><a class="btn" href="javascript:void(null);"
+                                id="del_material_btn">删除素材</a></span><!-- 对素材批量删除操作 -->
+                    </div>
+                    <form action="/" method="post" id="print_div">
+                    <div class="wb_boxnr_l" id="material_library_list_div">
+                    </div>
+                    </form>
+                    <div class="form_btn">
+                        <input class="btn" id="create_jianbao_btn" value="生成简报" type="button" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/temps" id="material_library_temps">
+<%for (var i in list) {%><div class="wb_boxnr"><div class="wb_boximg"><%if(list[i].authorName=="") {%><%if(list[i].thumbnailPic!=""){ %><input class="wb_inputmar" type="checkbox" value="<%=list[i].referenceId %>" /><img src="<%=list[i].thumbnailPic%>" /><%} %><%}else{ %><span class="head"><img onerror="this.src='img/userdefault.jpg'" src="<%=list[i].profileImageUrl %>" /></span><input class="wb_inputmar" type="checkbox" value="<%=list[i].referenceId %>" /></div><div class="wb_boxusernr"><div class="wb_usertit"><a class="aname" href="javascript:void(null);" target="_blank"><b><%=list[i].authorName %>：</b></a><%=list[i].dreContent%><%if(list[i].thumbnailPic!=""){ %><img src="<%=list[i].thumbnailPic%>" /><%} %><div class="new_top10"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="<%=list[i].weiboUrl %>" target="_blank"><b><%=list[i].timesTamp%></b></a> 来源：<%=list[i].siteName %></td><td><span><a href="{转发链接}" target="_blank">转发</a>（<b class="color_2"><%=list[i].forwardNum %></b>）</span>|<span><a href="{评论链接}" target="_blank">评论</a>（<b class="color_2"><%=list[i].replyNum %></b>）</span></tr></tbody></table></div></div></div><div class="clear"></div></div><%}} %>    
+    </script>
+</body>
+</html>

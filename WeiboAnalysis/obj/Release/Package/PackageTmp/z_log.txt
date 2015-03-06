@@ -1,0 +1,8 @@
+2012-03-05
+微博分析->视频分析 配置修改记录
+新增	videoAnalysis.html	视频分析页面
+新增	jwplayer文件夹		视频播放器
+新增	scripts/web			新增 JS文件 videoAnalysis.js	视频分析
+修改	bin/DataSourceConfig.xml	新增 idolvideodb 节点 用于配置视频的idol数据库
+修改	Scripts/common.js		新增 VideoDataBase Config JSON属性，用于配置视频服务器地址
+修改	Css weibo.css			新增 视频页面样式

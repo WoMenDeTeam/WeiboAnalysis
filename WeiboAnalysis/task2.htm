@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper" id="wraper_div">
+            <!--左边列表栏-->
+            <div class="column" id="left_div" style="width: 24%; margin-right: 1%;">
+                <div id="history_div" class="history_tac" style="display: none">
+                    <div class="widget_border">
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_outer">
+                        <div class="widget_header">
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            搜索历史
+                                        </td>
+                                        <td align="right">
+                                            <a class="btn_delete" id="colse_history_div" href="javascript:void(null)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget_resize_frame">
+                            <div class="widget_body">
+                                <div id="historyList">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget_line">
+                    </div>
+                    <div class="widget_border">
+                    </div>
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="hotweibolist_title">
+                                        活跃用户
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="left_user_hot_plan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <!--右边-->
+            <div class="column" id="right_div" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        任务列表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--高级搜索-->
+                            <!-- 搜索栏开始 -->
+                            <div class="wb_gjsearch">
+                                <a href="javascript:void(null);" class="btn_history heigh_pad12">全部任务</a>
+                                <div id="custom_time_div" class="wb_currentnr">
+                                    <ul class="form_list">
+                                        <li><span class="input">
+                                            <input id="start_time" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy/MM/dd'})">
+                                            <code>-</code>
+                                            <input id="end_time" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy/MM/dd'})"></span></li>
+                                    </ul>
+                                </div>
+                                <a href="javascript:void(null);" class="btn_search" id="btn_search">搜 索</a><br>
+                            </div>
+                            <div id="condition_div" class="heighsearch" style="display: none;">
+                                <h3>
+                                    您已选择：</h3>
+                            </div>
+                            <div class="wb_wc_wwc">
+                                <span class="left">
+                                    <!--<input type="checkbox" value="" name="" id="click_all_ckbox">-->
+                                    <!--<code>已选：<b id="checknumber" class="color_2">0</b></code>-->
+                                    <!--<a href="javascript:void(null);" class="btn">分配任务</a>-->
+                                    <a href="javascript:void(null);" class="btn" id="add_task_btn">添加</a></span>
+                                <!--<span class="right"> 
+                                <a class="btn_renew" href="javascript:void(null);"></a>
+                        <code>第<b>1</b>-<b>30</b>页</code> </span>-->
+                                <ul>
+                                    <li class="on" name="wfp" id="wfp_li" value="0"><a>未分配</a></li>
+                                    <li name="yfp" id="yfp_li" value="1"><a>已分配</a></li>
+                                    <li class="on" name="wwc" id="dwc_li" value="0"><a>未完成</a></li>
+                                    <li name="ywc" id="ywc_li" value="1"><a>已完成</a></li>
+                                </ul>
+                            </div>
+                            <!--内容呈现面板-->
+                            <div class="wb_httit" id="list_body_div">
+                                <!-- 管理员-->
+                                <table cellspacing="0" cellpadding="0" class="widget_table" style="display: none;">
+                                    <thead>
+                                        <tr>
+                                            <th width="70%">
+                                                任务
+                                            </th>
+                                            <th width="15%">
+                                                截至时间
+                                            </th>
+                                            <th width="15%">
+                                                完成情况
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 数据循环开始 -->
+                                        <tr>
+                                            <td align="left">
+                                                <b>{任务链接}</b><p>
+                                                    描述</p>
+                                            </td>
+                                            <td align="center">
+                                                {任务添加时间，格式：yyyy.mm.dd hh:mm:ss}
+                                            </td>
+                                            <td align="center">
+                                                <a class="btn" id="fenPeiRenWu_a">分配任务</a> <a id="chaKan_a" class="btn">完成情况</a>
+                                            </td>
+                                        </tr>
+                                        <!-- 数据循环结束 -->
+                                    </tbody>
+                                </table>
+                                <!--网络评论员-->
+                                <table cellspacing="0" cellpadding="0" class="widget_table" style="display: none;">
+                                    <thead>
+                                        <tr>
+                                            <th width="70%">
+                                                任务
+                                            </th>
+                                            <th width="15%">
+                                                发布时间
+                                            </th>
+                                            <th width="15%">
+                                                完成情况
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 数据循环开始 -->
+                                        <tr>
+                                            <td align="left">
+                                                <b>{任务链接}</b>
+                                                <p>
+                                                    描述</p>
+                                            </td>
+                                            <td align="center">
+                                                {任务发布时间，格式：yyyy.mm.dd hh:mm:ss}
+                                            </td>
+                                            <td align="center">
+                                                <a class="btn">已完成</a><!-- {未完成}的按钮 -->
+                                                {任务完成时间，格式：yyyy.mm.dd hh:mm:ss}<!-- {已完成}的按钮 -->
+                                            </td>
+                                        </tr>
+                                        <!-- 数据循环结束 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!--页脚-->
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--新建任务-->
+    <div class="floatdiv" id="add_task_layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="add_task_layer_inner">
+                <div class="layer_move" id="add_task_move" title="点击此处可自由拖动">
+                    <h1 id="H2">
+                        创建任务</h1>
+                </div>
+                <a class="btn_close" id="add_task_close" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <!-- 分配任务弹出层开始 -->
+                    <ul class="form_list">
+                        <li><span class="name">任务链接</span> <span class="input">
+                            <input type="text" style="width: 316px;" id="add_task_url" /></span> <span class="note">
+                                *</span></li>
+                        <li><span class="name">结束时间</span> <span class="input">
+                            <input type="text" style="width: 316px;" id="add_task_endtime" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
+                        </span><span class="note"></span></li>
+                        <li><span class="name">任务描述</span> <span class="input">
+                            <textarea id="add_task_context" cols="36" rows="6"></textarea>
+                        </span><span class="note"></span></li>
+                        <li></li>
+                        <li style="display: none;"><span class="name">分配人员</span> <span class="note"></span>
+                        </li>
+                        <li style="display: none;">
+                            <div class="item left">
+                                <ul class="item_list">
+                                    <!-- 未选中的网评员，拼音正序排序 -->
+                                    <li><a href="javascript:void(null);">{网评员1}</a></li>
+                                    <li><a href="javascript:void(null);">{网评员3}</a></li>
+                                    <li><a href="javascript:void(null);">{网评员4}</a></li>
+                                    <li><a href="javascript:void(null);">{网评员5}</a></li>
+                                </ul>
+                            </div>
+                            <div class="item_line">
+                            </div>
+                            <div class="item right">
+                                <ul class="item_list">
+                                    <!-- 被选中的网评员，拼音正序排序 -->
+                                    <li><a href="javascript:void(null);">{网评员2}</a></li>
+                                </ul>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </li>
+                        <!--- 表单项结束 --->
+                    </ul>
+                    <!--分配任务弹出层结束 -->
+                    <div class="form_btn">
+                        <input type="button" value="添加任务" class="btn" name="" id="add_task_submit_btn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分配任务-->
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        分配任务</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <!-- 分配任务弹出层开始 -->
+                    <ul class="form_list">
+                        <li><span class="name">任务链接</span> <span class="input">
+                            <input type="text" style="width: 316px;" id="task_url" /></span> <span class="note">
+                            </span></li>
+                        <li><span class="name">任务描述</span> <span class="input">
+                            <textarea id="task_contents" cols="36" rows="6">                            
+                            </textarea></span> <span class="note"></span></li>
+                        <li><span class="name">选网评员</span> <span class="input">
+                            <div class="item">
+                                <ul class="item_list" id="wfp_user_info">
+                                </ul>
+                            </div>
+                            <div class="item_line">
+                            </div>
+                            <div class="item">
+                                <ul class="item_list" id="fp_user_info">
+                                    <!-- 被选中的网评员，拼音正序排序 -->
+                                </ul>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </span></li>
+                        <!--- 表单项结束 --->
+                    </ul>
+                    <!-- 分配任务弹出层结束 -->
+                    <div class="form_btn">
+                        <input type="button" value="我定好了" class="btn" name="" id="fp_task_btn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/temps" id="material_library_temps">
+<%for (var i in list) {%><div class="wb_boxnr"><div class="wb_boximg"><%if(list[i].authorName=="") {%><%if(list[i].thumbnailPic!=""){ %><input class="wb_inputmar" type="checkbox" value="<%=list[i].referenceId %>" /><img src="<%=list[i].thumbnailPic%>" /><%} %><%}else{ %><span class="head"><img onerror="this.src='img/userdefault.jpg'" src="<%=list[i].profileImageUrl %>" /></span><input class="wb_inputmar" type="checkbox" value="<%=list[i].referenceId %>" /></div><div class="wb_boxusernr"><div class="wb_usertit"><a class="aname" href="javascript:void(null);" target="_blank"><b><%=list[i].authorName %>：</b></a><%=list[i].dreContent%><%if(list[i].thumbnailPic!=""){ %><img src="<%=list[i].thumbnailPic%>" /><%} %><div class="new_top10"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="<%=list[i].weiboUrl %>" target="_blank"><b><%=list[i].timesTamp%></b></a> 来源：<%=list[i].siteName %></td><td><span><a href="{转发链接}" target="_blank">转发</a>（<b class="color_2"><%=list[i].forwardNum %></b>）</span>|<span><a href="{评论链接}" target="_blank">评论</a>（<b class="color_2"><%=list[i].replyNum %></b>）</span></tr></tbody></table></div></div></div><div class="clear"></div></div><%}} %>    
+    </script>
+</body>
+</html>

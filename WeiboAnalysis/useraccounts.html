@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <!--<script src="Scripts/SqlPager.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/template.js" type="text/javascript"></script>-->
+    <script src="Scripts/web/UserAccounts.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <!--左边导航-->
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="Td1">
+                                        权限管理
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="quanxianguanli_div">
+                                <dl>
+                                    <dd class="on" act="yhgl">
+                                        <a href="javascript:void(null);">用户管理</a></dd>
+                                    <dd act="jsgl" style="display: none;">
+                                        <a href="javascript:void(null);">角色管理</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_outer" style="display: none;">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="hotweibolist_title">
+                                        活跃用户
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="left_user_hot_plan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr id="yhgl_tr">
+                                    <td class="widget_title">
+                                        用户列表
+                                    </td>
+                                    <td align="right">
+                                        <!--<a class="btn_edit" id="updatepassword_a" href="javascript:void(null);">--><a class="btn_add"
+                                            id="adduser_btn" href="javascript:void(null);"></a>
+                                    </td>
+                                </tr>
+                                <tr id="jsgl_tr">
+                                    <td class="widget_title">
+                                        角色列表
+                                    </td>
+                                    <td align="right">
+                                        <a class="btn_add" id="addJueSe_a" href="javascript:void(null);"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="list_body_div">
+                                <div class="load_out">
+                                    <div class="load_in">
+                                        <img src="img/load_big.gif" /></div>
+                                </div>
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="bg_cover">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        修改资料</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">帐 号</span> <span class="input" id="USERNAME"></span></li>
+                        <!--<input type="text" id="USERNAME" readonly="readonly" />-->
+                        <li><span class="name">姓 名</span> <span class="input">
+                            <input type="text" id="up_realname" /></span> <span class="note"></span></li>
+                        <li><span class="name">科 室</span> <span class="input">
+                            <input type="text" id="up_departmentname" /></span> <span class="note"></span>
+                        </li>
+                        </span><span class="note"></span></li>
+                        <li><span class="name">邮 箱</span> <span class="input">
+                            <input type="text" id="EMAIL" /></span> <span class="note"></span></li>
+                        <li><span class="name">权 限</span> <span class="input">
+                            <input type="checkbox" id="Power" /><code>可以操作舆情处置</code> </span><span class="note">
+                            </span></li>
+                        <li><span class="name">角 色</span> <span class="input">
+                            <select id="user_role_sel">
+                            </select>
+                        </span><span class="note"></span></li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="submit_btn" name="" type="button" class="btn" value="确定" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--添加用户层-->
+    <div class="floatdiv" id="adduser_div">
+        <div class="layer_outer">
+            <div class="layer_inner" id="adduser_div_inner">
+                <div class="layer_move" id="addUserMove_div" title="点击此处可自由拖动">
+                    <h1 id="H1">
+                        添加用户</h1>
+                </div>
+                <a class="btn_close" id="addUserClose_btn" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">帐 号</span> <span class="input">
+                            <input type="text" id="add_username" /></span> <span class="note"></span></li>
+                        <li><span class="name">姓 名</span> <span class="input">
+                            <input type="text" id="add_realname" /></span> <span class="note"></span></li>
+                        <li><span class="name">科 室</span> <span class="input">
+                            <input type="text" id="add_departmentname" /></span> <span class="note"></span>
+                        </li>
+                        <li><span class="name">密 码</span> <span class="input">
+                            <input type="password" id="add_password" /></span> <span class="note"></span>
+                        </li>
+                        <li><span class="name">密码确认</span> <span class="input">
+                            <input type="password" id="add_password2" /></span> <span class="note"></span>
+                        </li>
+                        <li><span class="name">邮 箱</span> <span class="input">
+                            <input type="text" id="add_email" /></span> <span class="note"></span></li>
+                        <li><span class="name">权 限</span> <span class="input">
+                            <input type="checkbox" id="add_power" /><code>可以操作舆情处置</code> </span><span class="note">
+                            </span></li>
+                        <li><span class="name">角 色</span> <span class="input">
+                            <select id="role_sel">
+                            </select>
+                        </span><span class="note"></span></li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="addUser_btn" name="" type="button" class="btn" value="确定" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改密码-->
+    <div class="floatdiv" id="updatepassword">
+        <div class="layer_outer">
+            <div class="layer_inner" id="updatepassword_inner">
+                <div class="layer_move" id="updatepassword_move_div" title="点击此处可自由拖动">
+                    <h1 id="H2">
+                        修改密码</h1>
+                </div>
+                <a class="btn_close" id="updatepassword_close" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">输入密码</span> <span class="input">
+                            <input type="password" id="Password1" /></span> <span class="note"></span></li>
+                        <li><span class="name">密码确认</span> <span class="input">
+                            <input type="password" id="Password2" /></span> <span class="note"></span></li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="updatepassword_btn" name="" type="button" class="btn" value="确定" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改个人信息-->
+    <div class="floatdiv" id="updateinfodiv">
+        <div class="layer_outer">
+            <div class="layer_inner" id="updateinfodiv_inner">
+                <div class="layer_move" id="updateinfodiv_move_div" title="点击此处可自由拖动">
+                    <h1 id="H3">
+                        修改密码</h1>
+                </div>
+                <a class="btn_close" id="updateinfodiv_close" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">帐 号</span> <span class="input" id="info_username"></span><span
+                            class="note"></span></li>
+                        <li><span class="name">姓 名</span> <span class="input">
+                            <input type="text" id="info_realname" /></span> <span class="note"></span></li>
+                        <li><span class="name">科 室</span> <span class="input">
+                            <input type="text" id="info_departmentname" /></span> <span class="note"></span>
+                        </li>
+                        <li><span class="name">新密码</span> <span class="input">
+                            <input type="password" id="info_password1" /></span> <span class="note"></span>
+                        </li>
+                        <li><span class="name">密码确认</span> <span class="input">
+                            <input type="password" id="info_password2" /></span> <span class="note"></span>
+                        </li>
+                        <li><span class="name">邮 箱</span> <span class="input">
+                            <input type="text" id="info_email" /></span> <span class="note"></span></li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="update_userinfo" name="" type="button" class="btn" value="确定" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--添加修改权限-->
+    <div class="floatdiv" id="addrolediv">
+        <div class="layer_outer">
+            <div class="layer_inner" id="addrolediv_inner">
+                <div class="layer_move" id="addrolemove" title="点击此处可自由拖动">
+                    <h1 id="H4">
+                        添加角色</h1>
+                </div>
+                <a class="btn_close" id="addrole_close" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">角色名</span> <span class="input">
+                            <input type="text" id="addrolename_txt" /></span> <span class="note"></span>
+                        </li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="addrole_submit" name="" type="button" class="btn" value="确定" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改角色-->
+    <div class="floatdiv" id="updaterolediv">
+        <div class="layer_outer">
+            <div class="layer_inner" id="updaterolediv_inner">
+                <div class="layer_move" id="updaterolemove" title="点击此处可自由拖动">
+                    <h1 id="H5">
+                        修改角色</h1>
+                </div>
+                <a class="btn_close" id="updaterole_close" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <ul class="form_list">
+                        <li><span class="name">角色名</span> <span class="input">
+                            <input type="text" id="updaterolename_txt" /></span> <span class="note"></span>
+                        </li>
+                    </ul>
+                    <div class="form_btn">
+                        <input id="updaterole_submit" name="" type="button" class="btn" value="确定" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--模版-->
+    <script type="text/temps" id="listrole_temps">
+    <table class="widget_table" cellSpacing="0" cellPadding="0">
+    <thead>
+        <tr>
+            <th width="10%">编号</th>
+            <th width="75%">角色</th>
+            <th width="15%">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% for (var i in data) {%>
+    <tr>
+    <td><%=data[i].RowNumber %></td>
+    <td><%= data[i].RoleName%></td>
+    <td><span class="btn">
+    <a class="btn_delete" title="删除角色" cid=<%= data[i].ID%> act="del"></a><a class="btn_edit" title="编辑角色" rname=<%=data[i].RoleName %> cid=<%= data[i].ID%> act="edit"></a>
+    </span></td>
+    </tr>
+    <%} %>
+    </tbody>
+</table >
+    </script>
+    <script type="text/temps" id="list_temps"> 
+<table class="widget_table" cellSpacing="0" cellPadding="0">
+    <thead>
+        <tr>
+            <th width="20%">帐号</th>
+            <th width="15%">角色</th>
+            <th width="15%">姓名</th>
+            <th width="35%">科室</th>
+            <th width="15%">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% for (var i in data) {
+    if(data[i].USERNAME!=null&&data[i].USERNAME!="admin"){%>
+        <tr>
+            <td><%= data[i].USERNAME%></td>
+            <td><%= data[i].RoleName%></td>
+            <td><%= data[i].RealName%></td>
+            <td><%= data[i].DepartmentName%></td>
+            <td><span class="btn">
+            <a class="btn_delete" title="删除用户" index=<%=i %> act="del"></a><a class="btn_edit" title="编辑用户" index=<%=i %> act="edit"></a>
+            </span></td>
+        </tr>
+        <%}} %>
+    </tbody>
+</table >
+    </script>
+</body>
+</html>

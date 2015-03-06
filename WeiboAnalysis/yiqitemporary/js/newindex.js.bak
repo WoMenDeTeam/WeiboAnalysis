@@ -1,0 +1,500 @@
+﻿$(document).ready(function() {
+    Common.InnitCategoryList = function(data) {
+        NewIndex.InnitCategory(data);
+    }
+    Common.LoginEventFn = function(data) {
+        NewIndex.Innit();
+    }
+    Common.CheckUser();
+});
+var _newindex = new Object;
+var NewIndex = _newindex.property = {
+    query_params: { "action": "query", "display_style": 6, "totalresults": "true",
+        "summary": "context", "sort": "Date", "characters": "600"
+    },
+    ClustersList: { "society_clusters": "JOB_SAFETY_CLUSTERS" },
+    Innit: function() {
+        /*初始化首页上的各个选项单*/
+        NewIndex.InnitSelectFn();
+        /*初始化首页上的各个选项卡*/
+        NewIndex.InnitTabClickFn();
+        /*初始化热点聚焦*/
+        NewIndex.InnitClusters();
+        /*初始化今日预警*/
+        NewIndex.InitSentiveWord("sensive");
+        /*初始化地区分类*/
+        NewIndex.InnitAreaMapAndList();
+        /*初始化重点专题*/
+        NewIndex.InnitEventSQ();
+        /*初始化周报列表*/
+        NewIndex.InnitWeekReport("week");
+        /*初始化博客论坛热议*/
+        NewIndex.InnitBlogBbsHot();
+    },
+    InitSentiveWord: function(type) {
+        $("#sentive_word").empty().html("<img src=\"img/loading_icon.gif\" alt=\"loading...\" />");
+        $.post("Handler/Warning.ashx", { "type": type }, function(data) {
+            if (data) {
+                delete data["SuccessCode"];
+                var content = [];
+                if (type == "sensive") {
+                    for (var item in data) {
+                        var keyword = unescape(item).split('_')[0];
+                        var row = data[item];
+                        var href = unescape(row["href"]);
+                        var basetitle = unescape(row["title"]);
+                        var distitle = Common.SliceStr(basetitle, 15);
+                        content.push("<li><a target=\"_blank\" title=\"" + basetitle + "\" href=\"" + href + "\">");
+                        content.push("<span class=\"text\" >" + distitle + "</span>");
+                        content.push("<span class=\"date\">" + unescape(row["time"]).slice(0, 10) + "</span></a>");
+                        content.push("<a class=\"color_2\" title=\"查看更多" + keyword + "相关信息\"");
+                        content.push(" href=\"search.html?keyword=" + keyword + "\" target=\"_blank\"><span class=\"rss\">敏感词：</span>");
+                        content.push("<b class=\"color_2\">" + keyword + "</b></a>");
+                        content.push("</li>");
+                    }
+                } else {
+                    var stand_view_num = 100;
+                    for (var item in data) {
+                        var row = data[item];
+                        var href = unescape(row["href"]);
+                        var viewnum = parseInt(unescape(row["viewcount"]));
+                        if (viewnum >= stand_view_num) {
+                            var persent = stand_view_num / viewnum * 100;
+                            var basetitle = unescape(row["title"]);
+                            var distitle = Common.SliceStr(basetitle, 22);
+                            content.push("<li><a href=\"" + href + "\" title=\"" + basetitle + "\" target=\"_blank\">");
+                            content.push("<span class=\"text\">" + distitle + "</span><span class=\"rate\">预警：<b class=\"color_3\">" + stand_view_num + "</b>");
+                            content.push(" 访问：<b class=\"color_2\">" + viewnum + "</b></span>");
+                            content.push("<span class=\"rule\"><b style=\"width:" + persent + "%;\"></b></span></a></li>");
+                        }
+                    }
+                }
+
+                if (content.length > 0) {
+                    $("#sentive_word").empty().html(content.join(""));
+                    Common.InitMarquee("sentive_word", 7, 340, 360);
+                }
+            }
+        },
+        "json");
+    },
+    InnitCategory: function(data) {
+        var list = data["subnav_1"];
+        var count = 1;
+        var s = {};
+        var frame = "special_category";
+        var content = [];
+        var innitcategory = null;
+        for (var item in list) {
+            content.push("<li class=\"");
+            if (count == 1) {
+                innitcategory = item;
+                content.push("tab_on");
+            } else {
+                content.push("tab_off");
+            }
+            content.push("\" id=\"special_category_" + item + "\"><a href=\"javascript:void(null);\">");
+            content.push(unescape(list[item]) + "</a></li>");
+            var tab = "special_category_" + item;
+            s[tab] = frame;
+            count++;
+        }
+        $("#category_list").empty().html(content.join(""));
+        /*初始化舆情快报*/
+        NewIndex.InitPublicCategory(innitcategory);
+        Common.TabControl(s, "tab_on", "tab_off");
+    },
+    InnitStatistInfo: function(objID) {
+        //$("#hot_day_word_list").empty().html("<img src=\"img/loading_icon.gif\" />");
+        $("#" + objID).empty().html("<img src=\"img/loading_icon.gif\" />");
+        $.getJSON("Handler/StatistInfo.ashx?type=day_bbs",
+            null,
+            function(data) {
+                if (data) {
+                    //NewIndex.InnitHotWordList(data["HotDayKeyword"], "hot_day_word_list");
+                    //NewIndex.InnitHotWordList(data["HotWeekKeyword"], "hot_week_word_list");
+                    //NewIndex.InnitHotBBSList(data["HotDayBBs"], objID);
+                    //NewIndex.InnitHotBBSList(data["HotWeekBBs"], "hot_week_bbs_list");
+                }
+            },
+            "json"
+        );
+    },
+    InnitTabClickFn: function() {
+        /*专题分类切换*/
+        var PublicSpecial = { "weekly": "tab_download_1", "monthly": "tab_download_2", "publicSpecial": "tab_download_3" };
+        Common.TabControl(PublicSpecial, "tab_on", "tab_off");
+
+        /*排行切换*/
+        var ordertab = { "point_blog_sel": "point_blog_frame", "point_bbs_sel": "point_bbs_frame" };
+        Common.TabControl(ordertab, "tab_on", "tab_off");
+
+        var reporttab = { "report_week_sel": "report_week_frame", "report_month_sel": "report_month_frame", "report_special_sel": "report_special_frame" };
+        Common.TabControl(reporttab, "tab_on", "tab_off");
+
+        for (var tab in reporttab) {
+            $("#" + tab).click(function() {
+                var type = tab.split('_')[1];
+                NewIndex.InnitWeekReport(type);
+            });
+        }
+    },
+    GetClustersParams: function(l_data) {
+        var params = {};
+        var data = {};
+        if (l_data) {
+            data = l_data;
+        } else {
+            data = NewIndex.ClustersList;
+        }
+        var count = 1;
+        for (var item in data) {
+            $("#" + item).empty().html("<img src=\"img/loading_icon.gif\" alt=\"loading...\" />");
+            params["type_" + count] = data[item];
+            count++;
+        }
+        return params;
+    },
+    /*拼接热点聚焦HTML*/
+    InnitClusters: function(clusters_list) {
+        var params = NewIndex.GetClustersParams(clusters_list);
+        $.post("Handler/NewIndex.ashx",
+            params,
+            function(data) {
+                delete data["SuccessCode"];
+                var clusterdata = null;
+                if (clusters_list) {
+                    clusterdata = clusters_list;
+                } else {
+                    clusterdata = NewIndex.ClustersList;
+                }
+                for (var item in clusterdata) {
+                    var key = clusterdata[item];
+                    var row = data[key];
+                    var content = [];
+                    var count = 1;
+                    var tag = false;
+                    delete row["SuccessCode"];
+                    for (var entity in row) {
+                        var rowlist = row[entity];
+                        delete rowlist["SuccessCode"];
+                        if (Common.GetJSONLength(rowlist) > 0) {
+                            if (count == 1) {
+                                content.push("<li name=\"clusters_list\" class=\"tab_on\">");
+                            } else {
+                                content.push("<li name=\"clusters_list\" class=\"tab_off\">");
+                            }
+
+                            var itemcount = 1;
+                            for (var one in rowlist) {
+                                var itemlist = rowlist[one];
+                                var basetitle = unescape(itemlist["title"]);
+                                var title = Common.SliceStr(basetitle, 18);
+                                if (itemcount == 1) {
+                                    content.push("<a href=\"" + unescape(itemlist["href"]) + "\" target=\"_blank\" title=\"" + basetitle + "\">");
+                                    content.push("<span class=\"text font_2\">" + title);
+                                    content.push("</span><span class=\"rss\">【" + unescape(itemlist["site"]) + "】");
+                                    content.push("</span><span class=\"date\">" + unescape(itemlist["time"]) + "</span></a>");
+                                    if (count == 1) {
+                                        content.push("<ul class=\"news_list\">");
+                                    } else {
+                                        content.push("<ul class=\"news_list\" style=\"display:none;\">");
+                                    }
+                                }
+                                else {
+
+                                    content.push("<li><a target=\"_blank\" href=\"" + unescape(itemlist["href"]) + "\" title=\"" + basetitle + "\">");
+                                    content.push("<span class=\"text color_7\">" + title + "</span></a></li>");
+
+                                }
+                                itemcount++;
+                            }
+                            content.push("</ul>");
+                            count++;
+                            content.push("</li>");
+                        }
+                    }
+                    $("#" + item).empty().html(content.join(""));
+                    NewIndex.InnitClustersHoverFn(item);
+                }
+            },
+            "json"
+        );
+    },
+    /*定义聚焦的鼠标移动事件*/
+    InnitClustersHoverFn: function(id) {
+        $("#" + id).children("li").hover(function() {
+            $("#" + id).find("li[name='clusters_list']").attr("class", "tab_off");
+            $("#" + id).find("ul").hide();
+            $(this).find("ul").show();
+            $(this).attr("class", "tab_on");
+        }, function() {
+
+        });
+    },
+    InnitSelectFn: function() {
+        /*初始化敏感词的选项事件*/
+        NewIndex.InnitSelectSensiveWords();
+        /*初始化舆情快报的选项事件*/
+        NewIndex.InnitSelectSlide();
+        /*初始化社会热点聚焦的选项事件*/
+        //NewIndex.InnitSelectClusters("society_clusters_type", "society_clusters_frame", "society_clusters");
+
+    },
+    InnitSelectSensiveWords: function() {
+        var slideselect = new SelectFrame("a_warning", "warning_frame");
+        slideselect.SelectClickFn = function(val) {
+            NewIndex.InitSentiveWord(val);
+        }
+        slideselect.CreateSelectFrame("a_warning", "warning_frame");
+    },
+    InnitSelectClusters: function(obj_type, obj_frame, obj_result) {
+        var slideselect = new SelectFrame(obj_type, obj_frame);
+        slideselect.SelectClickFn = function(val) {
+            var list = {};
+            list[obj_result] = val;
+            NewIndex.InnitClusters(list)
+        }
+        slideselect.CreateSelectFrame(obj_type, obj_frame);
+    },
+    InnitSelectSlide: function() {
+        var slideselect = new SelectFrame("select_slide_type", "select_slide_frame");
+        slideselect.SelectClickFn = function(val) {
+            if (val == "all") {
+                NewIndex.InnitSlideNews();
+            } else {
+                NewIndex.InnitSlideNews(val);
+            }
+        }
+        slideselect.CreateSelectFrame("select_slide_type", "select_slide_frame");
+    },
+    /*初始化舆情分类*/
+    InitPublicCategory: function(innit_categoryid) {
+        $("li[id^='special_category_']").each(function() {
+            $(this).click(function() {
+                //$("#special_category").hide();
+                var cate = $(this).attr("id").split("_")[2];
+                //$("#special_category_list_" + cate).show();
+                NewIndex.query_params["text"] = "*";
+                NewIndex.query_params["fieldtext"] = "MATCH{news}:C1+AND+MATCH{" + cate + "_}:D1";
+                NewIndex.query_params["columnid"] = 
+                NewIndex.InnitSlideNews("slide_news_list");
+                NewIndex.query_params["fieldtext"] = "MATCH{blog}:C1+AND+MATCH{" + cate + "}:D1";
+                NewIndex.InnitSlideNews("blog_list");
+                NewIndex.query_params["fieldtext"] = "MATCH{bbs}:C1+AND+MATCH{" + cate + "}:D1";
+                NewIndex.InnitSlideNews("bbs_list");
+            });
+        });
+        $("#special_category_" + innit_categoryid).click();
+    },
+    /*拼接舆情快报的HTML*/
+    InnitSlideNews: function(result_id) {
+        var innitdata = { "page_size": 10, "result_id": result_id, "status_bar_id": "status_bar_id" };
+        var Lpager = new Pager(innitdata);
+        Lpager.Display = function(data, l_obj) {
+            NewIndex.InnitSlideHtml(data, l_obj);
+        };
+        Lpager.LoadData(1, NewIndex.query_params);
+    },
+    InnitSlideHtml: function(data, obj) {
+        var result_id = obj.result_id;
+        delete data["Success"];
+        delete data["totalcount"];
+        var content = [];
+        for (var item in data) {
+            var row = data[item];
+            var title = unescape(row["title"]);
+            var l_title = Common.SliceStr(title, 20);
+            content.push("<li><a href=\"" + unescape(row["href"]) + "\" target=\"_blank\" title=\"" + title + "\">");
+            content.push("<span class=\"date\">" + unescape(row["time"]).slice(5, 10) + "</span>");
+            content.push("<span class=\"text\">" + l_title + "</span></a></li>");
+        }
+        $("#" + result_id).empty().html(content.join(""));
+    },
+    GetTimeStr: function(time_str) {
+        var basetime = new Date(NewIndex.replaceAll(time_str, "-", "/"));
+        return (basetime.getMonth() + 1) + "-" + basetime.getDate();
+    },
+    replaceAll: function(s, s1, s2) {
+        return s.replace(new RegExp(s1, "gm"), s2);
+    },
+    GetCountHtml: function(count, hotcount, commoncount) {
+        if (count >= 1500) {
+            return "<span class=\"temperature_red\" title=\"" + count + "\">高温</span>";
+        } else if (count >= 500 && count < 1500) {
+            return "<span class=\"temperature_blue\" title=\"" + count + "\">中温</span>";
+        } else {
+            return "<span class=\"temperature_green\" title=\"" + count + "\">低温</span>";
+        }
+    },
+    Static: function() {
+        var tagdata = { "entity_1": { "tag": "安监总局", "count": "50", "cssClass": "color_0" },
+            "entity_2": { "tag": "瓦斯爆炸", "count": "43", "cssClass": "color_0" },
+            "entity_3": { "tag": "煤矿事故", "count": "42", "cssClass": "color_1" },
+            "entity_4": { "tag": "交通事故", "count": "38", "cssClass": "color_3" },
+            "entity_5": { "tag": "消防火灾", "count": "33", "cssClass": "color_3" },
+            "entity_6": { "tag": "安全生产", "count": "22", "cssClass": "color_3" }
+        };
+        var word_list = [];
+        for (var item in tagdata) {
+            word_list.push(tagdata[item]);
+        }
+        $("#hot_keywords").tagCloud(word_list);
+        $("#hot_keywords").find("a").click(function() {
+            var keyword = $(this).html();
+            window.open("search.html?keyword=" + keyword);
+        });
+    },
+    InnitAreaMapAndList: function() {
+        Common.MapAreaClickFn = function(categoryid, categoryname) {
+            window.open("district.html?categoryid=" + categoryid + "_&categoryname=" + categoryname);
+        }
+        Common.InnitComplexionMap();
+    },
+    GetTempHtml: function(totalhits) {
+        var htmlstr = null;
+        if (totalhits >= 1800) {
+            htmlstr = "<span class=\"temperature_red\" title=\"" + totalhits + "\">升温</span>";
+        } else if (totalhits >= 500 && totalhits < 1800) {
+            htmlstr = "<span class=\"temperature_blue\" title=\"" + totalhits + "\">恒温</span>";
+        } else {
+            htmlstr = "<span class=\"temperature_green\" title=\"" + totalhits + "\">降温</span>";
+        }
+        return htmlstr;
+    },
+    /* 初始化专题 */
+    InnitEventSQ: function() {
+        var LSqlList = new SqlList();
+        LSqlList.initData = { "page_size": 5, "result_id": "special_category_list", "status_bar_id": "null", "post_url": "SqlSearch.ashx" };
+        LSqlList.SqlQueryParams = { "action": "getindexspeciallist", "strwhere": " B.PARENTID=138 AND A.ISEFFCT=1", "display_style": 6 };
+        LSqlList.DisplayHtml = function(data, l_obj) {
+            var newcategory = data["newcategory"];
+            $("#index_new_category").empty();
+            if (newcategory) {
+                var newcategoryhtml = [];
+                newcategoryhtml.push("<li><a href=\"theme.html?id=" + newcategory["categoryid"] + "_" + newcategory["parentcate"] + "_" + newcategory["id"] + "&columnid=" + newcategory["id"] + "&name=" + unescape(newcategory["categoryname"]) + "\" target=\"_blank\">");
+                newcategoryhtml.push("<span class=\"text font_2\">" + unescape(newcategory["categoryname"]) + "</span><span class=\"rate\">");
+                newcategoryhtml.push("已经发布：<b class=\"color_2\">" + newcategory["totalcount"] + "</b>");
+                newcategoryhtml.push("　今日发布：<b class=\"color_2\">" + newcategory["daycount"] + "</b></span></a></li>");
+                $("#index_new_category").html(newcategoryhtml.join(""));
+            }
+            var entitylist = data["pagerstr"]["entitylist"];
+            delete entitylist["SuccessCode"];
+            var count = 1;
+            var content = [];
+            var imghtml = [];
+            for (var item in entitylist) {
+                var entity = entitylist[item];
+                var id = entity["id"];
+                var parentcate = entity["parentcate"];
+                var categoryname = unescape(entity["categoryname"]);
+                var discategoryname = Common.SliceStr(discategoryname, 19);
+                var categoryid = entity["categoryid"];
+                var eventdate = unescape(entity["eventdate"]);
+                var web_href = "theme.html?id=" + categoryid + "_" + parentcate + "_" + id + "&columnid=" + entity["columnid"] + "&name=" + categoryname;
+                content.push("<li");
+                var img_path = unescape(entity["categoryimgpath"]);
+                var dis_img_path = img_path == "" ? "img/theme_default.gif" : img_path;
+                if (count == 1) {
+                    imghtml.push("<a href=\"" + web_href + "\" title=\"" + categoryname + "\" target=\"_blank\">");
+                    imghtml.push("<img  src=\"" + dis_img_path + "\" /></a>");
+                    $("#special_category_image").empty().html(imghtml.join(""));
+                    content.push(" class =\"on\" ");
+                } else {
+                    imghtml.push("<a style=\"display:none;\" href=\"" + web_href + "\" title=\"" + categoryname + "\" target=\"_blank\">");
+                    imghtml.push("<img  src=\"" + dis_img_path + "\" /></a>");
+                }
+                content.push("><a href=\"" + web_href + "\" title=\"" + categoryname + "\" target=\"_blank\"><span class=\"num\">" + count + "</span><span class=\"text\">" + discategoryname + "</span><span class=\"rate\">" + eventdate + "</span></a></li>");
+                count++;
+            }
+            $("#special_category_list").empty().html(content.join(""));
+            $("#special_category_image").empty().html(imghtml.join(""));
+            NewIndex.InnitImgRotate();
+        }
+        LSqlList.Search();
+    },
+    /*初始化博客论坛热议*/
+    InnitBlogBbsHot: function() {
+        var itemlist = { "point_blog_frame": "MATCH{140_}:D1", "point_bbs_frame": "MATCH{141_}:D1" };
+        var query_params = { "action": "query", "display_style": 6, "totalresults": "true",
+            "summary": "context", "sort": "Date", "characters": "600", "printfields": "DRETITLE,MYSITENAME,DREDATE,DOMAINSITENAME,READNUM"
+        };
+        var innitdata = { "page_size": 10, "result_id": "", "status_bar_id": "dddd" };
+        for (var item in itemlist) {
+            innitdata["result_id"] = item;
+            if (item == "point_yaowen_frame") {
+                query_params["database"] = "NewsSource+Safety+PortalSafety";
+                delete query_params["text"];
+            } else {
+                delete query_params["database"];
+                query_params["text"] = Common.FilterKeyWords;
+            }
+            query_params["fieldtext"] = itemlist[item];
+            var Lpager = new Pager(innitdata);
+            Lpager.Display = function(data, obj) {
+                var result_id = obj.result_id;
+                delete data["Success"];
+                delete data["totalcount"];
+                var content = [];
+                var doccount = 1;
+                for (var item in data) {
+                    var row = data[item];
+                    var title = unescape(row["title"]);
+                    var web_href = unescape(row["href"]);
+                    var l_title = Common.SliceStr(title, 12);
+                    content.push("<li><a href=\"" + web_href + "\" title=\"" + title + "\" target=\"_blank\"><span class=\"");
+                    if (doccount <= 3) {
+                        content.push("num red");
+                    } else {
+                        content.push("num");
+                    }
+                    content.push("\">" + doccount + "</span><span class=\"text color_7\">" + l_title + "</span>");
+                    content.push("<span class=\"text\">浏览量：" + row["clicknum"] + "</span>");
+                    content.push("<span class=\"date\">" + unescape(row["time"]).slice(5, 10) + "</span></a></li>");
+                    doccount++;
+                }
+                $("#" + result_id).empty().html(content.join(""));
+            };
+            Lpager.LoadData(1, query_params);
+        }
+    },
+    InnitImgRotate: function() {
+        var category_list = $("#special_category_list").children("li");
+        var img_list = $("#special_category_image").children("a");
+        category_list.each(function(n) {
+            $(this).hover(
+                function() {
+                    $(img_list).hide();
+                    $(img_list[n]).show();
+                    $(img_list[n]).css("display", "block");
+                    $(category_list).removeAttr("class");
+                    $(this).attr("class", "on");
+                }
+            )
+        });
+    },
+    InnitWeekReport: function(type) {
+        var reporttype = { "week": "1", "special": "2", "month": "3" };
+        var LSqlList = new SqlList();
+        LSqlList.initData = { "page_size": 10, "result_id": "report_" + type + "_frame", "status_bar_id": "null", "post_url": "SqlSearch.ashx" };
+
+        LSqlList.SqlQueryParams = { "action": "getreportlist", "strwhere": " TYPE=" + reporttype[type] + " AND STATUS=3", "strorder": "CREATETIME DESC", "display_style": 6 };
+        LSqlList.DisplayHtml = function(data, l_obj) {
+            var entitylist = data["entitylist"];
+            delete entitylist["SuccessCode"];
+            var content = [];
+            for (var item in entitylist) {
+                var entity = entitylist[item];
+                var title = unescape(entity["title"]);
+                var url = unescape(entity["url"]);
+                var creattime = unescape(entity["creattime"]);
+                content.push("<li><span class=\"text\">" + title);
+                content.push("</span><a class=\"btn_download\" href=\"" + Common.ReportHttp + url + "\">下载</a>");
+                content.push("</li>");
+            }
+
+            $("#report_" + type + "_frame").empty().html(content.join(""));
+        }
+        LSqlList.Search();
+    }
+}

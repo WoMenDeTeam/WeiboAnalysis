@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/web/ThesaurusList.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <!--左边导航-->
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <!--历史记录-->
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        负面话题
+                                    </td>
+                                    <td align="right">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div class="new_top10" id="right_oper" style="display: none;">
+                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="110">
+                                                <select id="processType" style="width: 100px;">
+                                                    <option value="0" checked="checked">未处理</option>
+                                                    <option value="1">已删除</option>
+                                                    <option value="2">已忽略</option>
+                                                </select>
+                                            </td>
+                                            <td align="right">
+                                                <span class="btn"><a class="btn_delete" href="javascript:void(null);" title="删除话题"
+                                                    onclick="javascript:ThesaurusList.Remove('删除该类别下的所有信息列表将被删除，您确定要删除么?');"></a><a class="btn_edit"
+                                                        href="javascript:void(null);" title="修改话题名称" onclick="javascript:ThesaurusList.InitEdit('Id','back_msg');">
+                                                    </a><a class="btn_add" href="javascript:void(null);" title="增加负面话题" onclick="javascript:ThesaurusList.InnitAdd();">
+                                                    </a></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="recently_div">
+                                <dl id="treeThesaurus" class="ztree">
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <div>
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            微博列表
+                                        </td>
+                                        <td>
+                                            <span class="btn"><a class="btn_save" id="export_to_excel" href="javascript:void(0);"></a></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="condition_div" class="heighsearch" style="display: none;">
+                                <h3>
+                                    您已选择：</h3>
+                            </div>
+                            <div class="wb_wc_wwc" id="actionBtns">
+                                <span class="left">
+                                    <div id="left_btn">
+                                        <input id="click_all_ckbox" name="" type="checkbox" value="" />
+                                        <code><b class="color_2" id="checknumber">0</b></code> <a href="javascript:void(0);"
+                                            style="display: none;" class="btn" id="untreated">未处理</a> <a href="javascript:void(0);"
+                                                class="btn" id="markDel">删除</a><a href="javascript:void(0);" class="btn" id="markIgnored">忽略</a>
+                                    </div>
+                                </span><span class="right">
+                                    <!--<a class="btn_renew"  href="javascript:void(null);"></a>-->
+                                    <code>第<b id="currpage_b">0/0</b>页,共<b class="color_2" id="count_b">0</b>条</code>
+                                </span>
+                                <ul>
+                                    <li id="real_time_btn" class="on"><a>实时 ↓</a></li>
+                                    <li id="hot_point_btn"><a>转发 ↓</a></li>
+                                    <li id="negative_btn"><a>评论 ↓</a></li>
+                                </ul>
+                            </div>
+                            <div id="list_body_div">
+                                <div class="load_out">
+                                    <div class="load_in">
+                                        <img src="img/load_big.gif" /></div>
+                                </div>
+                            </div>
+                            <div class="page" id="pagebar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="log">
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="column_edit_frame">
+        <div class="layer_outer">
+            <div class="layer_inner" id="column_edit_frame_inner">
+                <div class="layer_move" id="move_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        关键词维护</h1>
+                </div>
+                <a class="btn_close" id="close_edit_frame" href="javascript:void(null)" title="关闭窗口">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在创建，请稍后</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <div class="layer_C">
+                    <!--内容-->
+                    <div class="form_list">
+                        <ul>
+                            <li><span class="name">标 题：</span> <span class="input">
+                                <input id="title" pid="valueList" size="36" type="text" /></span> </li>
+                            <li><span class="name">关键词：</span> <span class="input">
+                                <textarea cols="36" rows="10" id="keyword" pid="valueList"></textarea>
+                                <!--<input id="keyword" pid="valueList" size="36" type="text" />-->
+                            </span></li>
+                        </ul>
+                        <div class="form_btn">
+                            <input type="button" class="btn" id="btn_add" t="new" onclick="javascript:listTable.Add('valueList','back_msg','',ThesaurusList.url);"
+                                value="提　交" /><input type="button" class="btn" id="btn_edit" onclick="javascript:ThesaurusList.EditOne('valueList','',ThesaurusList.url);"
+                                    value="修　改" />
+                            <input type="button" class="btn" id="btn_reset" onclick="javascript:listTable.Rest();"
+                                value="重　置" />
+                            <span style="color: Red;" id="back_msg"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="warningPopDiv">
+        <div class="layer_outer" id="warningPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    已被收藏！</div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="material_library_div_s">
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    <a href="javascript:void(0);" id="showsucai_a">简报夹</a></h1>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--简报-->
+    <div class="floatdiv" id="material_library_div">
+        <div class="layer_outer">
+            <div class="layer_inner">
+                <h1>
+                    简报夹</h1>
+                <a class="btn_close" id="close_material_btn" title="关闭窗口" href="javascript:void(null)">
+                </a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <div class="wb_wc_wwc">
+                        <span class="left">
+                            <input type="checkbox" id="checkbox_all"><a class="btn" href="javascript:void(null);"
+                                id="del_material_btn">删除素材</a></span><!-- 对素材批量删除操作 -->
+                    </div>
+                    <form action="/" method="post" id="print_div">
+                    <div class="wb_boxnr_l" id="material_library_list_div">
+                    </div>
+                    </form>
+                    <div class="form_btn">
+                        <input class="btn" id="create_jianbao_btn" value="生成简报" type="button"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

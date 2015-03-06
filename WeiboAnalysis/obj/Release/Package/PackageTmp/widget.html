@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>安全生产微博舆情分析系统</title>
+    <meta charset="utf-8" />
+    <title>jQuery UI Sortable - Connect lists</title>
+    <link href="styles/inettuts.css" rel="stylesheet" type="text/css" />
+    <link href="styles/inettuts.js.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            init();
+        });
+        function init() {
+            $.post("Handler/CusPortalHandler.ashx", { "act": "get" },
+                     function (data) {
+                         if (data) {
+                             $("#column1,#column2,#column3").empty();
+                             loadLayout(data["data"]);
+                             load2();
+                         }
+                     }, "json");
+        }
+        var widght = {
+            settings: {
+                columns: '.column',
+                widgetSelector: '.widget',
+                handleSelector: '.widget-head',
+                contentSelector: '.widget-content',
+                widgetDefault: {
+                    movable: true,
+                    removable: true,
+                    collapsible: true,
+                    editable: true,
+                    colorClasses: ['color-yellow', 'color-red', 'color-blue', 'color-white', 'color-orange', 'color-green']
+                },
+                widgetIndividual: {
+                    intro: {
+                        movable: false,
+                        removable: false,
+                        collapsible: false,
+                        editable: false
+                    }
+                }
+            }
+        };
+        function load2() {
+            $(widght.settings.columns).sortable({
+                connectWith: ".column",
+                handle: ".widget-head",
+                revert: 300,
+                placeholder: 'widget-placeholder',
+                forcePlaceholderSize: true,
+                corsor: "move",
+                start: function (e, ui) {
+                    $(widght.settings.columns).sortable('disable');
+                }
+                ,
+                stop: function (e, ui) {
+                    $(widght.settings.columns).sortable('enable');
+                    saveLayout();
+                }
+            }).disableSelection();
+
+            $(widght.settings.widgetSelector, $(widght.settings.columns)).each(function () {
+                $('<a href="#" class="remove">CLOSE</a>').mousedown(function (e) {
+                    e.stopPropagation();
+                }).click(function () {
+                    if (confirm('This widget will be removed, ok?')) {
+                        $(this).parents(widght.settings.widgetSelector).animate({
+                            opacity: 0
+                        }, function () {
+                            $(this).wrap('<div/>').parent().slideUp(function () {
+                                $(this).remove();
+                                saveLayout();
+                            });
+                        });
+                    }
+                    return false;
+                }).appendTo($(widght.settings.handleSelector, this));
+
+
+                $('<a href="#" class="collapse">COLLAPSE</a>').mousedown(function (e) {
+                    e.stopPropagation();
+                }).toggle(function () {
+                    $(this).css({ backgroundPosition: '-38px 0' })
+                        .parents(widght.settings.widgetSelector)
+                            .find(widght.settings.contentSelector).hide();
+                    return false;
+                }, function () {
+                    $(this).css({ backgroundPosition: '' })
+                        .parents(widght.settings.widgetSelector)
+                            .find(widght.settings.contentSelector).show();
+                    return false;
+                }).prependTo($(widght.settings.handleSelector, this));
+                // var currClass = $(this).attr("class");
+                // $(this).find(widght.settings.contentSelector).html(currClass);
+            });
+        }
+        function loadLayout(listStr) {
+            var list = unescape(listStr);
+            var arrColumn = list.split('|');
+            $.each(arrColumn, function (m, n) {
+                var elemId = n.split(':')[0]; //容器ID 
+                var arrRow = n.split(':')[1].split(','); //单个序列ID 
+                $.each(arrRow, function (m, n) {
+                    if (n) {//排除空值 
+                        var content = [];
+                        content.push("<li class=\"" + n + "\">");
+                        content.push("<div class=\"widget-head\">");
+                        content.push("<h3>");
+                        content.push(" Introduction Widget</h3>");
+                        content.push("</div>");
+                        content.push("<div class=\"widget-content\">");
+                        content.push("<p>");
+                        content.push("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringillain, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at,ipsum. Cras varius sapien vel lectus.</p>");
+                        content.push("</div>");
+                        content.push("</li>");
+                        $("#" + elemId).append(content.join("")); //把序列填加进容器 
+                    }
+                });
+            })
+           
+        }
+        function saveLayout() {
+            var list = [];
+            $.each($(widght.settings.columns), function (m) {
+                var content = [];
+                $.each($(this).children("li"), function (d) {
+                    content.push($(this).attr('class'));
+                })
+                list.push($(this).attr('id') + ":" + content.join(","));
+            })
+            var str = escape(list.join("|"));
+            $.post("Handler/CusPortalHandler.ashx", { "act": "save", "str": str },
+                     function (data) {
+                         if (!(data && data["Success"] == 1)) {
+                             alert("操作失败");
+                         }
+                     }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div id="columns">
+        <ul id="column1" class="column">
+        </ul>
+        <ul id="column2" class="column">
+        </ul>
+        <ul id="column3" class="column">
+        </ul>
+    </div>
+</body>
+</html>

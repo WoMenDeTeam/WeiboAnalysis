@@ -1,0 +1,320 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/wb_new_2.css" rel="stylesheet" type="text/css" />
+    <link href="styles/weibo_2.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.8.1.min.js"></script>
+    <script src="Scripts/jQuery.Hz2Py-min.js"></script>
+    <script src="Scripts/divMove.js"></script>
+    <script src="Scripts/common.js"></script>
+    <script src="Scripts/SqlPager.js"></script>
+    <script src="Scripts/web/keywords_yj.js"></script>
+</head>
+<body>
+    <div class="wbnew_top">
+        <div class="new_wbbutton">
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="javascript:void(0);" id="a_quid">注销用户</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="wraper">
+            <!--注释start -->
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <div>
+                            <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widget_title">
+                                            报警规则设置
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="categoryKeys">
+                                <dl>
+                                    <dd class="on">
+                                        <a href="javascript:void(null);" name="categoryKey" _t="setkeyword" pid="100">临时预警词</a>
+                                    </dd>
+                                    <!--<dd>
+                                        <a href="javascript:void(null);" name="categoryKey" pid="2">筛选关键词</a>
+                                    </dd>-->
+                                    <dd>
+                                        <a href="javascript:void(null);" name="categoryKey" _t="settime" pid="3">预警规则设置</a>
+                                    </dd>
+                                    <!--<dd>
+                                        <a href="javascript:void(null);" name="categoryKey" _t="sethonebook" pid="3">短信通讯录</a>
+                                    </dd>-->
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        监测关键词列表
+                                    </td>
+                                    <td align="right">
+                                        <a class="btn_back" href="emergencywarning.html">返回</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--词列表设置-->
+                    <div class="widget_resize_frame" id="set_keyword_div">
+                        <div class="widget_body">
+                            <!--高级搜索-->
+                            <div class="wb_gjsearch">
+                                <a class="btn_history hei gh_pad12" href="javascript:void(null);" id="btnNewAdd"
+                                   title="添加关键词">添加关键词</a>
+                            </div>
+                            <div class="wb_wc_wwc" id="orderByWord">
+                                <ul>
+                                    <li class="on"><a href="javascript:void(null);">a-z</a></li>
+                                    <li><a href="javascript:void(null);">a</a></li>
+                                    <li><a href="javascript:void(null);">b</a></li>
+                                    <li><a href="javascript:void(null);">c</a></li>
+                                    <li><a href="javascript:void(null);">d</a></li>
+                                    <li><a href="javascript:void(null);">f</a></li>
+                                    <li><a href="javascript:void(null);">g</a></li>
+                                    <li><a href="javascript:void(null);">h</a></li>
+                                    <li><a href="javascript:void(null);">j</a></li>
+                                    <li><a href="javascript:void(null);">k</a></li>
+                                    <li><a href="javascript:void(null);">l</a></li>
+                                    <li><a href="javascript:void(null);">m</a></li>
+                                    <li><a href="javascript:void(null);">n</a></li>
+                                    <li><a href="javascript:void(null);">p</a></li>
+                                    <li><a href="javascript:void(null);">q</a></li>
+                                    <li><a href="javascript:void(null);">r</a></li>
+                                    <li><a href="javascript:void(null);">s</a></li>
+                                    <li><a href="javascript:void(null);">t</a></li>
+                                    <li><a href="javascript:void(null);">w</a></li>
+                                    <li><a href="javascript:void(null);">x</a></li>
+                                    <li><a href="javascript:void(null);">y</a></li>
+                                    <li><a href="javascript:void(null);">z</a></li>
+                                </ul>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="wb_httit3" id="keywordList">
+                            </div>
+                            <div class="page" id="pager_list">
+                            </div>
+                        </div>
+                    </div>
+                    <!--时间设置-->
+                    <div class="widget_resize_frame" id="set_time_div" style="display:none;">
+                        <div class="widget_body">
+                            <div class="wb_httit" id="settime_list">
+                                <ul>
+                                    <li><span>免打扰时间：21:00-06:00</span><a name="edit_11" title="编辑" class="btn_edit" _type="sleeptime" _s="21" _e="6" t="1" pid="11"></a></li>
+                                    <li><span>最近报警时间：2014.07.04-现在</span><a name="edit_11" title="编辑" class="btn_edit" t="1" pid="11"></a></li>
+                                </ul>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <!--注释end -->
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        词库操作
+                    </h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <li>
+                            <span class="name">词名称</span> <span class="input">
+                                <input id="txtKWName" pid="" type="text" style="width: 300px;" />
+                            </span> <span class="note"
+                                          id="txtKWNameCheck" style="display: none;">
+                                <img src="img/wb_tishi.gif" />
+                            </span>
+                        </li>
+                        <li>
+                            <span class="name">词分类</span> <span class="input">
+                                <select id="selKType" style="width: 310px;">
+                                    <option value="100">临时预警词</option>
+                                </select>
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="clear">
+                    </div>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="btnAddKey" t="new" value="提交" /><input type="button"
+                                                                                                    class="btn" id="btnReset" value="重置" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--免打扰时间设置-->
+    <div class="floatdiv" id="layer2">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer2_inner">
+                <div class="layer_move" id="topicmove_column2" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        词库操作
+                    </h1>
+                </div>
+                <a class="btn_close" id="btn_close2" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <li>
+                            <span class="name">夜间预警:</span> <span class="input">
+                                <select id="selXW" style="width: 100px;">
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                            </span>
+                            <span class="input">—</span>
+                            <span class="input">
+                                <select id="selSW" style="width: 100px;">
+                                    <option value="3">03:00</option>
+                                    <option value="4">04:00</option>
+                                    <option value="5">05:00</option>
+                                    <option value="6">06:00</option>
+                                    <option value="7">07:00</option>
+                                    <option value="8">08:00</option>
+                                    <option value="9">09:00</option>
+                                    <option value="10">10:00</option>
+                                </select>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="name">预警阀值:</span> <span class="input">
+                                <input id="yjfz_txt" type="text" value="" />
+                            </span><span class="name">人</span>
+                        </li>
+                        <li>
+                            <span class="name">默认阀值:</span> <span class="input">
+                                <input id="mrfz_txt" type="text" value="" />
+                            </span><span class="name">人</span>
+                        </li>
+                        <li style="display:none;">
+                            <input type="text" id="sleep_cache" value="" />
+
+                        </li>
+                    </ul>
+                    <div class="clear">
+                    </div>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="update_sleep_time_btn" value="提交" /><!--<input type="button" class="btn" id="sleep_reset_btn" value="重置" />-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--显示最近XX天的数据-->
+    <div class="floatdiv" id="layer3">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer3_inner">
+                <div class="layer_move" id="topicmove_column3" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        词库操作
+                    </h1>
+                </div>
+                <a class="btn_close" id="btn_close3" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <li>
+                            <span class="name">显示最近:</span> <span class="input">
+                                <input id="jinqi_day" type="text" value="" />
+                            </span><span class="name">天</span>
+                        </li>
+
+                        <li style="display:none;">
+                            <input type="text" id="day_cache" value="" />
+                        </li>
+                    </ul>
+                    <div class="clear">
+                    </div>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="update_jinqi_btn" value="提交" /><!--<input type="button" class="btn" id="sleep_reset_btn" value="重置" />-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

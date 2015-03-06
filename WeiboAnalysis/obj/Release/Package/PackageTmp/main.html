@@ -1,0 +1,148 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <link href="styles/wb_new.css" rel="stylesheet" type="text/css" />
+    <link href="styles/detail.css" rel="stylesheet" type="text/css" />
+    <link href="styles/tooltip.css" rel="stylesheet" type="text/css" />
+    <link href="styles/zTree3.0.css" rel="stylesheet" type="text/css" />
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+    <script src="Scripts/jquery.min1.71.js"></script>
+    <!--<script src="Scripts/jquery-1.8.1.min.js" type="text/javascript"></script>-->
+    <script src="Scripts/jQuery.Hz2Py-min.js" type="text/javascript"></script>
+    <!--JS模版解析-->
+    <script src="Scripts/template.js" type="text/javascript"></script>
+    <!--全局配置JS-->
+    <script src="Scripts/common.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.ztree.core-3.0.min.js" type="text/javascript"></script>
+    <!--省市地图-->
+    <script src="Scripts/map/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="Scripts/map/eventproxy.js" type="text/javascript"></script>
+    <script src="Scripts/map/landscape.js" type="text/javascript"></script>
+    <script src="Scripts/map/raphael-min.js" type="text/javascript"></script>
+    <script src="Scripts/map/view.js" type="text/javascript"></script>
+    <script src="Scripts/map/provinceMap.js" type="text/javascript"></script>
+    <!--图表-->
+    <script src="Scripts/highslide-with-gallery.js" type="text/javascript"></script>
+    <script src="Scripts/chart/highcharts.js" type="text/javascript"></script>
+    <script src="Scripts/chart/highstock.js" type="text/javascript"></script>
+    <script src="Scripts/chart/exporting.src.js" type="text/javascript"></script>
+    <script src="Scripts/listTable.js" type="text/javascript"></script>
+    <!--传播图JS-->
+    <script src="Scripts/d3.v2.js" type="text/javascript"></script>
+    <!--日期控件-->
+    <script src="Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <!--移动层JS-->
+    <script src="Scripts/divMove.js" type="text/javascript"></script>
+    <!--数据分页JS-->
+    <script src="Scripts/SqlPager.js" type="text/javascript"></script>
+    <script src="Scripts/Pager.js" type="text/javascript"></script>
+    <!--video播放器-->
+    <script src="jwplayer/jwplayer.js" type="text/javascript"></script>
+    <!--公共函数JS-->
+    <script src="Scripts/web/HotWeiboUser.js" type="text/javascript"></script>
+    <script src="Scripts/web/MaterialLibrary.js" type="text/javascript"></script>
+    <script src="Scripts/web/weiboAnalysis.js" type="text/javascript"></script>
+    <script src="Scripts/web/monitorAgency.js" type="text/javascript"></script>
+    <script src="Scripts/web/top.js" type="text/javascript"></script>
+    <!--<script src="Scripts/jquery-1.10.1-ui.js" type="text/javascript"></script>-->
+    <script src="Scripts/web/PingLun.js" type="text/javascript"></script>
+    <script src="Scripts/web/ZhuanFa.js" type="text/javascript"></script>
+    <!--<script src="Scripts/web/monitorInfo.js" type="text/javascript"></script>-->
+    <script type="text/javascript">
+        jwplayer.key = "CwxP8rWmIY5Zsh1Se+60CjBdXEmtiAUMQlakPA==";
+        $("#SysSetting").unbind("hover").hover(function () {
+            $("#divSetting").show(500);
+        }, function () {
+            $("#divSetting").hide(500);
+        });
+
+    </script>
+</head>
+<body>
+    <div class="wbnew_top">
+        <div class="new_wbbutton">
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="javascript:void(0);" id="a_quid">注销用户</a>
+                </div>
+            </div>
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a onclick="Top.loadPersonalDetailsPage('topicList.html',0,'')" name="topClick">分析任务</a>
+                </div>
+                <div class="wbxin_fc" style="display: none;">
+                    <span><a href="javascript:void(null);" id="tasksCount">123</a></span>
+                    <img src="img/xinbutjt.gif" class="left" />
+                </div>
+            </div>
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="javascript:void(null);" id="hotWarn">热度预警</a>
+                </div>
+                <div class="wbxin_fc" style="display: none;">
+                    <span><a href="javascript:void(null);" id="hotWarnNum">0</a></span>
+                    <img src="img/xinbutjt.gif" class="left" />
+                </div>
+            </div>
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="javascript:void(null);" id="wordWarn">事故预警</a>
+                </div>
+                <div class="wbxin_fc" style="display: none;">
+                    <span><a href="javascript:void(null);" id="wordWarnNum">0</a></span>
+                    <img src="img/xinbutjt.gif" class="left" />
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <ul id="TabUL">
+                <li class="on"><a onclick="Top.loadPage('monitorInfo.html')">微博监测</a></li>
+                <!--<li><a onclick="Top.loadPage('personalDetails.html')">重点关注</a></li>-->
+                <li><a onclick="Top.loadPage('weiboRank.html')">重点关注</a></li>
+                <li><a onclick="Top.loadPersonalDetailsPage('topicList.html',1,'1')">微博话题</a></li>
+                <li><a onclick="Top.loadPage('videoAnalysis.html')">视频监测</a></li>
+                <li><a onclick="Top.loadPage('keywordSearch.html')">舆情处置</a></li>
+                <li><a onclick="Top.loadCaseLibary(1)">案例库</a></li>
+                <li><a onclick="Top.loadPage('Task.html')">网评管理</a></li>
+                <li name="weibotongji_li"><a href="javascript:void(null);" id="WeiboTongJi">微博统计</a></li>
+                <li name="sysmanage_li"><a href="javascript:void(null);" id="SysSetting">系统设置</a></li>
+                <!--<li><a onclick="Top.loadPage('weiboRank.html')">微博统计</a></li>-->
+                <!--
+                <li><a href="yujing.html"  target="mainFrame">微博预警</a></li>
+                <li><a href="monitorArea.html" target="mainFrame" >地区监测</a></li>
+                <li><a onclick="Top.loadPage('monitoragency.html')">机构监测</a></li>
+                <li><a onclick="Top.loadPage('monitorbigshot.html')">人物监测</a></li>
+                <li><a onclick="Top.loadPage('weiboRank.html')">微博统计</a></li>
+                <li><a onclick="Top.loadPage('widget.html')">个性定制</a></li>
+                -->
+            </ul>
+        </div>
+        <div class="subnav" id="divSetting" style="display: none; z-index: 30">
+            <ul>
+                <li><a onclick="Top.loadPage('favorite.html')">微博收藏</a></li>
+                <li><a onclick="Top.loadPage('keywords.html')">词库管理</a></li>
+                <li><a onclick="Top.loadPage('caseAccidentManage.html')">案例设置</a></li>
+                <li><a onclick="Top.loadPage('userManage.html')">用户管理</a></li>
+                <li><a onclick="Top.loadPage('log.html')">日志管理</a></li>
+                <li><a onclick="Top.loadPage('useraccounts.html')">权限管理</a></li>
+                <li><a onclick="Top.loadPage('accidentAlarm.html')">报警信息</a></li>
+                <li><a onclick="Top.loadPage('accidentReport.html')">事故调查报告</a></li>
+                <!--<li><a onclick="Top.loadPage('AlarmKeywords.html')">报警词库(新)</a></li>-->
+            </ul>
+        </div>
+        <div class="subnav subnav2" id="WeiboTongJiDiv" style="display: none; z-index: 30">
+            <ul>
+                <li><a onclick="Top.loadPage('hotword.html')">热点关键词</a></li>
+                <li><a onclick="Top.loadPage('hotindutry.html')">行业分析</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <bgsound id="soundPlay" loop="0" src=""></bgsound>
+    </div>
+    <div id="mainbody">
+    </div>
+</body>
+</html>

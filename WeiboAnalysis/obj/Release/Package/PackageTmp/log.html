@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>安全生产微博舆情分析系统</title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/SqlPager.js" type="text/javascript"></script>
+    <!--<script src="Scripts/template.js" type="text/javascript"></script>-->
+    <script src="Scripts/web/log.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <!--左边导航-->
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title" id="hotweibolist_title">
+                                        活跃用户
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div id="left_user_hot_plan">                          
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        日志列表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            <!--高级搜索-->
+                            <!--<div class="wb_gjsearch">
+                                <a class="btn_history heigh_pad12" id="btn_history" href="javascript:void(null);">搜索历史</a>
+                                <a id="advance_search_a" class="btn_power no" href="javascript:void(null);">高级</a>
+                                <input id="keyword_txt" name="" type="text" class="wb_text" value="" />
+                                <a class="btn_search" href="javascript:void(null);" id="weibo_screening_btn">搜 索</a><br />
+                            </div>-->
+                            <!--排序条件-->
+                            <!--<div class="wb_wc_wwc" id="actionBtns">
+                                <span class="left">
+                                    <input id="clickall_ckb" name="" type="checkbox" value="" />
+                                    <a class="btn" href="javascript:void(null);" id="setGroup">分组</a> </span>
+                                <ul>
+                                    <li id="real_time_btn" class="on"><a>活跃度 ↓</a></li>
+                                </ul>
+                            </div>-->
+                            <div id="list_body_div">
+                                <div class="load_out">
+                                    <div class="load_in">
+                                        <img src="img/load_big.gif" /></div>
+                                </div>
+
+                            </div>
+                            <div class="page" id="pageBar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--模版-->
+    <script type="text/temps" id="list_tempss"> 
+<table class="widget_table" cellspacing="0" cellpadding="0">
+<thead><tr><th width="25%">时间</th><th width="15%">用户名</th><th width="25%">IP地址</th><th width="35%">浏览页面</th></tr></thead>
+
+<tbody>
+<% for (var i in list) {
+ if(list[i].UserName!=null){%>
+<tr><td><%=list[i].OperateTime%></td><td><%=list[i].UserName%></td><td><%=list[i].IP%></td><td><%=list[i].VisitUrl%></td></tr>
+<%}} %>
+</tbody>
+</table>
+    </script>
+    <!--隐藏div-->
+</body>
+</html>

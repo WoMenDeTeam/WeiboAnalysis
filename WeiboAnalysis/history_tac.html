@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+    <!--<script src="Scripts/common.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/divMove.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/jquery.query.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/SqlPager.js" type="text/javascript"></script>-->
+    <!--<script src="Scripts/web/topicList.js" type="text/javascript"></script>-->
+    <script type="text/javascript">
+        function checkBrowser(domID) {
+
+            var maxBrowser = { "IE": 9.0, "FF": 13.0 }
+            var isIE = $.browser.msie;
+            var isFF = $.browser.mozilla;
+            var browserType = "";
+            var version = $.browser.version;
+            if (isIE) {
+                browserType = "IE";
+            }
+            if (isFF) {
+                browserType = "FF";
+            }
+            if (version >= maxBrowser[browserType]) {
+                alert("合格");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <div class="wraper">
+            <div class="column" style="width: 24%; margin-right: 1%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        评论原文
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display: block;" class="widget_resize_frame">
+                        <div class="widget_body">
+                            <div style="height: 620px;">
+                                <!--点击历史记录弹出层start-->
+                                <div class="history_tac">
+                                    <ul>
+                                        <li><a href="#">【节目预告】海淀消防法制类新闻节目《火线》，今晚20时20分在海淀有线电视台播出。 </a></li>
+                                        <li><a href="#">游香山，赏红叶的同时，有哪些是我们应注意的细节呢？ </a></li>
+                                        <li><a href="#">真实山林火灾案件带给您触目惊心的瞬间。如果您错过了节目播出时间，在新开通的海淀消防网（http://t.cn/zl8ld1R）或优酷网也可观看我们的节目哟~要关注哦[围观]</a></li>
+                                        <li><a href="#">游香山，赏红叶的同节呢？ </a></li>
+                                        <li><a href="#">游香山，赏红叶的同节呢？ </a></li>
+                                    </ul>
+                                </div>
+                                <!--点击历史记录弹出层end-->
+                                <!--左侧新加用户start -->
+                                <div class="wb_boxnr">
+                                    <div class="wb_boximg">
+                                        <span>
+                                            <img onerror="this.src='img/userdefault.jpg'" src="http://app.qlogo.cn/mbloghead/4b3fdc66a0d67fe8c9ae/50"></span></div>
+                                    <div class="left_tacnr">
+                                        <div style="display: none;" class="wb_tac">
+                                            <div class="wb_tac2">
+                                                <div class="wb_boximg">
+                                                    <div id="shenghuochenbao_2" class="wb_ygz">
+                                                    </div>
+                                                    <span>
+                                                        <img onerror="this.src='img/userdefault.jpg'" src="http://app.qlogo.cn/mbloghead/4b3fdc66a0d67fe8c9ae/50"></span></div>
+                                            </div>
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                        <div class="wb_usertit">
+                                            <a href="http://t.qq.com/shenghuochenbao" target="_blank" class="aname" name="userinfo_a">
+                                                <b>生活晨报：</b></a><br />
+                                            <span class="text2">11分钟前</span>
+                                        </div>
+                                        <div class="wb_tac" style="display: none">
+                                            <div class="wb_tac2">
+                                                <div class="wb_boximg">
+                                                    <div id="京华时报_1" class="wb_ygz">
+                                                    </div>
+                                                    <span>
+                                                        <img onerror="this.src='img/userdefault.jpg'" src="http://tp3.sinaimg.cn/1697601814/50/5638674617/1"></span></div>
+                                                <div class="wb_tacnr">
+                                                    <b>京华时报</b><img align="absmiddle" src="img/v.gif"><br>
+                                                    <span>关注:<b class="color_2">417</b></span>| <span>微博:<b class="color_2">10132</b></span>|&#12288;<span>粉丝：<b
+                                                        class="color_2">2405486</b></span><br>
+                                                    http://weibo.com/u/1697601814<br>
+                                                    京华时报官方微博</div>
+                                                <div class="jiagz">
+                                                    <a act="qx" name="京华时报" nick="京华时报" source="1" href="javascript:void(0)" class="add_guan_zhu">
+                                                        取消关注</a></div>
+                                            </div>
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                    <div class="left_userdis">
+                                        深圳本地宝资讯频道提供钓鱼岛最新消息：中国逼近钓鱼岛舰队有玄机 攻击核潜艇或潜行有关的信息，日本称艘中国海军舰艇通过冲绳毗连区图中国海军艘舰艇在毗邻区航行图片
+                                    </div>
+                                </div>
+                                <!--左侧新加用户start -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="column" style="width: 75%;">
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">
+                                        话题列表
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget_resize_frame">
+                        <div class="widget_body">
+                            相同页
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wraper">
+            <div id="footer">
+                <div id="footer_wrapper">
+                    <p class="copyright">
+                        © <a href="#">版权信息</a>. 版权所有。
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------　底　部　结　束　------------------------->
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">
+                        话题操作</h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="float_layer" id="generateWeiboDataDiv" style="display: none;">
+                    <div class="layer_loading">
+                        <span>
+                            <img src="img/load_icon.gif" /><br />
+                            正在生成数据</span>
+                    </div>
+                    <div class="layer_loading_bg" style="height: 100px;">
+                    </div>
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <!--- 表单项开始 --->
+                        <li><span class="name">话题名称</span> <span class="input">
+                            <input id="txtTopicName" style="width: 300px;" type="text" sid="" stype="" /></span>
+                            <span class="note" id="txtKWNameCheck" style="display: none;">
+                                <img src="img/wb_tishi.gif" /></span> </li>
+                        <!--<li><span class="name">话题关键词</span> <span class="textarea">
+                                <textarea style="height: 143px; width: 324px;" id="txtKeywords"></textarea></span>
+                            </li>
+                            <li><span class="name">所属行业</span> <span class="input">
+                                <select id="txtIndustry" style="width: 332px;">
+                                </select></span> </li>-->
+                        <!--- 表单项结束 --->
+                    </ul>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="btnAddT" value="提交" /><input type="button" class="btn"
+                            id="btnReset" value="重置" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

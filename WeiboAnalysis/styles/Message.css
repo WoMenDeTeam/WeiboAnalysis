@@ -1,0 +1,57 @@
+﻿body
+{
+    font-size: 12px;
+}
+
+.Message
+{
+    border: #b8d2e0 3px solid;
+    left: 0;
+    width: 360px;
+    height: 240px;
+    background-color: White;
+    position: absolute;
+    top: 180px;
+}
+.Title
+{
+    color: #03488f;
+    font-weight: bold;
+    padding: 2px;
+    background-color: #ECFDFF;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #b8d2e0;
+    height: 28px;
+}
+.Content
+{
+    padding:9px 0;
+}
+.Content a
+{
+    color: #03488f; font-size:14px; line-height:20px; padding:0 12px;
+}
+.Container
+{
+    width: 366px;
+    height: 234px;
+    position: absolute;
+    overflow: hidden;
+    clear: both;
+    float: right;
+    z-index: 90;
+    position: fixed;
+}
+.left
+{
+    float: left; line-height:30px; padding-left:12px;
+}
+.right
+{
+    float: right; line-height:30px; padding-right:6px;
+}
+.right a
+{
+   padding:0 6px;
+}
