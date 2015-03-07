@@ -248,7 +248,7 @@
     <Content Include="Scripts\web\accidentReport.js" />
     <Content Include="Scripts\web\AccidentReportRecycle.js" />
     <Content Include="Scripts\web\AlarmKeywords.js" />
-    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\common_3.js" />
     <Content Include="Scripts\web\emergencywarning.js" />
     <Content Include="Scripts\web\HotIndustry.js" />
     <Content Include="Scripts\web\HotWeiboUser.js" />
@@ -499,7 +499,7 @@
     <Content Include="main.html" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\Bar.js" />
-    <Content Include="Scripts\common_b.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\divMove.js" />
     <Content Include="Scripts\Ensure.js" />
     <Content Include="Scripts\eventproxy.js" />

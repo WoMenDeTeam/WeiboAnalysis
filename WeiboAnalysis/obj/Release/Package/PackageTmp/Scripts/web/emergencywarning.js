@@ -27,11 +27,6 @@ var EmergencyWaring = {
     ListTemplate: function (data) { },
     Init: function () {
         Common.ValIsEmpty("btn_close", "remarks_txt", "txtKWNameCheck");
-        //var text = "/[游泳|燃气|石油|化工厂爆炸]+/g";
-
-        //var rg = RegExp(eval(text));
-        //var title = "快讯：汉川一化工厂爆炸附近民居房屋受损";
-        //alert(rg.test(title));
         $("#accidentalarm_start_time").val("");
         $("#accidentalarm_end_time").val("");
         $("#accidentalarm_keyword_txt").val("");
