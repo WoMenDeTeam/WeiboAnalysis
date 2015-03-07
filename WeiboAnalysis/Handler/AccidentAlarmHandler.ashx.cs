@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using BLL.Facade;
 using System.Text.RegularExpressions;
+using Util;
 
 namespace WeiboAnalysis.Handler
 {
@@ -108,6 +109,8 @@ namespace WeiboAnalysis.Handler
                 where += " And PublishTime >'" + context.Request["lastTime"] + "' ";
                 isLasttime = true;
             }
+            where += GetCookieCityTag(context);
+            where1 += GetCookieCityTag(context);
             int count = 0;
             if (isLasttime)
             {
@@ -116,7 +119,6 @@ namespace WeiboAnalysis.Handler
             int allCount = AccidentAlarmFacade.GetTotalCount(where1);
             if (allCount > 0)
             {
-                //context.Request["lastTime"]
                 jsonData = GetLatestAlarmInfo(" SourceType=0 AND AlarmState in(-1,0)");
             }
             return result = "{\"success\":1,\"data\":" + jsonData + ",\"allCount\":" + allCount + ",\"Count\":" + count + ",\"lasttime\":\"" + lastTime + "\"}";
@@ -158,6 +160,7 @@ namespace WeiboAnalysis.Handler
                     pageWhere += string.Format(" AND Title like '%{0}%'", item);
                 }
             }
+            pageWhere += GetCookieCityTag(context);
             string jsonData = AccidentAlarmFacade.GetPageList(pageWhere, pageOrderBy, Convert.ToInt32(PageSize), Convert.ToInt32(Start)).ToJson(Encode);
             int totalCount = AccidentAlarmFacade.GetTotalCount(pageWhere);
             jsonData = jsonData == null ? "[]" : jsonData;
@@ -254,6 +257,23 @@ namespace WeiboAnalysis.Handler
             }
             int count = AccidentAlarmFacade.CountTagInfo(where);
             return "{\"success\":1,\"count\":" + count + "}";
+        }
+        public string GetCookieCityTag(HttpContext context)
+        {
+            string result = "";
+            if (context.Request.Cookies["_ACCIDENTALARMTAG_"] != null)
+            {
+                result = context.Request.Cookies["_ACCIDENTALARMTAG_"].Value;
+            }
+            if (string.IsNullOrEmpty(result))
+            {
+                result = "";
+            }
+            else
+            {
+                result = " and " + DESEncrypt.Decrypt(result);
+            }
+            return result;
         }
 
         public bool IsReusable

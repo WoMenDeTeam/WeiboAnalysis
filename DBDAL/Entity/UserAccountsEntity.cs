@@ -122,7 +122,6 @@ namespace DBDAL.Entity
         public string RealName { get; set; }
         public string DepartmentName { get; set; }
         public string DefaultPath { get; set; }
-
         #endregion
 
         public class UserAccountsDAO : SqlDAO<UserAccountsEntity>
@@ -466,6 +465,23 @@ namespace DBDAL.Entity
                     dt = ds.Tables[0];
                 }
                 return dt;
+            }
+
+            public DataTable GetCityTag(int userid)
+            {
+                try
+                {
+                    string sql = "SELECT * FROM dbo.UserAccounts WHERE USERID=@UserID";
+                    SqlParameter[] param = { 
+                                       new SqlParameter("@UserID",userid)
+                                       };
+                    return sqlHelper.ExecuteDateSet(sql, param).Tables[0];
+                }
+                catch (Exception )
+                {
+                    
+                    throw;
+                }
             }
 
             #region paging methods

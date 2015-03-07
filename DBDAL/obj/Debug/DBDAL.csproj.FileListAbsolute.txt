@@ -21,3 +21,10 @@ D:\gooko\WeiboAnalysis\DBDAL\bin\Debug\Util.pdb
 D:\gooko\WeiboAnalysis\DBDAL\obj\Debug\DBDAL.csprojResolveAssemblyReference.cache
 D:\gooko\WeiboAnalysis\DBDAL\obj\Debug\DBDAL.dll
 D:\gooko\WeiboAnalysis\DBDAL\obj\Debug\DBDAL.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\bin\Debug\DBDAL.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\bin\Debug\DBDAL.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\bin\Debug\Util.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\bin\Debug\Util.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\obj\Debug\DBDAL.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\obj\Debug\DBDAL.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\DBDAL\obj\Debug\DBDAL.pdb

@@ -321,6 +321,7 @@ public class User : IHttpHandler, IRequiresSessionState
         if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(passWord))
         {
             UserAccountsEntity user = BLL.Facade.UserAccountsFacade.GetUser(userName, passWord, serverName);
+
             //手动模拟一个用户信息
             //UserAccountsEntity user = new UserAccountsEntity();
             //user.CREATEDATE = DateTime.Now;
@@ -365,6 +366,16 @@ public class User : IHttpHandler, IRequiresSessionState
                 cookie.Value = cookiestr;
                 cookie.Expires = DateTime.Now.AddDays(1);
                 context.Response.SetCookie(cookie);
+
+                HttpCookie cookieUserid = new HttpCookie("__USERID");
+                cookieUserid.Value = user.USERID.ToString();
+                cookie.Expires = DateTime.Now.AddYears(1);
+                context.Response.SetCookie(cookieUserid);
+                string tag = BLL.Facade.UserAccountsFacade.GetCityTag(user.USERID);
+                HttpCookie alarmword = new HttpCookie("_ACCIDENTALARMTAG_");
+                alarmword.Value = DESEncrypt.Encrypt(tag);
+                alarmword.Expires = DateTime.Now.AddYears(1);
+                context.Response.SetCookie(alarmword);
                 jsonStr.Append("{\"SuccessCode\":\"1\",\"path\":\"" + path + "\"}");
             }
             else

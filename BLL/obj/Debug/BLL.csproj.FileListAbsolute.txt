@@ -27,3 +27,14 @@ D:\gooko\WeiboAnalysis\BLL\bin\Debug\Util.pdb
 D:\gooko\WeiboAnalysis\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 D:\gooko\WeiboAnalysis\BLL\obj\Debug\BLL.dll
 D:\gooko\WeiboAnalysis\BLL\obj\Debug\BLL.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\BLL.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\BLL.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\DBDAL.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\IdolDAL.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\Util.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\DBDAL.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\IdolDAL.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\bin\Debug\Util.pdb
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\obj\Debug\BLL.dll
+C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\BLL\obj\Debug\BLL.pdb

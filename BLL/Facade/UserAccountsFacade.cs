@@ -23,6 +23,23 @@ namespace BLL.Facade
                 return null;
             }
         }
+        public static string GetCityTag(int userid)
+        {
+
+            string tag = "";
+            try
+            {
+                DataTable dt = dao.GetCityTag(userid);
+                if (dt.Rows[0]["CityTag"] != "")
+                {
+                    tag = dt.Rows[0]["CityTag"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return tag;
+        }
         public static UserAccountsEntity GetUserById(int userId)
         {
             return dao.FindById(userId);
