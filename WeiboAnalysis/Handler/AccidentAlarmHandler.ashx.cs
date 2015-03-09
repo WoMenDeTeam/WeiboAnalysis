@@ -188,7 +188,15 @@ namespace WeiboAnalysis.Handler
             {
                 pageWhere += string.Format(" AND CreateTime<='{0}'", etime);
             }
-            pageWhere += GetCookieCityTag(context);
+            if (!string.IsNullOrEmpty(keywordtext))
+            {
+                string[] words = keywordtext.Trim().ToLower().Replace(',', ' ').Split(' ');
+                foreach (var item in words)
+                {
+                    pageWhere += string.Format(" AND Title like '%{0}%'", item);
+                }
+            }
+            //pageWhere += GetCookieCityTag(context);
             string jsonData = AccidentAlarmFacade.GetPageList(pageWhere, pageOrderBy, Convert.ToInt32(PageSize), Convert.ToInt32(Start)).ToJson(Encode);
             int totalCount = AccidentAlarmFacade.GetTotalCount(pageWhere);
             jsonData = jsonData == null ? "[]" : jsonData;
