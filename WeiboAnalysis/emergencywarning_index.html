@@ -2,13 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>预警信息</title>
-    <!--<link href="styles/wb_new.css" rel="stylesheet" type="text/css" />-->
-    <link href="styles/weibo.css" rel="stylesheet" type="text/css" />
-    <!--<script src="Scripts/jquery-1.8.1.js" type="text/javascript"></script>-->
+    <link href="styles/wb_new_2.css" rel="stylesheet" type="text/css" />
+    <link href="styles/weibo_2.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.8.1.js" type="text/javascript"></script>
+    <script src="Scripts/divMove.js"></script>
+    <script src="Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="Scripts/common.js" type="text/javascript"></script>
     <script src="Scripts/SqlPager.js" type="text/javascript"></script>
     <script src="Scripts/web/emergencywarning.js" type="text/javascript"></script>
+    <script src="Scripts/web/emergencywarning_index.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            EmergencyWaring.ListTemplate = Emergencywarning_Index.LoadDataTemplate;
+            EmergencyWaring.RealTimeDetection = function () { }
+            EmergencyWaring.RealTimeDetection = function () { }
+            EmergencyWaring.SqlData = { "action": "getPage2", "where": "  SourceType=0 AND AlarmState in(0,-1)  ", "orderBy": "  AlarmState DESC ,SourceType DESC, PublishTime DESC " },
+            Emergencywarning_Index.Init();
+        });
+    </script>
 </head>
 <body>
+    <div class="wbnew_top">
+        <div class="new_wbbutton">
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="javascript:void(0);" id="a_quid">注销</a>
+                </div>
+            </div>
+            <div class="wbxin_but right">
+                <div class="wb_headtab">
+                    <a href="emergencywarning.html">返回</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <bgsound id="soundPlay" loop="0" src=""></bgsound>
     <div class="main">
         <div class="wraper">
@@ -23,8 +51,7 @@
                         <table cellspacing="0" cellpadding="0" class="widget_header_table">
                             <tbody>
                                 <tr>
-                                    <td class="widget_title">
-                                        报警分类
+                                    <td class="widget_title">全部报警信息
                                     </td>
                                 </tr>
                             </tbody>
@@ -33,13 +60,49 @@
                     <div style="display: block;" class="widget_resize_frame">
                         <div class="widget_body">
                             <dl>
-                                <!--<dt>【预警分类】</dt>-->
-                                <dd id="xitongxinxi">
-                                    <a href="javascript:void(0)">系统信息</a>
-                                </dd>
-                                <dd id="by_gxb" class="on">
+                                <dd id="by_gxb">
                                     <a href="javascript:void(0)">国办信息</a>
                                 </dd>
+                                <dd class="on" id="xitongxinxi">
+                                    <a href="javascript:void(0)">总局信息</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div style="height: 10px;">
+                </div>
+                <div class="widget_border">
+                </div>
+                <div class="widget_line">
+                </div>
+                <div class="widget_outer">
+                    <div class="widget_header">
+                        <table cellspacing="0" cellpadding="0" class="widget_header_table">
+                            <tbody>
+                                <tr>
+                                    <td class="widget_title">关注报警信息
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display: block;" class="widget_resize_frame">
+                        <div class="widget_body">
+                            <dl>
+                                <dd id="newalarminfo_btn">
+                                    <a href="javascript:void(0)">最近报警信息</a>
+                                </dd>
+                                <dd id="tagininfo_btn">
+                                    <a href="javascript:void(0)">已 备 注 信 息</a>
+                                </dd>
+                                <!--<dd id="">
+                                    <a href="javascript:void(0)">已短信信息</a>
+                                </dd>-->
                             </dl>
                         </div>
                     </div>
@@ -89,12 +152,10 @@
                             <table cellspacing="0" cellpadding="0" class="widget_header_table">
                                 <tbody>
                                     <tr>
-                                        <td class="widget_title">
-                                            安全生产事故网络信息报警列表
+                                        <td class="widget_title">安全生产事故网络信息报警列表
                                         </td>
                                         <td align="right">
-                                            <a class="btn_set" title="修改" id="btn_edittype" href="javascript:Top.loadPage('AlarmKeywords.html');">
-                                            </a>
+                                            <!--<a title="修改" class="btn_set" id="btn_edittype" href="keywords_2.html"></a>-->
                                         </td>
                                     </tr>
                                 </tbody>
@@ -105,35 +166,29 @@
                         <div class="widget_body">
                             <!--搜索-->
                             <div class="wb_gjsearch">
-                                <a class="btn_history heigh_pad12" id="addNewAlarm" href="javascript:void(null);">新增报警</a>
                                 <a class="btn_power no " href="javascript:void(null);">时间：</a>
                                 <input id="accidentalarm_start_time" name="" type="text" class="wb_text" value=""
-                                       style="width: 90px;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
+                                    style="width: 90px;" onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
                                 <code>.</code>
                                 <input id="accidentalarm_end_time" name="" type="text" class="wb_text" value="" style="width: 90px;"
-                                       onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
+                                    onfocus="WdatePicker({isShowClear:true,readOnly:true,dateFmt:'yyyy-MM-dd'})" />
                                 <a class="btn_power no " href="javascript:void(null);">关键词：</a>
                                 <input id="accidentalarm_keyword_txt" name="" type="text" class="wb_text" value=""
-                                       style="width: 188px;" />
-                                <a class="btn_search" href="javascript:void(null);" id="accidentalarm_search_btn">
-                                    搜
-                                    索
-                                </a>
+                                    style="width: 284px;" />
+                                <a class="btn_search" href="javascript:void(null);" id="accidentalarm_search_btn">搜索</a>
                             </div>
+                            <!--排序条件-->
                             <div class="wb_wc_wwc" id="actionBtns">
                                 <span class="left">
                                     <input id="click_all_ckbox" name="" type="checkbox" value="" />
-                                    <code>已选：<b class="color_2" id="checknumber">0</b></code> <a class="btn" id="show_topic_div"
-                                                                                                 href="javascript:void(null);">取消</a> <a class="btn" id="delete_alarm_byids" href="javascript:void(null);">
-                                        删除
-                                    </a>
+                                    <code id="yixuan_code">已选：<b class="color_2" id="checknumber">0</b></code> <a class="btn" id="show_topic_div" href="javascript:void(null);">取消报警</a>
                                 </span>
                                 <ul>
                                     <li id="bytime" class="on"><a>时间 ↓</a></li>
                                     <li id="byurgent"><a>级别 ↓</a></li>
                                 </ul>
+
                                 <span class="right">
-                                    <!--<a class="btn_renew"  href="javascript:void(null);"></a>-->
                                     <code>第<b id="currpage_b">0/0</b>页,共<b class="color_2" id="count_b">0</b>条</code>
                                 </span>
                             </div>
@@ -172,12 +227,57 @@
             </div>
         </div>
     </div>
+
+    <!--隐藏div-->
+    <div id="sad">
+    </div>
+    <!--备注窗口-->
+    <div class="floatdiv" id="layer">
+        <div class="layer_outer">
+            <div class="layer_inner" id="layer_inner">
+                <div class="layer_move" id="topicmove_column" title="点击此处可自由拖动">
+                    <h1 id="newsCount">提示
+                    </h1>
+                </div>
+                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
+                <div class="clear">
+                </div>
+                <div class="layer_C">
+                    <ul class="form_list">
+                        <li>
+                            <span class="name">备注：</span> <span class="input">
+                                <!--<input id="remarks_txt" type="text" style="width: 300px;" />-->
+                                <textarea cols="37" rows="5" id="remarks_txt"></textarea>
+                            </span><span class="note" id="txtKWNameCheck" style="display: none;">
+                                <img src="img/wb_tishi.gif" />
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="clear">
+                    </div>
+                    <div class="form_btn">
+                        <input type="button" class="btn" id="submit_bz_btn" value="提交" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--闪窗-->
+    <div class="floatdiv" id="submitPopDiv">
+        <div class="layer_outer" id="submitPopDiv_outer">
+            <div class="layer_inner finish">
+                <div class="wb_tishicg">
+                    操作已成功！
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--报警弹窗-->
-    <div class="floatdiv" id="Container">
+    <!--    <div class="floatdiv" id="Container">
         <div class="layer_outer">
             <div class="layer_inner" id="Message" style="z-index: 5;">
-                <h1>
-                    未读预警(<b class="color_2" id="newcount">0</b>)条
+                <h1>未读预警(<b class="color_2" id="newcount">0</b>)条
                 </h1>
                 <a class="btn_form_down" href="javascript:void(null)" id="down" title="隐藏窗口"></a>
                 <a class="btn_form_up" href="javascript:void(null)" id="up" title="展开窗口"></a>
@@ -188,25 +288,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="bg_div">
-    </div>
-    <div class="floatdiv" id="layer">
-        <div class="layer_outer">
-            <div class="layer_inner" id="layer_inner" style="width: 660px">
-                <div class="layer_move" id="move_column" title="点击此处可自由拖动">
-                    <h1 id="newsCount">
-                        报警信息
-                    </h1>
-                </div>
-                <a class="btn_close" id="btn_close" href="javascript:void(null)" title="关闭窗口"></a>
-                <div class="clear">
-                </div>
-                <div class="layer_C" id="formsContent">
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="Scripts/web/AccidentAlarm.js" type="text/javascript"></script>
+    </div>-->
 </body>
 </html>

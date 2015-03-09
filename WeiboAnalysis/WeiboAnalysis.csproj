@@ -90,6 +90,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="DownloadReport.aspx" />
+    <Content Include="emergencywarning_index.html" />
     <Content Include="emergencywarning.html" />
     <Content Include="ExportToExcel.aspx" />
     <Content Include="HotIndutry.html" />
@@ -250,6 +251,7 @@
     <Content Include="Scripts\web\AlarmKeywords.js" />
     <Content Include="Scripts\common_3.js" />
     <Content Include="Scripts\web\emergencywarning.js" />
+    <Content Include="Scripts\web\emergencywarning_index.js" />
     <Content Include="Scripts\web\HotIndustry.js" />
     <Content Include="Scripts\web\HotWeiboUser.js" />
     <Content Include="Scripts\web\HotWord.js" />
