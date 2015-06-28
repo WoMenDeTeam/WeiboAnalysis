@@ -44,3 +44,7 @@ Temporary Items
 *.dll
 *.pdb
 *.txt
+*.dll
+*.pdb
+BLL/bin/Debug/BLL.dll
+*.dll
