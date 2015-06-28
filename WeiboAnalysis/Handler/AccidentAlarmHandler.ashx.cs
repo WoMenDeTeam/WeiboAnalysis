@@ -25,6 +25,9 @@ namespace WeiboAnalysis.Handler
                 case "getPage":
                     result = GetPage(context);
                     break;
+                case "getPage2":
+                    result = GetPage2(context);
+                    break;
                 case "getAlarmCount":
                     result = GetAlarmCount(context);
                     break;
@@ -167,7 +170,39 @@ namespace WeiboAnalysis.Handler
             result = "{\"success\":1,\"data\":" + jsonData + ",\"Count\":" + totalCount + "}";
             return result;
         }
-
+        public string GetPage2(HttpContext context)
+        {
+            string result = "";
+            String Start = context.Request["start"];
+            String PageSize = context.Request["page_size"];
+            String pageWhere = context.Request["where"];
+            String pageOrderBy = context.Request["orderBy"];
+            string stime = context.Request["starttime"];
+            string etime = context.Request["endtime"];
+            string keywordtext = context.Request["keywordtext"];
+            if (!string.IsNullOrEmpty(stime))
+            {
+                pageWhere += string.Format(" AND CreateTime>='{0}'", stime);
+            }
+            if (!string.IsNullOrEmpty(etime))
+            {
+                pageWhere += string.Format(" AND CreateTime<='{0}'", etime);
+            }
+            if (!string.IsNullOrEmpty(keywordtext))
+            {
+                string[] words = keywordtext.Trim().ToLower().Replace(',', ' ').Split(' ');
+                foreach (var item in words)
+                {
+                    pageWhere += string.Format(" AND Title like '%{0}%'", item);
+                }
+            }
+            //pageWhere += GetCookieCityTag(context);
+            string jsonData = AccidentAlarmFacade.GetPageList(pageWhere, pageOrderBy, Convert.ToInt32(PageSize), Convert.ToInt32(Start)).ToJson(Encode);
+            int totalCount = AccidentAlarmFacade.GetTotalCount(pageWhere);
+            jsonData = jsonData == null ? "[]" : jsonData;
+            result = "{\"success\":1,\"data\":" + jsonData + ",\"Count\":" + totalCount + "}";
+            return result;
+        }
         public string TagInfoList(HttpContext context)
         {
             string result = "";
