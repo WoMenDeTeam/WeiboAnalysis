@@ -19,6 +19,5 @@ D:\gooko\WeiboAnalysis\JsonServer\obj\Debug\JsonServer.pdb
 C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\JsonServer\bin\JsonServer.dll.config
 C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\JsonServer\bin\JsonServer.dll
 C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\JsonServer\bin\JsonServer.pdb
-C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\JsonServer\obj\Debug\JsonServer.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\JsonServer\obj\Debug\JsonServer.dll
 C:\Users\Administrator\Documents\GitHub\WeiboAnalysis\JsonServer\obj\Debug\JsonServer.pdb
