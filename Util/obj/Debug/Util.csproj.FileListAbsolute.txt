@@ -8,8 +8,3 @@ E:\工作\国科智信\WeiboAnalysis\Util\bin\Debug\Util.pdb
 E:\工作\国科智信\WeiboAnalysis\Util\obj\Debug\Util.dll
 E:\工作\国科智信\WeiboAnalysis\Util\obj\Debug\Util.pdb
 E:\工作\国科智信\WeiboAnalysis\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
-D:\gooko\WeiboAnalysis\Util\bin\Debug\Util.dll
-D:\gooko\WeiboAnalysis\Util\bin\Debug\Util.pdb
-D:\gooko\WeiboAnalysis\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
-D:\gooko\WeiboAnalysis\Util\obj\Debug\Util.dll
-D:\gooko\WeiboAnalysis\Util\obj\Debug\Util.pdb

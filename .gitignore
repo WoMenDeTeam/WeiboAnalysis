@@ -48,6 +48,3 @@ Temporary Items
 *.pdb
 BLL/bin/Debug/BLL.dll
 *.dll
-*.dll
-*.pdb
-*.pdb

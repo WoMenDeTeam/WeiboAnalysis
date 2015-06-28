@@ -8,8 +8,3 @@ E:\工作\国科智信\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.pdb
 E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.dll
 E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.pdb
 E:\工作\国科智信\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.csprojResolveAssemblyReference.cache
-D:\gooko\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.dll
-D:\gooko\WeiboAnalysis\IdolDAL\bin\Debug\IdolDAL.pdb
-D:\gooko\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.csprojResolveAssemblyReference.cache
-D:\gooko\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.dll
-D:\gooko\WeiboAnalysis\IdolDAL\obj\Debug\IdolDAL.pdb
